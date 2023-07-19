@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistical Methods: Exploring the Uncertain - 6.4: Parametric Tests for Two Populations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./25-Error-Types-and-Power-of-Tests.html" rel="next">
+<link href="./23-Hypothesis-Single-Population.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./21-Intro-Hypothesis-Tests.html">Chapter 6: Hypothesis Tests</a></li><li class="breadcrumb-item"><a href="./24-Hypothesis-Comparing-Two.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">6.4: Parametric Tests for Two Populations</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistical Methods: Exploring the Uncertain</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Chapter 1: Exploring Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Intro-to-Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1: Introduction to Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-EDA-Categorical.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2: Exploring Categorical Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-EDA-Quantitative.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3: Exploring Quantitative Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Chapter 2: Probability Essentials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Overview-of-Probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1: An Overview of Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Intro-to-Random-Variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2: Introduction to Random Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Expected-Value-and-Variance.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3: Expected Value and Variance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Common-Discrete-RandVar.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4: Common Discrete Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Common-Continuous-Distributions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5: Common Continuous Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-Joint-Distributions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.6: Joint Distributions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Chapter 3: Sampling Distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-Sampling-Dist-Mean.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1: Sampling Distribution of Means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Sampling-Dist-Prop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2: Sampling Distributions for Proportions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Sampling-Dist-Other.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3: Sampling Distributions of Other Statistics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Chapter 4: Estimation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Estimation-MLE.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1: Maximum Likelihood Estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-Estimation-MOM.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2: Method of Moments Estimates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-Properties-Estimators.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3: Properties of Estimators</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Chapter 5: Interval Estimates</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-Bootstrap-Dist.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1: Bootstrap Distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-Bootstrap-Confidence-Int.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2: Bootstrap Confidence Intervals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-Bootstrap-Other-Stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3: Bootstrapping Comparitive Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-Parametric-CI-Means.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4: Parametric Confidence Intervals for Means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-Parametric-CI-Proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5: Parametric Confidence Intervals for Proportions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Chapter 6: Hypothesis Tests</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Intro-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1: Introduction to Hypothesis Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-Permutation-Tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2: Permutation Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Hypothesis-Single-Population.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3: Parametric Hypothesis Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-Hypothesis-Comparing-Two.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">6.4: Parametric Tests for Two Populations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-Error-Types-and-Power-of-Tests.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5: Error Types and Power of Tests</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Installing-R-and-RStudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Installing R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Intro-to-Vectors-Dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentals of Working with Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Overview-of-Plots.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">An Overview of Plotting Data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#questions-that-compare-two-populations" id="toc-questions-that-compare-two-populations" class="nav-link active" data-scroll-target="#questions-that-compare-two-populations">Questions that Compare Two Populations</a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a>
+  <ul class="collapse">
+  <li><a href="#question-1a" id="toc-question-1a" class="nav-link" data-scroll-target="#question-1a">Question 1a</a></li>
+  <li><a href="#question-1b" id="toc-question-1b" class="nav-link" data-scroll-target="#question-1b">Question 1b</a></li>
+  <li><a href="#question-1c" id="toc-question-1c" class="nav-link" data-scroll-target="#question-1c">Question 1c</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#hypothesis-tests-for-comparing-two-populations" id="toc-hypothesis-tests-for-comparing-two-populations" class="nav-link" data-scroll-target="#hypothesis-tests-for-comparing-two-populations">Hypothesis Tests for Comparing Two Populations</a>
+  <ul class="collapse">
+  <li><a href="#a-general-test-statistic" id="toc-a-general-test-statistic" class="nav-link" data-scroll-target="#a-general-test-statistic">A General Test Statistic</a></li>
+  </ul></li>
+  <li><a href="#difference-in-two-means-parametric-method" id="toc-difference-in-two-means-parametric-method" class="nav-link" data-scroll-target="#difference-in-two-means-parametric-method">Difference in Two Means: Parametric Method</a>
+  <ul class="collapse">
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a>
+  <ul class="collapse">
+  <li><a href="#solution-to-question-2" id="toc-solution-to-question-2" class="nav-link" data-scroll-target="#solution-to-question-2">Solution to Question 2</a></li>
+  </ul></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a>
+  <ul class="collapse">
+  <li><a href="#solution-to-question-3" id="toc-solution-to-question-3" class="nav-link" data-scroll-target="#solution-to-question-3">Solution to Question 3</a></li>
+  </ul></li>
+  <li><a href="#using-t.test-to-compare-two-populations" id="toc-using-t.test-to-compare-two-populations" class="nav-link" data-scroll-target="#using-t.test-to-compare-two-populations">Using <code>t.test()</code> to Compare Two Populations</a>
+  <ul class="collapse">
+  <li><a href="#sec-alt" id="toc-sec-alt" class="nav-link" data-scroll-target="#sec-alt">Samples Stored as Separate Vectors</a></li>
+  <li><a href="#subsetting-samples-inside-t.test" id="toc-subsetting-samples-inside-t.test" class="nav-link" data-scroll-target="#subsetting-samples-inside-t.test">Subsetting Samples Inside <code>t.test()</code></a></li>
+  </ul></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a>
+  <ul class="collapse">
+  <li><a href="#question-4a" id="toc-question-4a" class="nav-link" data-scroll-target="#question-4a">Question 4a</a></li>
+  <li><a href="#question-4b" id="toc-question-4b" class="nav-link" data-scroll-target="#question-4b">Question 4b</a></li>
+  <li><a href="#question-4c" id="toc-question-4c" class="nav-link" data-scroll-target="#question-4c">Question 4c</a></li>
+  <li><a href="#question-4d" id="toc-question-4d" class="nav-link" data-scroll-target="#question-4d">Question 4d</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#difference-in-proportions-a-parametric-method" id="toc-difference-in-proportions-a-parametric-method" class="nav-link" data-scroll-target="#difference-in-proportions-a-parametric-method">Difference in Proportions: A Parametric Method</a>
+  <ul class="collapse">
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a>
+  <ul class="collapse">
+  <li><a href="#solution-ot-question-5" id="toc-solution-ot-question-5" class="nav-link" data-scroll-target="#solution-ot-question-5">Solution ot Question 5</a></li>
+  </ul></li>
+  <li><a href="#defining-a-test-statistic" id="toc-defining-a-test-statistic" class="nav-link" data-scroll-target="#defining-a-test-statistic">Defining a Test Statistic</a></li>
+  <li><a href="#calculating-the-p-value" id="toc-calculating-the-p-value" class="nav-link" data-scroll-target="#calculating-the-p-value">Calculating the p-Value</a></li>
+  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a>
+  <ul class="collapse">
+  <li><a href="#solution-to-question-6" id="toc-solution-to-question-6" class="nav-link" data-scroll-target="#solution-to-question-6">Solution to Question 6</a></li>
+  </ul></li>
+  <li><a href="#applying-a-continuity-correction" id="toc-applying-a-continuity-correction" class="nav-link" data-scroll-target="#applying-a-continuity-correction">Applying a Continuity Correction</a></li>
+  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a>
+  <ul class="collapse">
+  <li><a href="#solution-to-question-7" id="toc-solution-to-question-7" class="nav-link" data-scroll-target="#solution-to-question-7">Solution to Question 7</a></li>
+  </ul></li>
+  <li><a href="#using-the-prop.test-function" id="toc-using-the-prop.test-function" class="nav-link" data-scroll-target="#using-the-prop.test-function">Using the <code>prop.test()</code> Function</a></li>
+  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a>
+  <ul class="collapse">
+  <li><a href="#solution-to-question-8" id="toc-solution-to-question-8" class="nav-link" data-scroll-target="#solution-to-question-8">Solution to Question 8</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#matched-pairs-a-parametric-approach" id="toc-matched-pairs-a-parametric-approach" class="nav-link" data-scroll-target="#matched-pairs-a-parametric-approach">Matched Pairs: A Parametric Approach</a>
+  <ul class="collapse">
+  <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a>
+  <ul class="collapse">
+  <li><a href="#solution-to-question-9" id="toc-solution-to-question-9" class="nav-link" data-scroll-target="#solution-to-question-9">Solution to Question 9</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#test-your-own-questions" id="toc-test-your-own-questions" class="nav-link" data-scroll-target="#test-your-own-questions">Test Your Own Questions</a>
+  <ul class="collapse">
+  <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a>
+  <ul class="collapse">
+  <li><a href="#question-10a" id="toc-question-10a" class="nav-link" data-scroll-target="#question-10a">Question 10a</a></li>
+  <li><a href="#question-10b" id="toc-question-10b" class="nav-link" data-scroll-target="#question-10b">Question 10b</a></li>
+  <li><a href="#question-10c" id="toc-question-10c" class="nav-link" data-scroll-target="#question-10c">Question 10c</a></li>
+  <li><a href="#question-10d" id="toc-question-10d" class="nav-link" data-scroll-target="#question-10d">Question 10d</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
+  <ul class="collapse">
+  <li><a href="#sec-appenda" id="toc-sec-appenda" class="nav-link" data-scroll-target="#sec-appenda">Appendix A: Summary of Hypothesis Testing</a></li>
+  <li><a href="#sec-samp-size" id="toc-sec-samp-size" class="nav-link" data-scroll-target="#sec-samp-size">Appendix B: Sample Sizes and the CLT</a></li>
+  <li><a href="#appendix-c-parametric-formulas" id="toc-appendix-c-parametric-formulas" class="nav-link" data-scroll-target="#appendix-c-parametric-formulas">Appendix C: Parametric Formulas</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">6.4: Parametric Tests for Two Populations</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap6/24-Hypothesis-Comparing-Two.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/CU-Denver-MathStats-OER/Statistical-Theory/main/Images/24fig-storms.png" class="img-fluid figure-img" style="width:60.0%" alt="Map of North Atlantic Storms"></p>
+<figcaption class="figure-caption">Map of North Atlantic Storms</figcaption>
+</figure>
+</div>
+<p>When we <a href="./23-Hypothesis-Single-Population.html">discussed parametric methods</a> for modeling null distributions that we used to calculate p-values, we focused on tests involving a <strong>single population</strong>, such as claims about a single mean or a single proportion. Often in statistics we would like to investigate whether one variable is associated to another. For example:</p>
+<ul>
+<li>Q1: Is a new medication more effective at preventing disease than current treatments?</li>
+<li>Q2: Is there a gender pay gap in the US?</li>
+<li>Q3: Is there a region in the North Atlantic where storm strength is greatest?</li>
+</ul>
+<p>If we are using one variable to help us understand or predict the values (or category) of another variable:</p>
+<ul>
+<li>We call the first variable the <span style="color:dodgerblue"><strong>explanatory, independent, or predictor variable</strong></span>.</li>
+<li>The second the <span style="color:dodgerblue"><strong>response or dependent variable</strong></span>.</li>
+<li>Different categories of a predictor variable are called <span style="color:dodgerblue"><strong>treatments or levels</strong></span>.</li>
+</ul>
+<p>In this section, we develop a parametric method to perform hypothesis tests that compare the response of one variable for two different levels of an explanatory variable.</p>
+<ul>
+<li>The <strong>explanatory variable</strong> is <strong>categorical</strong>, and we compare <strong>two levels</strong> to each other.</li>
+<li>The response variable may be a categorical or a quantitative variable.
+<ul>
+<li>For a <strong>quantitative response</strong>, we make claims about a <strong>difference in means</strong>.</li>
+<li>For a <strong>categorical response</strong>, we make claims about a <strong>difference in proportions</strong>.</li>
+</ul></li>
+</ul>
+<section id="questions-that-compare-two-populations" class="level1">
+<h1>Questions that Compare Two Populations</h1>
+<hr>
+<p>In many cases, the explanatory variable of interest in our question has more than just two levels. We can apply hypothesis tests on two populations to compare <strong>two levels of the explanatory variable</strong>. Often the researchers have a goal in mind, and they choose which two levels they would like to compare and/or how the levels are defined. Another group of researchers might approach the same statistical question from a different perspective and choose a different set up.</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<hr>
+<p>Suppose the explanatory variable for statistical questions Q1, Q2, and Q3 are:</p>
+<ul>
+<li>Q1: <em>Medication Type</em></li>
+<li>Q2: <em>Gender</em></li>
+<li>Q3: <em>Latitude</em></li>
+</ul>
+<p>In the questions below, set up null and alternative hypothesis (in words and symbolically) to perform a hypothesis test to answer the statistical question.</p>
+<section id="question-1a" class="level3">
+<h3 class="anchored" data-anchor-id="question-1a">Question 1a</h3>
+<hr>
+<p>Q1: <strong>Is a new medication more effective at preventing disease than current treatments?</strong></p>
+<p>In general, we might be interested in comparing several treatments. For example, the variable <em>Medication Type</em> could have four different levels: Treatment A, Treatment B, Treatment C, and No Treatment. Within our hypothesis test framework, we can compare two different treatments types. Set up hypotheses for the following question:</p>
+<blockquote class="blockquote">
+<p><span style="color:dodgerblue">Does xylitol (a sweetener) reduce ear infections in children compared to no treatment (control)?</span></p>
+</blockquote>
+<section id="solution-to-question-1a" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-1a">Solution to Question 1a</h4>
+<hr>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>:</p></li>
+<li><p><span class="math inline">\(H_a\)</span>:</p></li>
+</ul>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-1b" class="level3">
+<h3 class="anchored" data-anchor-id="question-1b">Question 1b</h3>
+<hr>
+<p>Q2: <strong>Is there a gender pay gap in the US?</strong></p>
+<p>The explanatory variable <em>Gender</em> may be gathered using different methods: free response question, multiple choice question (with various ways of defining the choices), or pulled directly from available records. Suppose we would like to focus on identifying if there is a pay gap between men and women that have just completed a bachelor’s degree in the US. Set up hypothesis for the following question:</p>
+<blockquote class="blockquote">
+<p><span style="color:dodgerblue">Do women that have recently completed a bachelor’s degree in the US get paid less, on average, compared to men that have recently completed a bachelor’s degree?</span></p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>median</strong> is often used as the measure of center to summarize income since the distribution of income is typically heavily skewed. Outliers will have a bigger influence in the analysis if we compare means. With the median, outliers have as much influence as any other observation. However, there is no parametric method for testing claims about medians.</p>
+</div>
+</div>
+<section id="solution-to-question-1b" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-1b">Solution to Question 1b</h4>
+<hr>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>:</p></li>
+<li><p><span class="math inline">\(H_a\)</span>:</p></li>
+</ul>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-1c" class="level3">
+<h3 class="anchored" data-anchor-id="question-1c">Question 1c</h3>
+<hr>
+<p>Q3: <strong>Is there a region in the North Atlantic where storm strength is greatest?</strong></p>
+<p>The explanatory variable <em>Latitude</em> is typically a quantitative variable given in degrees north or south of the equator. There are many different ways a researcher can define different regions, and how they define those regions depends on the data available and their research goals. Set up hypothesis for the following question:</p>
+<blockquote class="blockquote">
+<p><span style="color:dodgerblue">Is the storm pressure different, on average, for storms in the North Atlantic above the Tropic of Cancer compared to those below the Tropic of Cancer?</span></p>
+</blockquote>
+<section id="solution-to-question-1c" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-1c">Solution to Question 1c</h4>
+<hr>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>:</p></li>
+<li><p><span class="math inline">\(H_a\)</span>:</p></li>
+</ul>
+<p><br><br>
+<br></p>
+</section>
+</section>
+</section>
+</section>
+<section id="hypothesis-tests-for-comparing-two-populations" class="level1">
+<h1>Hypothesis Tests for Comparing Two Populations</h1>
+<hr>
+<p>When doing a hypothesis test for a difference between population means or two population proportions, we apply the same steps as with previous tests. See <a href="#sec-appenda">Appendix A</a> for a summary of the steps below.</p>
+<ol type="1">
+<li>Set up hypotheses.
+<ul>
+<li><span style="color:tomato"><span class="math inline">\(H_0\)</span>: There is no difference between the two levels.</span></li>
+<li><span style="color:mediumseagreen"><span class="math inline">\(H_a\)</span>: There is a difference between the two levels.</span></li>
+</ul></li>
+<li>Collect data, calculate the difference in sample statistics, and find a test statistic.</li>
+<li>Calculate the p-value.</li>
+<li>Based on the significance level, <span class="math inline">\(\alpha\)</span>, make a conclusion.</li>
+<li>Summarize the results in context.</li>
+</ol>
+<p>In our previous work with hypothesis tests on two populations, we used <a href="./22-Permutation-Tests.html">two-sample permutations tests</a> to find standardized test statistics and p-values in steps 2 and 3. We now devise parametric methods for hypothesis tests that compare two populations.</p>
+<section id="a-general-test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="a-general-test-statistic">A General Test Statistic</h2>
+<hr>
+<p>We can apply the Central Limit Theorem, CLT, to standardize the test statistic and calculate p-values using the same strategy as the parametric approach for testing claims about a <a href="./23-Hypothesis-Single-Population.html">single population</a>. We begin by assuming the claim in the null hypothesis is true:</p>
+<ul>
+<li><span style="color:tomato"><span class="math inline">\(H_0\)</span>: There is no difference. For example, <span class="math inline">\(\mu_1 - \mu_2 =0\)</span> or <span class="math inline">\(p_1 -p_2 = 0\)</span>.</span></li>
+</ul>
+<p>The <span style="color:dodgerblue"><strong>standardized test statistic</strong></span> is the <span class="math inline">\(z\)</span>-score or t-test statistic corresponding to the observed difference in sample statistics:</p>
+<p><span class="math display">\[{\color{dodgerblue}{\mbox{stand test stat} = \frac{ (\mbox{diff in sample stats}) - ({\color{tomato}{\mbox{diff in null claim}}})}{\mbox{SE of Null Dist}} = \frac{ (\mbox{diff in sample stats}) - {\color{tomato}{0}}}{\mbox{SE of Null Dist}}}}.\]</span></p>
+<p>To calculate the standardized test statistic, we consider the following questions:</p>
+<ol type="1">
+<li>Do the samples satisfies <a href="#sec-samp-size">conditions for CLT</a>?</li>
+<li>What is the correct probability distribution to use, a <strong>t-distribution or a normal distribution</strong>?</li>
+<li>What is the <strong>difference in observed sample statistics</strong>?</li>
+<li>What is an estimate for the <strong>standard error</strong> of the null distribution?</li>
+</ol>
+</section>
+</section>
+<section id="difference-in-two-means-parametric-method" class="level1">
+<h1>Difference in Two Means: Parametric Method</h1>
+<hr>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<hr>
+<p>If we are doing a test on a difference of means from two independent populations, then the null claim is <span style="color:tomato"><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_1 - \mu_2=0\)</span></span> and recall the <a href="./19-Parametric-CI-Means.html#sec-clt-diff-means">CLT for a difference in means</a> is</p>
+<p><span class="math display">\[\overline{X}_1 - \overline{X}_2  \sim N \left( {\color{tomato}{\mu_1 - \mu_2}} , {\color{dodgerblue}{\mbox{SE}}} \right) = N \left( {\color{tomato}{0}} , {\color{dodgerblue}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} } \right).\]</span> Suppose we are performing a test on the difference of two independent means, <span class="math inline">\(\mu_1 - \mu_2\)</span>, and the <strong>population variances <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span> are unknown</strong>.</p>
+<ul>
+<li>What are reasonable estimates to use in place of <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span>?</li>
+<li>What is a formula for estimating the standard error of the null distribution?</li>
+<li>Should we use a t-distribution or normal distribution to approximate the null distribution?</li>
+</ul>
+<p>Based on your answers to the previous questions, fill in the blanks label (i), (ii), (iii), and (iv) to give a formula for standardized test statistic. <em>In blank (i), enter either <span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span> depending on whether a normal or t-distribution is appropriate.</em></p>
+<p><span class="math display">\[{\color{dodgerblue}{\mbox{(i)} = \frac{ (\mbox{diff in sample stats}) - ({\color{tomato}{\mbox{diff in null claim}}})}{\mbox{SE of Null Dist}} = \frac{ \mbox{(ii)} - {\color{tomato}{\mbox{(iii)}}}}{\mbox{(iv)}}}}.\]</span></p>
+<section id="solution-to-question-2" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-2">Solution to Question 2</h3>
+<hr>
+<p>Complete the formula for the standardized test statistic:</p>
+<ul>
+<li><p>Choose either <span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span> for blank (i).</p></li>
+<li><p>Blank (ii) is ??</p></li>
+<li><p>Blank (iii) is ??</p></li>
+<li><p>Blank (iv) is ??</p></li>
+</ul>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<hr>
+<p>We return to our statistical question and hypothesis from <a href="#question-1b">Question 1b</a> regarding a possible gender pay gap in the US. We collect data from a random sample of people that completed their bachelor’s degree in 2021 and compare the starting salaries of men and women in the sample. A sample of 154 women have a mean income of <span class="math inline">\(\$52,\!266\)</span> with standard deviation <span class="math inline">\(\$15,\!510\)</span> A sample of 122 men have a mean income of <span class="math inline">\(\$64,\!022\)</span> with a standard deviation of <span class="math inline">\(\$16,\!890\)</span>.</p>
+<p>Is there enough evidence to support the claim that women who have recently completed a bachelor’s degree in the US get paid less, on average, compared to men who have recently completed a bachelor’s degree? Test using a significance level of <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The statistical question in this example as well as the data are motivated by an analysis of students that earned a bachelor’s degree in the US in 2021 by the <a href="https://www.naceweb.org/job-market/graduate-outcomes/first-destination/">National Association of Colleges and Employers (NACE)</a>.</p>
+</div>
+</div>
+<section id="solution-to-question-3" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-3">Solution to Question 3</h3>
+<hr>
+<p>Using the hypotheses you set up in <a href="#question-1b">Question 1b</a>, answer the following:</p>
+<ol type="a">
+<li>Based on the sample data, compute the standardized test statistic.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standardized test statistic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="2" type="a">
+<li>Based on your standardized test statistic, compute the p-value.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute p-value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="3" type="a">
+<li>Make a decision and summarize the results in the context of this example.</li>
+</ol>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+<section id="using-t.test-to-compare-two-populations" class="level2">
+<h2 class="anchored" data-anchor-id="using-t.test-to-compare-two-populations">Using <code>t.test()</code> to Compare Two Populations</h2>
+<hr>
+<p>To calculate a p-value for a test on the difference of means from two independent populations with unknown variances, we can calculate the <span style="color:dodgerblue"><strong>t-test statistic</strong></span></p>
+<p><span class="math display">\[{\boxed{\color{dodgerblue}{{\color{tomato}{t}} = \frac{ \mbox{diff in sample stats} - 0}{\mbox{SE of Null Dist}} = \dfrac{(\bar{x}_1 - \bar{x}_2) - 0 }{\sqrt{\frac{{\color{tomato}{s_1}}^2}{n_1} + \frac{{\color{tomato}{s_2}}^2}{n_2}}}}}}.\]</span></p>
+<p>In <a href="#question-3">Question 3</a>, you were conveniently provided numerical summaries of each sample that we substituted into the formula for the t-test statistic. Then we can err on the side caution and choose the <strong>degrees of freedom</strong>, <span class="math inline">\(df\)</span>, to be the <strong>smaller of either</strong> <span class="math inline">\(\mathbf{n_1-1}\)</span> or <span class="math inline">\(\mathbf{n_2-1}\)</span>.</p>
+<p>If we have access to all the sample data (not just summaries), then we can load the sample data into R and use the <code>t.test()</code> function to calculates both the t-test statistic and p-value using a more accurate approximation for <span class="math inline">\(df\)</span> obtained using <a href="./19-Parametric-CI-Means.html#sec-informal">Welch’s approximation</a>.</p>
+<section id="sec-alt" class="level3">
+<h3 class="anchored" data-anchor-id="sec-alt">Samples Stored as Separate Vectors</h3>
+<hr>
+<p>In R, we can use the command <code>t.test(x1, x2, alt = [direction])</code>.</p>
+<ul>
+<li>Samples are stored in independent vectors <code>x1</code> and <code>x2</code>.</li>
+<li>Set the option <code>alt</code> based on the inequality used in <span class="math inline">\(H_a\)</span>.
+<ul>
+<li>Use <code>"greater"</code> for right-tail test.</li>
+<li>Use <code>"less"</code> for left-tail test.</li>
+<li>Use <code>"two.sided"</code> for a two-tail test.</li>
+<li>If you do not indicate any <code>alt</code> option, the default is a two-tailed test.</li>
+</ul></li>
+<li>The default is <code>mu=0</code> which is exactly what we want, so we do not specify this option.</li>
+</ul>
+</section>
+<section id="subsetting-samples-inside-t.test" class="level3">
+<h3 class="anchored" data-anchor-id="subsetting-samples-inside-t.test">Subsetting Samples Inside <code>t.test()</code></h3>
+<hr>
+<p>Frequently, we would like to compare the means of a quantitative response variable, denoted <code>quant</code>, for two different levels of a categorical explanatory variable, denoted <code>categorical</code>, in the data frame named <code>data.name</code>. The <code>t.test()</code> function can simultaneously subset the <code>quant</code> data into two independent samples (one for each level of <code>category</code>) and then perform a hypothesis test for the difference in two means:</p>
+<center>
+<code>t.test(quant ~ categorical, data = data.name, alt = [direction])</code>
+</center>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the <code>categorical</code> variable has exactly two levels, then the command <code>t.test(quant ~ categorical, data = data.name, alt = [direction])</code> works as desired. However, if <code>categorical</code> has more than two levels, this results in an error. If there are more than two levels, you can first subset or filter the data and then use <code>t.test()</code>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<hr>
+<p>We use the <code>storms</code> data set from the <a href="https://www.nhc.noaa.gov/data/#hurdat">NOAA Hurricane Best Track Data</a> in the <code>dplyr</code> package to test if the storm pressure is different, on average, for storms in the North Atlantic above the Tropic of Cancer compared to those below the Tropic of Cancer.</p>
+<ul>
+<li>Run the code cell below to load the <code>dplyr</code> package (which should already be installed).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># load dplyr package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="question-4a" class="level3">
+<h3 class="anchored" data-anchor-id="question-4a">Question 4a</h3>
+<hr>
+<p>Run the code cell below to calculate the p-value of the sample data in <code>storms</code>. Interpret the meaning of the output.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressure <span class="sc">~</span> lat, <span class="at">data =</span> storms, <span class="at">alt =</span> <span class="st">"two.tail"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="solution-to-question-4a" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-4a">Solution to Question 4a</h4>
+<hr>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+<section id="question-4b" class="level3">
+<h3 class="anchored" data-anchor-id="question-4b">Question 4b</h3>
+<hr>
+<p>The Tropic of Cancer is the most northerly circle of latitude on Earth at which the Sun can be directly overhead. The position of this circle is constantly wobbling just slightly. The Tropic of Cancer is currently located at <span class="math inline">\(23.43623^{\circ}\)</span> north of the Equator.</p>
+<section id="creating-levels-for-the-explanatory-variable-with-mutate" class="level4">
+<h4 class="anchored" data-anchor-id="creating-levels-for-the-explanatory-variable-with-mutate">Creating Levels for the Explanatory Variable with <code>mutate()</code></h4>
+<hr>
+<p>The code cell use the <a href="https://www.r-bloggers.com/2022/07/how-to-use-mutate-function-in-r/"><code>mutate()</code> function</a> that is in the <code>dplyr</code> package to create and add a new categorical variable, we name <code>tropic</code>, consisting of two levels (<code>above</code> and <code>below</code>) depending on whether the storm’s location is above or below the Tropic of Cancer. Then the <code>tapply()</code> function is used to calculate separate means for the sample of storms above and below the Tropic of Cancer.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The data frame <code>storms</code> and <code>mutate()</code> script are both in the <code>dplyr</code> package. Be sure you have already run <code>library(dplyr)</code> before running the code cell below.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create and add new variable tropic to storms</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>storms <span class="ot">&lt;-</span> <span class="fu">mutate</span>(storms, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">tropic =</span> <span class="fu">case_when</span>(lat <span class="sc">&lt;</span> <span class="fl">23.43623</span> <span class="sc">~</span> <span class="st">'below'</span>,  <span class="co"># below is assigned if lat &lt; 23.43623</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                    lat <span class="sc">&gt;</span> <span class="fl">23.43623</span> <span class="sc">~</span> <span class="st">'above'</span>))  <span class="co"># above is assigned if lat &gt; 23.43623</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>storms<span class="sc">$</span>tropic <span class="ot">&lt;-</span> <span class="fu">factor</span>(storms<span class="sc">$</span>tropic)  <span class="co"># ensure tropic stored as categorical factor</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(storms<span class="sc">$</span>pressure, storms<span class="sc">$</span>tropic, mean)  <span class="co"># compare mean pressures</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>After running the code cell above, complete the code cell below to create side-by-side box plots of the distributions of storm pressures above and below the Tropic of Cancer.</strong></p>
+</section>
+<section id="solution-to-question-4b" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-4b">Solution to Question 4b</h4>
+<hr>
+<p>Replace each ?? with an appropriate variable or data frame name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(?? <span class="sc">~</span> ??, <span class="at">data =</span> ??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-4c" class="level3">
+<h3 class="anchored" data-anchor-id="question-4c">Question 4c</h3>
+<hr>
+<p>Fill in the <code>t.test()</code> function below to compute the test statistic and corresponding p-value based on the sample data in <code>storms</code> to test the hypothesis in <a href="#question-1c">Question 1c</a></p>
+<section id="solution-to-question-4c" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-4c">Solution to Question 4c</h4>
+<hr>
+<p>Complete and run the code cell below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(?? <span class="sc">~</span> ??, <span class="at">data =</span> ??, <span class="at">alt =</span> ??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-4d" class="level3">
+<h3 class="anchored" data-anchor-id="question-4d">Question 4d</h3>
+<hr>
+<p>Based on the output in <a href="#question-4c">Question 4c</a>, summarize the result of this test in practical terms. Use a significance level of 5%.</p>
+<section id="solution-to-question-4d" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-4d">Solution to Question 4d</h4>
+<hr>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+</section>
+</section>
+<section id="difference-in-proportions-a-parametric-method" class="level1">
+<h1>Difference in Proportions: A Parametric Method</h1>
+<hr>
+<p>If we are doing a test on a difference of two proportions, then the null claim is <span style="color:tomato"><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_1 - p_2=0\)</span></span>. We use the difference in sample proportions, <span class="math inline">\({\color{dodgerblue}{\hat{p}_1 - \hat{p}_2}}\)</span>, as the test statistic:</p>
+<p><span class="math display">\[{\color{dodgerblue}{\mbox{stand test stat} = \frac{ (\mbox{diff in sample stats}) - ({\color{tomato}{\mbox{diff in null claim}}})}{\mbox{SE of Null Dist}} = \frac{ (\hat{p}_1 - \hat{p}_2) - {\color{tomato}{0}}}{\mbox{SE of Null Dist}}}}.\]</span></p>
+<p>From the <a href="./20-Parametric-CI-Proportions.html#sec-clt-diffprop">CLT for a difference in proportions</a> we have</p>
+<p><span class="math display">\[\widehat{P}_1 - \widehat{P}_2  \sim N \left( {\color{tomato}{p_1 - p_2}} , {\color{dodgerblue}{\mbox{SE}}} \right) = N \left( {\color{tomato}{0}} , {\color{dodgerblue}{\sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}} } \right).\]</span></p>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<hr>
+<p>When doing a test on the difference of two proportions, the null hypothesis is the claim <span class="math inline">\(p_1 - p_2 = 0\)</span> or <span class="math inline">\(p_1 = p_2\)</span>.</p>
+<ul>
+<li>We have not claimed anything about the value of <span class="math inline">\(p_1\)</span> on its own.</li>
+<li>We have not claimed anything about the value of <span class="math inline">\(p_2\)</span> on its own.</li>
+</ul>
+<p><strong>What is a reasonable estimate to plug in place of <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> in the formula for the standard error?</strong></p>
+<section id="solution-ot-question-5" class="level3">
+<h3 class="anchored" data-anchor-id="solution-ot-question-5">Solution ot Question 5</h3>
+<hr>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+<section id="defining-a-test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="defining-a-test-statistic">Defining a Test Statistic</h2>
+<hr>
+<p>Let <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> denote the number of successes in samples 1 and 2 with sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, respectively.</p>
+<ul>
+<li>We use a <span style="color:dodgerblue"><strong>normal distribution</strong></span> to model the null distribution (as long as both samples are <a href="#sec-samp-size">large enough</a>).</li>
+<li>In <span class="math inline">\(H_0\)</span>, we assume there is no difference in the two groups, so we pool the samples together and calculate the <span style="color:dodgerblue"><strong>sample pooled proportion</strong></span>:</li>
+</ul>
+<p><span class="math display">\[{\color{tomato}{\mbox{sample pooled proportion} = \hat{p}_p = \frac{X_1 + X_2}{n_1 + n_2}}}.\]</span></p>
+<ul>
+<li>To estimate the standard error, we use <span class="math inline">\({\color{tomato}{\hat{p}_p}}\)</span> in place of both <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>.</li>
+<li>The standardized test statistic is the z-score of the difference in sample proportions:</li>
+</ul>
+<p><span class="math display">\[\boxed{{\color{dodgerblue}{z = \dfrac{ (\mbox{diff in sample stats}) - (\mbox{diff in null claim})}{\mbox{SE of Null Dist}}= \dfrac{(\hat{p}_1 - \hat{p}_2) - 0 }{\sqrt{{\color{tomato}{\hat{p}_p}}(1 -{\color{tomato}{\hat{p}_p}})\left( \frac{1}{n_1} + \frac{1}{n_2} \right)}}}}}.\]</span></p>
+</section>
+<section id="calculating-the-p-value" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-the-p-value">Calculating the p-Value</h2>
+<hr>
+<p>When doing a hypothesis test on a difference of two proportions, we use a normal distribution to estimate the null distribution and calculate p-values. If we denote the z-score of the observed difference in sample means as <code>z</code>, then:</p>
+<ul>
+<li>For a left-tailed test, p-value = <code>pnorm(z, 0, 1)</code></li>
+<li>For a right-tailed test, p-value = <code>1 - pnorm(z, 0, 1)</code></li>
+<li>For a two-tailed test, p-value = <code>2 * pnorm(-1*abs(z), 0 , 1)</code></li>
+</ul>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<hr>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="https://pix4free.org/assets/library/2021-03-25/originals/ear_infection.jpg" class="img-fluid figure-img" style="width:50.0%" alt="Ear Infection Research"></p>
+<figcaption class="figure-caption">Credit: Nick Youngson <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> via <a href="https://pix4free.org/">Pix4free.org</a></figcaption>
+</figure>
+</div>
+<p>It is believed that a sweetener called xylitol helps prevent ear infections. In a randomized experiment<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(n_1 = 165\)</span> children took a placebo and <span class="math inline">\(68\)</span> of them got ear infections. Another <span class="math inline">\(n_2 = 159\)</span> children took xylitol and <span class="math inline">\(46\)</span> of them got ear infections. We believe that the proportion of ear infections in the placebo group will be greater than the xylitol group. Test this claim using <span class="math inline">\(\alpha=0.01\)</span>.</p>
+<section id="solution-to-question-6" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-6">Solution to Question 6</h3>
+<hr>
+<p>Use hypotheses from <a href="#24q1a">Question 1a</a> and answer the questions below.</p>
+<p><br></p>
+<ol type="a">
+<li>Estimate the standard error of the null distribution.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate of SE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="2" type="a">
+<li>Based on your answer to (a), use the parametric formula to find the z-score of the observed difference in sample proportions.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standardized test statistic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="3" type="a">
+<li>Based on your answer in (b), compute the p-value.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate p-value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="4" type="a">
+<li>Make a decision and summarize the results in the context of this example.</li>
+</ol>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+<section id="applying-a-continuity-correction" class="level2">
+<h2 class="anchored" data-anchor-id="applying-a-continuity-correction">Applying a Continuity Correction</h2>
+<hr>
+<ul>
+<li>The CLT approximation uses a continuous normal distribution to estimate a discrete distribution.</li>
+<li>We can improve the approximation using a <span style="color:dodgerblue"><strong>continuity correction</strong></span> that <a href="./11-Sampling-Dist-Prop.html#sec-cont-corr">we saw earlier</a>.</li>
+<li><strong>Add or subtract <span class="math inline">\(0.5\)</span> from each success count</strong> so the <strong>difference in proportions becomes closer to 0</strong>, and thus gives a larger p-value.</li>
+</ul>
+</section>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<hr>
+<p>Redo the solution to <a href="#question-6">Question 6</a> by applying a continuity correction.</p>
+<section id="solution-to-question-7" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-7">Solution to Question 7</h3>
+<hr>
+<ol type="a">
+<li>Standard error is the same as in <a href="#question-6">Question 6</a></li>
+</ol>
+<p><br></p>
+<ol start="2" type="a">
+<li>Based on the SE in <a href="#question-6">Question 6</a>, use the parametric formula <strong>along with a continuity correction</strong> to find the z-score of the observed difference in sample proportions.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standardized test statistic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="3" type="a">
+<li>Based on your answer in (b), compute the p-value.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate p-value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+<ol start="4" type="a">
+<li>Does the p-value in (c) lead to a different result than in <a href="#question-6">Question 6</a>? Explain.</li>
+</ol>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+<section id="using-the-prop.test-function" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-prop.test-function">Using the <code>prop.test()</code> Function</h2>
+<hr>
+<p>If one sample has size <span class="math inline">\(n_1\)</span> with <span class="math inline">\(X_1\)</span> successes and the other sample has size <span class="math inline">\(n_2\)</span> with <span class="math inline">\(X_2\)</span> successes, then we can use the <code>prop.test()</code> function in R:</p>
+<center>
+<code>prop.test(c(X1, X2), c(n1, n2), alt = [direction], correct = [option])</code>
+</center>
+<p><br></p>
+<ul>
+<li>The <code>alt</code> option works the <a href="#sec-alt">same as with <code>t.test()</code></a>.</li>
+<li>We can turn the continuity correction on or off with the <code>correct</code> option.
+<ul>
+<li>Use <code>correct = TRUE</code> to apply a continuity correction.</li>
+<li>Use <code>corret = FALSE</code> if you do not want to apply a correction.</li>
+<li>If you do not indicate any <code>correct</code> option, the default is <code>TRUE</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<hr>
+<p>Use the <code>prop.test()</code> function to verify your work in <a href="#question-6">Question 6</a> and <a href="#question-7">Question 7</a>.</p>
+<section id="solution-to-question-8" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-8">Solution to Question 8</h3>
+<hr>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verify answers to question 6</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(??, ??, <span class="at">alt =</span> ??, <span class="at">correct =</span> ??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verify answers to question 7</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(??, ??, <span class="at">alt =</span> ??, <span class="at">correct =</span> ??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br></p>
+</section>
+</section>
+</section>
+<section id="matched-pairs-a-parametric-approach" class="level1">
+<h1>Matched Pairs: A Parametric Approach</h1>
+<hr>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<hr>
+<p>In this example, we use data collected from a matched pair designed study to determine whether smoking during pregnancy is associated with lower birth weight. In our study, we solicit volunteers that have already given birth to two babies. During one of the pregnancies, the parent smoked. During the other pregnancy, they did not smoke. Below is hypothetical data from such a study. A sample of <span class="math inline">\(n=10\)</span> people volunteer to share their data with the researchers from which we have 10 different pairs of birth weights (in grams) summarized in the table below.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No Smoking</td>
+<td>2750</td>
+<td>2920</td>
+<td>3860</td>
+<td>3402</td>
+<td>2282</td>
+<td>3790</td>
+<td>3586</td>
+<td>3487</td>
+<td>2920</td>
+<td>2835</td>
+</tr>
+<tr class="even">
+<td>Smoked</td>
+<td>1790</td>
+<td>2381</td>
+<td>3940</td>
+<td>3317</td>
+<td>2125</td>
+<td>2665</td>
+<td>3572</td>
+<td>3156</td>
+<td>2721</td>
+<td>2225</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data from study</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>no <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2750</span>, <span class="dv">2920</span>, <span class="dv">3860</span>, <span class="dv">3402</span>, <span class="dv">2282</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="dv">3790</span>, <span class="dv">3586</span>, <span class="dv">3487</span>, <span class="dv">2920</span>, <span class="dv">2835</span>)  <span class="co"># non-smoking births weights</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>smoker <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1790</span>, <span class="dv">2381</span>, <span class="dv">3940</span>, <span class="dv">3317</span>, <span class="dv">2125</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="dv">2665</span>, <span class="dv">3572</span>, <span class="dv">3156</span>, <span class="dv">2721</span>, <span class="dv">2225</span>)  <span class="co"># matching smoking birth weight</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> no <span class="sc">-</span> smoker  <span class="co"># vector of matched pair differences</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Researchers will perform a hypothesis test to determine if the birth weight of babies born to a parent that smoked while pregnant is less, on average, compared to a babies whose parent did not smoke while they were pregnant. Test the claim using a 5% significance level.</p>
+<section id="solution-to-question-9" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-9">Solution to Question 9</h3>
+<hr>
+<ol type="a">
+<li>Set up the hypothesis for the test both in words and using appropriate notation.</li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>:</p></li>
+<li><p><span class="math inline">\(H_a\)</span>:</p></li>
+</ul>
+<p><br><br>
+<br></p>
+<ol start="2" type="a">
+<li>Use the data stored in <code>no</code>, <code>smoker</code>, and/or <code>diff</code> to calculate a reasonable test statistic.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute a test statistic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br><br>
+<br><br>
+<br></p>
+<ol start="3" type="a">
+<li>Calculate the p-value of the observed sample.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute p-value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="a">
+<li>What is the conclusion? Summarize the result in the context of this example.</li>
+</ol>
+<p><br><br>
+<br><br>
+<br></p>
+</section>
+</section>
+</section>
+<section id="test-your-own-questions" class="level1">
+<h1>Test Your Own Questions</h1>
+<hr>
+<section id="question-10" class="level2">
+<h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
+<hr>
+<p>The data set <code>storms</code> in the <code>dplyr</code> package is summarized below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)  <span class="co"># package may already be loaded</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name                year          month             day       
+ Length:19066       Min.   :1975   Min.   : 1.000   Min.   : 1.00  
+ Class :character   1st Qu.:1993   1st Qu.: 8.000   1st Qu.: 8.00  
+ Mode  :character   Median :2004   Median : 9.000   Median :16.00  
+                    Mean   :2002   Mean   : 8.699   Mean   :15.78  
+                    3rd Qu.:2012   3rd Qu.: 9.000   3rd Qu.:24.00  
+                    Max.   :2021   Max.   :12.000   Max.   :31.00  
+                                                                   
+      hour             lat             long                         status    
+ Min.   : 0.000   Min.   : 7.00   Min.   :-109.30   tropical storm     :6684  
+ 1st Qu.: 5.000   1st Qu.:18.40   1st Qu.: -78.70   hurricane          :4684  
+ Median :12.000   Median :26.60   Median : -62.25   tropical depression:3525  
+ Mean   : 9.094   Mean   :26.99   Mean   : -61.52   extratropical      :2068  
+ 3rd Qu.:18.000   3rd Qu.:33.70   3rd Qu.: -45.60   other low          :1405  
+ Max.   :23.000   Max.   :70.70   Max.   :  13.50   subtropical storm  : 292  
+                                                    (Other)            : 408  
+    category          wind           pressure      tropicalstorm_force_diameter
+ Min.   :1.000   Min.   : 10.00   Min.   : 882.0   Min.   :   0.0              
+ 1st Qu.:1.000   1st Qu.: 30.00   1st Qu.: 987.0   1st Qu.:   0.0              
+ Median :1.000   Median : 45.00   Median :1000.0   Median : 110.0              
+ Mean   :1.898   Mean   : 50.02   Mean   : 993.6   Mean   : 146.3              
+ 3rd Qu.:3.000   3rd Qu.: 65.00   3rd Qu.:1007.0   3rd Qu.: 220.0              
+ Max.   :5.000   Max.   :165.00   Max.   :1024.0   Max.   :1440.0              
+ NA's   :14382                                     NA's   :9512                
+ hurricane_force_diameter
+ Min.   :  0.00          
+ 1st Qu.:  0.00          
+ Median :  0.00          
+ Mean   : 14.81          
+ 3rd Qu.:  0.00          
+ Max.   :300.00          
+ NA's   :9512            </code></pre>
+</div>
+</div>
+<section id="question-10a" class="level3">
+<h3 class="anchored" data-anchor-id="question-10a">Question 10a</h3>
+<hr>
+<p>Write one possible claim that could be tested by a hypothesis test for a <strong>difference in two means</strong>. Then write the corresponding hypotheses and calculate the p-value of the observed samples using the <code>t.test()</code> function. What is the result of your test?</p>
+<section id="solution-to-question-10a" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-10a">Solution to Question 10a</h4>
+<hr>
+<ul>
+<li><span class="math inline">\(H_0\)</span>:</li>
+<li><span class="math inline">\(H_a\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find p-value </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p><strong>Summarize Result:</strong></p>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-10b" class="level3">
+<h3 class="anchored" data-anchor-id="question-10b">Question 10b</h3>
+<hr>
+<p>Write one possible claim that could be tested by a hypothesis test for a <strong>difference in two proportions</strong>. Then write the corresponding hypotheses and calculate the p-value of the observed samples using the <code>prop.test()</code> function. What is the result of your test?</p>
+<section id="solution-to-question-10b" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-10b">Solution to Question 10b</h4>
+<hr>
+<ul>
+<li><span class="math inline">\(H_0\)</span>:</li>
+<li><span class="math inline">\(H_a\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find p-value </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p><strong>Summarize Result:</strong></p>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-10c" class="level3">
+<h3 class="anchored" data-anchor-id="question-10c">Question 10c</h3>
+<hr>
+<p>Write one possible claim that could be tested by a hypothesis test for a <strong>single mean</strong>. Then write the corresponding hypotheses and calculate the p-value of the observed samples using the <code>t.test()</code> function. What is the result of your test?</p>
+<section id="solution-to-question-10c" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-10c">Solution to Question 10c</h4>
+<hr>
+<ul>
+<li><span class="math inline">\(H_0\)</span>:</li>
+<li><span class="math inline">\(H_a\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find p-value </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p><strong>Summarize Result:</strong></p>
+<p><br><br>
+<br></p>
+</section>
+</section>
+<section id="question-10d" class="level3">
+<h3 class="anchored" data-anchor-id="question-10d">Question 10d</h3>
+<hr>
+<p>Write one possible claim that could be tested by a hypothesis test for a <strong>single proportion</strong>. Then write the corresponding hypotheses and calculate the p-value of the observed sample using a binomial distribution. What is the result of your test?</p>
+<section id="solution-to-question-10d" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-10d">Solution to Question 10d</h4>
+<hr>
+<ul>
+<li><span class="math inline">\(H_0\)</span>:</li>
+<li><span class="math inline">\(H_a\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find p-value </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p><strong>Summarize Result:</strong></p>
+<p><br><br>
+<br></p>
+</section>
+</section>
+</section>
+</section>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<hr>
+<section id="sec-appenda" class="level2">
+<h2 class="anchored" data-anchor-id="sec-appenda">Appendix A: Summary of Hypothesis Testing</h2>
+<hr>
+<ol type="1">
+<li><p>State the <span style="color:dodgerblue"><strong>hypotheses</strong></span> and identify (from the alternative claim in <span class="math inline">\(H_a\)</span>) if it is a one or two-tailed test.</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span> is the “boring” claim. Express using an equal sign <span class="math inline">\(=\)</span>.</li>
+<li><span class="math inline">\(H_a\)</span> is the claim we want to show is likely true. Use inequality sign (<span class="math inline">\(&gt;\)</span>, <span class="math inline">\(&lt;\)</span>, or <span class="math inline">\(\ne\)</span>).</li>
+<li>State both <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> in terms of population parameters such as <span class="math inline">\(\mu_1-\mu_2\)</span> and <span class="math inline">\(p_1-p_2\)</span>.</li>
+</ul></li>
+<li><p>Compute the <span style="color:dodgerblue"><strong>test statistic</strong></span>.</p>
+<ul>
+<li>If the observed sample contradicts the null claim, the result is significant.</li>
+<li>A standardized test statistic measures how many SE’s the observed stat is from the null claim.</li>
+<li>A standardized test statistic with a large absolute value is supporting evidence to reject <span class="math inline">\(H_0\)</span>.</li>
+</ul></li>
+<li><p>Using the null distribution, compute the <span style="color:dodgerblue"><strong>p-value</strong></span>. The p-value is the probability of getting a sample with a test statistic as or more extreme than the observed sample assuming <span class="math inline">\(H_0\)</span> is true.</p>
+<ul>
+<li>The p-value is the area in one or both tails beyond the test statistic.</li>
+<li>The p-value is a probability, so we have <span class="math inline">\(0 &lt; \mbox{p-value} &lt; 1\)</span>.</li>
+<li>The smaller the p-value, the stronger the evidence to reject <span class="math inline">\(H_0\)</span>.</li>
+</ul></li>
+<li><p>Based on the <span style="color:dodgerblue"><strong>significance level</strong></span>, <span class="math inline">\(\alpha\)</span>, make a decision to reject or not reject the null hypothesis</p>
+<ul>
+<li>If p-value <span class="math inline">\(\leq \alpha\)</span>, we reject <span class="math inline">\(H_0\)</span>.</li>
+<li>If p-value <span class="math inline">\(&gt; \alpha\)</span>, we do not reject <span class="math inline">\(H_0\)</span>.</li>
+</ul></li>
+<li><p><span style="color:dodgerblue"><strong>Summarize the results</strong></span> in practical terms, <strong>in the context of the example</strong>.</p>
+<ul>
+<li>If we reject <span class="math inline">\(H_0\)</span>, this means there is enough evidence to support the claim in <span class="math inline">\(H_a\)</span>.</li>
+<li>If we do not reject <span class="math inline">\(H_0\)</span>, this means there is not evidence to reject <span class="math inline">\(H_0\)</span> nor support <span class="math inline">\(H_a\)</span>. The test is inconclusive.</li>
+</ul></li>
+</ol>
+</section>
+<section id="sec-samp-size" class="level2">
+<h2 class="anchored" data-anchor-id="sec-samp-size">Appendix B: Sample Sizes and the CLT</h2>
+<hr>
+<ul>
+<li><p>For a <strong>single mean</strong>, we can use the CTL to perform a hypothesis test as long as:</p>
+<ul>
+<li>Either the population is symmetric or <span class="math inline">\(n \geq 30\)</span>.</li>
+<li>If the sample is symmetric, we can assume the population is symmetric.</li>
+</ul></li>
+<li><p>For a <strong>difference in two means</strong> , we can use the CTL to perform a hypothesis test as long as:</p>
+<ul>
+<li>Population 1 is either symmetric or <span class="math inline">\(n_1 \geq 30\)</span>, and</li>
+<li>Population 2 is either symmetric or <span class="math inline">\(n_2 \geq 30\)</span>.</li>
+</ul></li>
+<li><p>For a <strong>single proportion</strong>, we can use the CTL to perform a hypothesis test as long as:</p>
+<ul>
+<li>Both <span class="math inline">\(n\hat{p} \geq 10\)</span> and <span class="math inline">\(n(1-\hat{p}) \geq 10\)</span>.</li>
+</ul></li>
+<li><p>For a <strong>difference in two proportions</strong>, we can use the CTL to perform a hypothesis test as long as:</p>
+<ul>
+<li>All of <span class="math inline">\(n_1\hat{p}_1 \geq 10\)</span>, <span class="math inline">\(n_1(1-\hat{p}_1) \geq 10\)</span>, <span class="math inline">\(n_2\hat{p}_2 \geq 10\)</span>, and <span class="math inline">\(n_2(1-\hat{p}_2) \geq 10\)</span> are satisfied.</li>
+</ul></li>
+</ul>
+</section>
+<section id="appendix-c-parametric-formulas" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-c-parametric-formulas">Appendix C: Parametric Formulas</h2>
+<hr>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter(s)</th>
+<th>Sample Stat</th>
+<th>Standard Error</th>
+<th>Distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A single mean <br> (<span class="math inline">\(\sigma^2\)</span> known)</td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td><span class="math inline">\(\dfrac{\sigma}{\sqrt{n}}\)</span></td>
+<td><span class="math inline">\(N(0,1)\)</span></td>
+</tr>
+<tr class="even">
+<td>A single mean <br> (<span class="math inline">\(\sigma^2\)</span> unknown)</td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td><span class="math inline">\(\dfrac{{\color{tomato}{s}}}{\sqrt{n}}\)</span></td>
+<td><span class="math inline">\({\color{tomato}{t_{n-1}}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>A single proportion</td>
+<td><span class="math inline">\(\hat{p}\)</span></td>
+<td>Not Applicable</td>
+<td><span class="math inline">\(\mbox{Binom}(n, p_0)\)</span></td>
+</tr>
+<tr class="even">
+<td>A difference in two means (unknown <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span>)</td>
+<td><span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span></td>
+<td><span class="math inline">\(\sqrt{\dfrac{{\color{tomato}{s_1}}^2}{n_1} + \dfrac{{\color{tomato}{s_2}}^2}{n_2}}\)</span></td>
+<td><span class="math inline">\({\color{tomato}{t_{n_{\rm min}-1}}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>A difference in two proportions</td>
+<td><span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span></td>
+<td><span class="math inline">\(\sqrt{{\color{tomato}{\hat{p}_p}}(1 -{\color{tomato}{\hat{p}_p}})\left( \frac{1}{n_1} + \frac{1}{n_2} \right)}\)</span></td>
+<td><span class="math inline">\(N(0,1)\)</span></td>
+</tr>
+<tr class="even">
+<td>Mean difference between matched-pairs</td>
+<td><span class="math inline">\(\bar{x}_{\rm diff}\)</span></td>
+<td><span class="math inline">\(\dfrac{{\color{tomato}{s_{\rm diff}}}}{\sqrt{n}}\)</span></td>
+<td><span class="math inline">\({\color{tomato}{t_{n-1}}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
+<p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>This example is based on research by <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8485974/">University of Toronto Faculty of Dentistry</a>. The data provided in this question has been modified from the original research.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./23-Hypothesis-Single-Population.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">6.3: Parametric Hypothesis Tests</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./25-Error-Types-and-Power-of-Tests.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">6.5: Error Types and Power of Tests</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Statistical Methods: Exploring the Uncertain by Adam Spiegler</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" class="img-fluid" alt="Creative Commons License"> <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-N-SA 4.0</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
