@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -340,11 +340,16 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
   <ul class="collapse">
-  <li><a href="#intended-audience" id="toc-intended-audience" class="nav-link" data-scroll-target="#intended-audience">Intended Audience</a></li>
-  <li><a href="#how-to-access-these-materials" id="toc-how-to-access-these-materials" class="nav-link" data-scroll-target="#how-to-access-these-materials">How to Access these Materials</a></li>
-  </ul></li>
-  <li><a href="#creative-commons-license-information" id="toc-creative-commons-license-information" class="nav-link" data-scroll-target="#creative-commons-license-information">Creative Commons License Information</a>
+  <li><a href="#a-virtual-lab-for-exploring-statistics" id="toc-a-virtual-lab-for-exploring-statistics" class="nav-link" data-scroll-target="#a-virtual-lab-for-exploring-statistics">A Virtual Lab for Exploring Statistics</a></li>
+  <li><a href="#how-to-access-edit-and-save-notebooks" id="toc-how-to-access-edit-and-save-notebooks" class="nav-link" data-scroll-target="#how-to-access-edit-and-save-notebooks">How to Access, Edit and Save Notebooks</a></li>
+  <li><a href="#what-programming-background-is-required" id="toc-what-programming-background-is-required" class="nav-link" data-scroll-target="#what-programming-background-is-required">What Programming Background is Required?</a>
   <ul class="collapse">
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">What is R?</a></li>
+  <li><a href="#what-is-latex" id="toc-what-is-latex" class="nav-link" data-scroll-target="#what-is-latex">What is LaTex?</a></li>
+  </ul></li>
+  <li><a href="#how-to-contact-me" id="toc-how-to-contact-me" class="nav-link" data-scroll-target="#how-to-contact-me">How to Contact Me</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#creative-commons-license-information" id="toc-creative-commons-license-information" class="nav-link" data-scroll-target="#creative-commons-license-information">Creative Commons License Information</a></li>
   <li><a href="#quarto-books" id="toc-quarto-books" class="nav-link" data-scroll-target="#quarto-books">Quarto Books</a></li>
   </ul></li>
   </ul>
@@ -376,37 +381,115 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
 <section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="cover.png" title="Statistical Methods: Exploring the Uncertain" class="quarto-cover-image img-fluid"></p>
+<h1 class="unnumbered">Preface</h1>
 <hr>
-<p><em>Statistical Methods: Exploring the Uncertain</em> is a set of course materials for an undergraduate course (typically junior year) in statistics that is required for our math majors. The course is designed as a full semester course and topics covered include exploratory data analysis, statistical inference, probability, estimation, resampling methods, and hypothesis tests.</p>
-<section id="intended-audience" class="level2">
-<h2 class="anchored" data-anchor-id="intended-audience">Intended Audience</h2>
+<p><em>Statistical Methods: Exploring the Uncertain</em> is a set of interactive course materials designed to explore statistical methods. These materials are Open Education Resources (OER) designed to serve as both the textbook and in-class labs for MATH 3382: Statistical Theory at University of Colorado Denver. MATH 3382 is an undergraduate course in statistics at the 300 (junior) level that is required for all math majors at University of Colorado Denver. These materials are not intended for an introduction to statistics course for a more general audience of students from various backgrounds that are typically at the 100 or 200 levels. Students of Mathematics, Statistics, Data Science, Economics, Biostatistics, Computer Science and other STEM fields that want to advance beyond a typical introduction to statistics course are the intended audience.</p>
+<p>The materials are designed for full semester (3 credit) course. Topics covered include exploratory data analysis, statistical inference, probability, sampling distributions, maximum likelihood estimators, method of moments estimators, properties of estimators, confidence intervals (both bootstrap and parametric methods), and hypothesis tests (both permutation tests and parametric methods)</p>
+<p>The prerequisite for the course at CU Denver is multivariable calculus; however, students with a background in single variable calculus are able to work through the materials as well. The only instance where multivariable calculus might arise is with joint probability distributions and maximum likelihood estimators for distributions with two or more parameters, both of these applications can be skipped.</p>
+<p>Students are not required to have any previous course work in statistics, probability, or coding in R (or any other language). The “essentials” of probability are covered in Chapter 2 with a focus on how we apply theory from probability to do statistics. These materials do not include a comprehensive treatment of probability.</p>
+<section id="a-virtual-lab-for-exploring-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="a-virtual-lab-for-exploring-statistics">A Virtual Lab for Exploring Statistics</h2>
 <hr>
-<p>These activities are developed for MATH 3382 - Statistical Theory at University of Colorado Denver. The course is required for Math/Stat majors. Students typically have completed a course in multivariate calculus. Familiarity with linear algebra, programming, and/or probability are not required.</p>
+<p>These materials are intended as set of activities to experiment and explore statistical theory and methods. Each interactive Jupyter notebooks is a “virtual laboratory” where we perform our experiments and summarize the results. The objectives of experimental mathematics/statistics are generally to make the subject <font color="dodgerblue"><strong>more tangible, lively and fun.</strong></font></p>
+<p>The intent of introducing R is not to avoid a deep and rigorous understanding of statistics or to use R simply as a calculator. There are other sources that skim the surface of statistical concepts and instead focus on the coding side of things. These materials use R as an additional tool for further exploring statistics to gain a deeper insight into statistical models. Some of the objectives of implementing R code cells into the materials are to:</p>
+<ul>
+<li>Easily import and analyze real data from interesting studies and experiments.</li>
+<li>Create insightful data visualizations.</li>
+<li>Explore features of the data to generate statistical questions worth investigating.</li>
+<li>Discover patterns and relationships between variables.</li>
+<li>Introduce and implement resampling methods.</li>
+<li>Develop and test conjectures.</li>
+<li>Confirm analytically derived results.</li>
+<li>Gain further insight and intuition.</li>
+<li><font color="dodgerblue"><strong>Bridge the divide between theory and practice.</strong></font></li>
+</ul>
 </section>
-<section id="how-to-access-these-materials" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-access-these-materials">How to Access these Materials</h2>
+<section id="how-to-access-edit-and-save-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-access-edit-and-save-notebooks">How to Access, Edit and Save Notebooks</h2>
 <hr>
-<p>The intention is to balance simplicity in Markdown and R code with the formatting and aesthetic features.</p>
+<p>This <a href="https://aspiegler.github.io/Statistical-Theory/">html version</a> of the materials is not dynamic. You cannot edit the text or run code with the html version.</p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap1/01-Intro-to-Inference.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a><nbsp></nbsp></p>
 <ul>
-<li><p>By clicking the <code>Render</code> button or <code>Build Book</code> button on the toolbar above, you should get a nice looking, static html document without needing any further software (LaTeX in not required when rendering to html). This materials are intended to be interactive. Edit them as you like.</p></li>
-<li><p>The Markdown text hopefully is easy to follow and edit.</p></li>
-<li><p>The R Code is intended to be interactive.</p>
+<li>At the top of each notebook is a “button” such as the one above.</li>
+<li>Click the button to open an interactive Jupyter notebook version initialized to run R code in <a href="https://colab.research.google.com/">Google Colaboratory</a> (or Colab).</li>
+<li>You can begin working with the notebook right away in Colab! There is no software to install (or purchase!).</li>
+<li>You can also access the materials directly on GitHub at <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory.git" class="uri">https://github.com/CU-Denver-MathStats-OER/Statistical-Theory.git</a>.</li>
+</ul>
+<p>Each Jupyter notebook contains both narrative text (in Markdown cells) and R code cells that you can create, modify, and run.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although you do not need a Google account to interact with the notebooks, the Colab notebooks are “shared”, meaning you cannot save any changes to the initial shared document that opens. <strong>If you would like to save your changes, you first need to save a copy to your Google Drive.</strong> Then you can edit and save changes to your own version.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In addition to Jupyter notebooks versions that run in Colab, the original Quarto markdown documents (with file extension .qmd) are also included in the repo if you prefer to run and edit the labs using Posit, RStudio or other available applications. Both the Jupyter (.ipynb) and Quarto markdown (.qmd) versions are identical and both use R.</p>
+</div>
+</div>
+</section>
+<section id="what-programming-background-is-required" class="level2">
+<h2 class="anchored" data-anchor-id="what-programming-background-is-required">What Programming Background is Required?</h2>
+<hr>
+<p>No prior experience or knowledge of R, Markdown, LaTeX, or Colaboratory is assumed or required to begin working with these materials. After working with these materials, you will have some knowledge and experience with R, Markdown, LaTeX, and Colaboratory!</p>
 <ul>
-<li>Change plotting options, labels, colors.</li>
-<li>Replace the examples/data with your own.</li>
-</ul></li>
+<li><a href="https://colab.research.google.com/notebooks/intro.ipynb">Welcome to Colaboratory</a> is a helpful notebook (with videos) to help introduce you to Colab.</li>
+<li>Here’s a helpful <a href="https://colab.research.google.com/notebooks/markdown_guide.ipynb">Markdown guide</a></li>
+</ul>
+<section id="what-is-r" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-r">What is R?</h3>
+<hr>
+<p><a href="https://www.r-project.org/about.html">R</a> is a programming language used largely for statistical computing, data wrangling and visualization. We will be using R as a tool for exploring statistical theory. The first stable version of R was released in 2000, and after all of this time, there is a large community of R users that have already created tons of useful packages and shared interesting data sets that are frequently updated. We will create, modify, and run R code in Jupyter notebooks. <strong>No prior programming experience is required to begin working in R in these materials.</strong></p>
+<p>The goal of these materials are to investigate statistical theory, not learn how to be an expert R programmer. The hope is that we can use R as a tool for experimenting, gaining a deeper insight, and implementing resampling methods. In the process, hopefully you gain a familiarity with R and coding so it is no longer a barrier to future work! Have I mentioned <strong>no prior programming experience is required to begin working in R in these materials</strong>?</p>
+</section>
+<section id="what-is-latex" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-latex">What is LaTex?</h3>
+<hr>
+<p><a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">LaTeX</a> is a system for rendering nice looking mathematical symbols, expressions, and equations. All of the mathematical notation in these materials are created using LaTeX. You can view and edit all of the LaTeX code in the Markdown cells. You do not need to become an expert in LaTeX, but having a familiarity with LaTeX is quite helpful and LaTeX can be used to typeset math in a number of different applications.</p>
+<ul>
+<li>Here is a useful <a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">dictionary of LaTeX math symbols</a> to get a glimpse of LaTeX.</li>
 </ul>
 </section>
 </section>
-<section id="creative-commons-license-information" class="level1">
-<h1>Creative Commons License Information</h1>
+<section id="how-to-contact-me" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-contact-me">How to Contact Me</h2>
+<hr>
+<p>If you have any questions, comments, or suggestions about these materials, please feel free to reach out to me (Adam) at <a href="mailto:adam.spiegler@ucdenver.edu">adam.spiegler@ucdenver.edu</a>.</p>
+<ul>
+<li>Considering using these materials in your course? Please let me know if I can help.</li>
+<li>If you do use some of these materials in your course, your feedback is welcome and appreciated.</li>
+<li>If you materials that you would like to share or contribute to this project, great!</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<hr>
+<p><img src="https://cdhe.colorado.gov/sites/highered/files/logo.svg" class="img-fluid" style="width:30.0%" data-fig-align="left" alt="Colorado Department of Higher Education"><nbsp></nbsp></p>
+<p>This project was supported by the <a href="https://cdhe.colorado.gov/">Colorado Department of Higher Education (CDHE)</a> OER Grant Program. A big thank you to Megan Patnott for reviewing the materials and providing many great corrections and suggestions to improve the materials!</p>
+</section>
+<section id="creative-commons-license-information" class="level2">
+<h2 class="anchored" data-anchor-id="creative-commons-license-information">Creative Commons License Information</h2>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler (University of Colorado Denver)</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. This work is funded by an <a href="https://cdhe.colorado.gov/educators/administration/institutional-groups/open-educational-resources-in-colorado">Institutional OER Grant from the Colorado Department of Higher Education (CDHE)</a>.</p>
 <p>For similar interactive OER materials in other courses funded by this project in the Department of Mathematical and Statistical Sciences at the University of Colorado Denver, visit <a href="https://github.com/CU-Denver-MathStats-OER" class="uri">https://github.com/CU-Denver-MathStats-OER</a>.</p>
+</section>
 <section id="quarto-books" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-books">Quarto Books</h2>
 <hr>
