@@ -349,11 +349,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Installing-R-and-RStudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Installing R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Intro-to-Vectors-Dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentals of Working with Data</span></a>
   </div>
 </li>
@@ -374,15 +369,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link active" data-scroll-target="#what-is-r">What is R?</a></li>
-  <li><a href="#what-are-packages-in-r" id="toc-what-are-packages-in-r" class="nav-link" data-scroll-target="#what-are-packages-in-r">What Are Packages in R?</a>
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link active" data-scroll-target="#what-is-r">What is R?</a>
   <ul class="collapse">
+  <li><a href="#what-are-packages-in-r" id="toc-what-are-packages-in-r" class="nav-link" data-scroll-target="#what-are-packages-in-r">What Are Packages in R?</a></li>
   <li><a href="#what-data-is-available-in-r" id="toc-what-data-is-available-in-r" class="nav-link" data-scroll-target="#what-data-is-available-in-r">What Data is Available in R?</a></li>
   <li><a href="#loading-packages-with-the-library-command" id="toc-loading-packages-with-the-library-command" class="nav-link" data-scroll-target="#loading-packages-with-the-library-command">Loading Packages with the <code>library()</code> Command</a></li>
-  <li><a href="#caution-reloading-packages-when-restarting-a-session" id="toc-caution-reloading-packages-when-restarting-a-session" class="nav-link" data-scroll-target="#caution-reloading-packages-when-restarting-a-session">Caution: Reloading Packages When Restarting a Session</a></li>
-  </ul></li>
-  <li><a href="#finding-help-documentation" id="toc-finding-help-documentation" class="nav-link" data-scroll-target="#finding-help-documentation">Finding Help Documentation</a>
-  <ul class="collapse">
+  <li><a href="#finding-help-documentation" id="toc-finding-help-documentation" class="nav-link" data-scroll-target="#finding-help-documentation">Finding Help Documentation</a></li>
   <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a>
   <ul class="collapse">
   <li><a href="#solutions-to-question-1" id="toc-solutions-to-question-1" class="nav-link" data-scroll-target="#solutions-to-question-1">Solutions to Question 1</a></li>
@@ -466,24 +458,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap1/01-Intro-to-Inference.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
-<hr>
-<p><span style="color:dodgerblue"><strong>Statistics</strong></span> is the study of collection, organization, analysis, interpretation, and presentation of data.</p>
-<p>Statistical methods are essential in exploring questions that can be analyzed using data. Sometimes insights from data arise from a nice visualization or plot. Many times, a nice visualization leads to more advanced questions that require further statistical theory, models, and analysis. We will explore both modern and classical statistical methods, and in order to do so, we need data!</p>
+<p><span style="color:dodgerblue"><strong>Statistics</strong></span> is the study of collection, organization, analysis, interpretation, and presentation of data. Statistical methods are essential in exploring questions that can be analyzed using data. Sometimes insights from data arise from a nice visualization or plot. Many times, a nice visualization leads to more advanced questions that require further statistical theory, models, and analysis. We will explore both modern and classical statistical methods, and in order to do so, we need data!</p>
 <section id="what-is-r" class="level1">
 <h1>What is R?</h1>
 <hr>
-<p><a href="https://www.r-project.org/about.html">R</a> is a programming language used largely for statistical computing, data wrangling and visualization.</p>
-<ul>
-<li>The first stable version was released in 2000.</li>
-<li>Open source and works cross all platforms.</li>
-<li>Excellent tool for data wrangling.</li>
-<li>Generates nice graphics.</li>
-<li>Export to pdf, html, Word or PowerPoint.</li>
-<li>Large community with tons of useful packages.</li>
-</ul>
-</section>
-<section id="what-are-packages-in-r" class="level1">
-<h1>What Are Packages in R?</h1>
+<p><a href="https://www.r-project.org/about.html">R</a> is a programming language used largely for statistical computing, data wrangling and visualization. We will be using R as a tool for exploring statistical theory. The first stable version of R was released in 2000, and after all of this time, there is a large community of R users that have already created tons of useful packages and shared interesting data sets that are frequently updated.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No prior programming experience is required to begin working in R in these materials.</p>
+</div>
+</div>
+<section id="what-are-packages-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-packages-in-r">What Are Packages in R?</h2>
 <hr>
 <p>R packages are a collection functions, sample data, and/or other code scripts. R installs a set of default packages during installation.</p>
 <ul>
@@ -496,6 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>allpack <span class="ot">&lt;-</span> <span class="fu">installed.packages</span>()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(allpack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="what-data-is-available-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="what-data-is-available-in-r">What Data is Available in R?</h2>
 <hr>
@@ -522,16 +517,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="caution-reloading-packages-when-restarting-a-session" class="level2">
-<h2 class="anchored" data-anchor-id="caution-reloading-packages-when-restarting-a-session">Caution: Reloading Packages When Restarting a Session</h2>
-<hr>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If we take a break in our work, it is possible our R session will time out and close. <span style="color:tomato"><strong>Each time we restart an R session, we will need to rerun <code>library()</code> commands in order reload any packages we plan to use</strong></span>.</p>
 <p>The same caution applies to any objects, vectors, or data frames we create or edit in an R session. If a session times out, and we want to use an object <code>x</code> that we previously created, we will need to run the code cell(s) where object <code>x</code> is created again before we can refer back to <code>x</code> in the current session.</p>
+</div>
+</div>
 </section>
-</section>
-<section id="finding-help-documentation" class="level1">
-<h1>Finding Help Documentation</h1>
+<section id="finding-help-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="finding-help-documentation">Finding Help Documentation</h2>
 <hr>
 <p>As with learning any new skill, it is always useful to know where to find help. R has been in use since 2000, and there is a large, active community of users that share lots of helpful advice online. Certainly <a href="https://www.google.com/">Google</a> or other search engines are a useful way to search and find help with R. Below are two additional websites useful for searching for help with R.</p>
 <ul>
@@ -551,6 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>?storms</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <hr>
@@ -563,10 +566,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solutions-to-question-1" class="level3">
 <h3 class="anchored" data-anchor-id="solutions-to-question-1">Solutions to Question 1</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-2" class="level2">
@@ -580,10 +582,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-2" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-2">Solution to Question 2</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
@@ -653,7 +654,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Below are two sources with ethical guidance to help steer our practice of statistics.</p>
 <ul>
 <li><a href="https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice"><em>Ethical Guidelines for Statistical Practice</em></a> by the American Statistical Association (ASA).</li>
-<li><a href="https://www.isi-web.org/about/policies/professional-ethics"><em>Declaration on Professional Ethics</em></a> by the International Statistical Institute.</li>
+<li><a href="https://isi-web.org/declaration-professional-ethics-2010"><em>Declaration on Professional Ethics</em></a> by the International Statistical Institute.</li>
 </ul>
 </section>
 <section id="question-3" class="level2">
@@ -663,10 +664,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-3" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-3">Solution to Question 3</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-4" class="level2">
@@ -680,10 +680,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-4" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-4">Solution to Question 4</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
@@ -731,7 +730,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Randomly select a house on a street to survey. Then pick every third house after that to include in the survey.</li>
 </ul>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Systematic_sampling.PNG" class="img-fluid" alt="Image Credit: Dan Kernler, CC BY-SA 4.0, via Wikimedia Commons">{width=“60% fig-alt=”Systematic Sample”}</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Systematic_sampling.PNG" class="img-fluid figure-img" style="width:60.0%" alt="Systematic Sample"></p>
+<figcaption class="figure-caption">Image Credit: Dan Kernler, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</figcaption>
+</figure>
+</div>
 </section>
 <section id="cluster-sample" class="level3">
 <h3 class="anchored" data-anchor-id="cluster-sample">Cluster Sample</h3>
@@ -784,10 +788,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-5" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-5">Solution to Question 5</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-6" class="level2">
@@ -820,10 +823,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-6" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-6">Solution to Question 6</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="sec-confounding" class="level2">
@@ -844,10 +846,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-7" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-7">Solution to Question 7</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="experiments-and-observational-studies" class="level2">
@@ -874,10 +875,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-8" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-8">Solution to Question 8</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>

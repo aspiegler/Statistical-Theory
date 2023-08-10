@@ -347,11 +347,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Installing-R-and-RStudio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Installing R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Intro-to-Vectors-Dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentals of Working with Data</span></a>
   </div>
 </li>
@@ -458,12 +453,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap1/02-EDA-Categorical.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
-<hr>
 <p>Additional Reading:</p>
 <ul>
-<li><p>See <a href="./Overview-of-Plots.html">Overview of Plotting Data in R</a> for further reading and examples about plotting in R.</p></li>
-<li><p>See <a href="./Intro-to-Vectors-Dataframes.html">Fundamentals of Working with Data</a> for further details about data types and structures in R.</p></li>
-<li><p><a href="https://r-graph-gallery.com/">R Graph Gallery</a> has examples of many other types of graphs.</p></li>
+<li>See <a href="./Overview-of-Plots.html">Overview of Plotting Data in R</a> for further reading and examples about plotting in R.</li>
+<li>See <a href="./Intro-to-Vectors-Dataframes.html">Fundamentals of Working with Data</a> for more information about data types and structures in R.</li>
+<li>The <a href="https://r-graph-gallery.com/">R Graph Gallery</a> has examples of many other types of graphs.</li>
 </ul>
 <section id="an-overview-of-exploratory-data-analysis" class="level1">
 <h1>An Overview of Exploratory Data Analysis</h1>
@@ -479,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sec-dplyr" class="level1">
 <h1>Loading the <code>dplyr</code> Package</h1>
 <hr>
-<p>The <code>dplyr</code> packages is perhaps one of the most useful R packages for <span style="color:dodgerblue"><strong>data wrangling</strong></span> and EDA. Data wrangling is generally the cleaning, reorganizing, and transforming data so it can be more easily analyzed. <code>dplyr</code> also contains data sets that we can use to practice our wrangling and visualization skills. In this lab, we will work with the data set called <code>storms</code>.</p>
+<p>The <code>dplyr</code> package is perhaps one of the most useful R packages for <span style="color:dodgerblue"><strong>data wrangling</strong></span> and EDA. Data wrangling is generally the cleaning, reorganizing, and transforming data so it can be more easily analyzed. <code>dplyr</code> also contains data sets that we can use to practice our wrangling and visualization skills. In this lab, we will work with the data set called <code>storms</code>.</p>
 <ul>
 <li>See <a href="https://dplyr.tidyverse.org/articles/dplyr.html">official dplyr documentation</a> for a comprehensive tutorial.</li>
 <li><strong>Run the code cell below to load the <code>dplyr</code> package.</strong></li>
@@ -516,14 +510,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Each column of a data frame is a <span style="color:dodgerblue"><strong>variable</strong></span> (stored as a <strong>vector</strong>) of possibly different data types.</p>
 <ul>
-<li>If a variable is measured or counted by a number, it is called a <span style="color:dodgerblue"><strong>quantitative</strong></span> or <span style="color:dodgerblue"><strong>numerical</strong></span> variable.</li>
+<li>If a variable is measured or counted by a number, it is called a <span style="color:dodgerblue"><strong>quantitative</strong></span> or <span style="color:dodgerblue"><strong>numerical</strong></span> variable.
+<ul>
 <li>Quantitative variables may be <span style="color:dodgerblue"><strong>discrete</strong></span> (integers) or <span style="color:dodgerblue"><strong>continuous</strong></span> (decimals).</li>
-<li>If a variable groups observations into different categories or rankings, it is a <span style="color:dodgerblue"><strong>qualitative</strong></span> or <span style="color:dodgerblue"><strong>categorical</strong></span> variable.</li>
-<li>The different categories of a qualitative variable are called <span style="color:dodgerblue"><strong>levels</strong></span> or <span style="color:dodgerblue"><strong>classes</strong></span>.</li>
-<li>Levels may be labeled as character strings without any implicit order.</li>
-<li>Levels may be labeled as character strings, and there may be a ranking of the levels.</li>
-<li>Levels may be labeled with a integer without any implicit order.</li>
-<li>Levels may be labeled with an integer that does indicate an order or ranking.</li>
+</ul></li>
+<li>If a variable groups observations into different categories or rankings, it is a <span style="color:dodgerblue"><strong>qualitative</strong></span> or <span style="color:dodgerblue"><strong>categorical</strong></span> variable.
+<ul>
+<li>The different categories of a qualitative variable are called <span style="color:dodgerblue"><strong>levels</strong></span> or <span style="color:dodgerblue"><strong>classes</strong></span>.
+<ul>
+<li>Levels are typically labeled with descriptive character strings or integers.</li>
+<li>Levels may or may not have an ordering.</li>
+</ul></li>
+<li>An <span style="color:dodgerblue"><strong>ordinal variable</strong></span> is when the levels of a categorical variable do have a specified order.</li>
+</ul></li>
 </ul>
 </section>
 <section id="exploring-our-data" class="level1">
@@ -598,10 +597,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-1" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-1">Solution to Question 1</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-2" class="level2">
@@ -611,10 +609,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-2" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-2">Solution to Question 2:</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
@@ -777,12 +774,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="converting-to-categorical-data-with-factor" class="level2">
 <h2 class="anchored" data-anchor-id="converting-to-categorical-data-with-factor">Converting to Categorical Data with <code>factor()</code></h2>
 <hr>
+<p>Sometimes we think a variable is one data type, but it is actually being stored (and thus interpreted by R) as a different data type. One common issue is categorical data is stored as characters or integers. We would like observations with the same values to be group together.</p>
 <ul>
-<li>Sometimes we think a variable is one data type, but it is actually being stored (and thus interpreted by R) as a different data type.</li>
-<li>One common issue is categorical data is stored as characters or integers. We would like observations with the same values to be group together.</li>
 <li>The <code>status</code> variable in <code>storms</code> is being properly stored as a <code>factor</code>.</li>
-<li>The <code>category</code> variable in <code>storms</code> is being stored as a <code>numeric</code> since it is ordinal.</li>
-<li>With ordinal categories, we may choose to keep it stored as <code>numeric</code>, or we may prefer to treat them as factors.</li>
+<li>The <code>category</code> variable in <code>storms</code> is being stored as a <code>numeric</code> since the classes are integers.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms<span class="sc">$</span>category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -791,9 +786,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   1.000   1.000   1.000   1.898   3.000   5.000   14382 </code></pre>
 </div>
 </div>
+<p>The summary of <code>category</code> computes statistics such as mean and median. <span style="color:dodgerblue"><strong>Typically with categorical data, we prefer to count how many observations are in each class of the variable.</strong></span></p>
 <ul>
-<li>The summary of <code>category</code> computes statistics such as mean and median.</li>
-<li><span style="color:dodgerblue"><strong>Typically with categorical data, we prefer to count how many observations are in each class of the variable.</strong></span></li>
 <li>In the code cell below, we convert <code>category</code> to a factor, and then observe the resulting summary.</li>
 </ul>
 <div class="cell">
@@ -962,10 +956,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-3" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-3">Solution to Question 3</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
@@ -1059,19 +1052,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>To create a bar chart displaying the number of category hurricanes that occurred in each month:</p>
 <ol type="1">
-<li>First create a two-way table of counts.</li>
-</ol>
+<li>First create a two-way table of counts.
 <ul>
 <li>The second variable (<code>month</code>) is displayed on horizontal axis.</li>
 <li>We get a separate bar for each level of the first variable (<code>category</code>).</li>
-</ul>
-<ol start="2" type="1">
-<li>Input the table into the <code>barplot()</code> function.</li>
-</ol>
+</ul></li>
+<li>Input the table into the <code>barplot()</code> function.
 <ul>
 <li>Note the option <code>beside = TRUE</code> groups the bars for each month.</li>
 <li>The default option <code>beside = FALSE</code> stacks the bars.</li>
-</ul>
+</ul></li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two-way table of counts of category in each month</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>cat.table <span class="ot">&lt;-</span> <span class="fu">table</span>(storms<span class="sc">$</span>category, storms<span class="sc">$</span>month)  <span class="co"># gives counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1102,17 +1093,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>To create a bar chart displaying the relative frequency (or proportion) of category hurricanes that occurred in each month:</p>
 <ol type="1">
-<li>First create a two-way table of relative frequencies.</li>
-</ol>
+<li>First create a two-way table of relative frequencies.
 <ul>
 <li>Pay attention to whether you want the proportions relative to grand, row, or column totals.</li>
-</ul>
-<ol start="2" type="1">
-<li>Input the table into the <code>barplot()</code> function.</li>
-</ol>
+</ul></li>
+<li>Input the table into the <code>barplot()</code> function.
 <ul>
 <li>The default option <code>beside = FALSE</code> stacks the bars.</li>
-</ul>
+</ul></li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>cat.grand <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(cat.table)  <span class="co"># gives proportions relative to grand total</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>cat.row <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(cat.table, <span class="dv">1</span>)  <span class="co"># gives proportions relative to row totals</span></span>
@@ -1176,10 +1165,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-4" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-4">Solution to Question 4</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-5" class="level2">
@@ -1189,10 +1177,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-5" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-5">Solution to Question 5</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
@@ -1254,10 +1241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-6" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-6">Solution to Question 6</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-7" class="level2">
@@ -1271,10 +1257,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-7" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-7">Solution to Question 7</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
