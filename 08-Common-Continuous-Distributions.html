@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#question-2d" id="toc-question-2d" class="nav-link" data-scroll-target="#question-2d">Question 2d</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#z-scores-and-the-standard-normal-distribution" id="toc-z-scores-and-the-standard-normal-distribution" class="nav-link" data-scroll-target="#z-scores-and-the-standard-normal-distribution"><span class="math inline">\(z\)</span>-Scores and the Standard Normal Distribution</a>
+  <li><a href="#sec-zscore" id="toc-sec-zscore" class="nav-link" data-scroll-target="#sec-zscore"><span class="math inline">\(z\)</span>-Scores and the Standard Normal Distribution</a>
   <ul class="collapse">
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a>
   <ul class="collapse">
@@ -464,9 +464,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap2/08-Common-Continuous-Distributions.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap2/08-Common-Continuous-Distributions.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
 <hr>
-<p>As we did with <a href="./07-Common-Discrete-RandVar.html">discrete random variables</a>, in this section we will take a look at several of the most common and useful distributions when working with continuous random variables.</p>
+<p>As we did with <a href="./07-Common-Discrete-RandVar.html" target="_blank">discrete random variables</a>, in this section we will take a look at several of the most common and useful distributions when working with continuous random variables.</p>
 <section id="normal-distributions" class="level1">
 <h1>Normal Distributions</h1>
 <hr>
@@ -476,14 +476,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">Image Credit: Antoine Taveneaux, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</figcaption>
 </figure>
 </div>
-<p>There are many situations where data tends to be distributed symmetrically around a central value with no bias to the left or right such as the location of beads on a <a href="https://en.wikipedia.org/wiki/Galton_board">Galton board</a> or heights of people. For example, if we randomly select an adult from the population:</p>
+<p>There are many situations where data tends to be distributed symmetrically around a central value with no bias to the left or right such as the location of beads on a <a href="https://en.wikipedia.org/wiki/Galton_board" target="_blank">Galton board</a> or heights of people. For example, if we randomly select an adult from the population:</p>
 <ul>
-<li>A person is mostly to be about average height.</li>
+<li>A person is most likely to be about average height.</li>
 <li>Otherwise, the person selected is equally likely to be either shorter or taller than average.</li>
 <li>The person is very unlikely to have an extreme height (tall or short). The more extreme, the less likely.</li>
 <li><strong>Therefore the distribution of heights is approximately symmetric and bell shaped.</strong></li>
 </ul>
-<p><span style="color:dodgerblue"><strong>Normal distributions</strong></span> arise in many settings: heights of people, size of items produced by machines, and most importantly in statistics data sets resulting from many independent random events. The shape of a normal distribution is determined by two parameters:</p>
+<p><span style="color:dodgerblue"><strong>Normal distributions</strong></span> arise in many settings: heights of people, size of items produced by machines, and most importantly in statistics, data sets resulting from many independent random events. The shape of a normal distribution is determined by two parameters:</p>
 <ul>
 <li>The <span style="color:dodgerblue"><strong>mean</strong></span>, <span class="math inline">\(\color{dodgerblue}{\mu}\)</span>, is the center of the distribution.</li>
 <li>The <span style="color:dodgerblue"><strong>standard deviation</strong></span> <span class="math inline">\(\color{dodgerblue}{\sigma}\)</span>, tells us how wide the distribution is.</li>
@@ -599,7 +599,7 @@ Caution
 </section>
 </section>
 </section>
-<section id="z-scores-and-the-standard-normal-distribution" class="level1">
+<section id="sec-zscore" class="level1">
 <h1><span class="math inline">\(z\)</span>-Scores and the Standard Normal Distribution</h1>
 <hr>
 <p>The number of standard deviations a data value <span class="math inline">\(x\)</span> is from the mean <span class="math inline">\(\mu\)</span> is called the <span style="color:dodgerblue"><strong>z-score</strong></span> for the value <span class="math inline">\(x\)</span>.</p>
@@ -806,7 +806,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>See <a href="#sec-append">Appendix: Summary of Common Continuous Random Variables</a> for a summary of key formulas, graphs, shortcuts, and R functions for normal distributions.</p>
+<p>See <a href="#sec-append-normal">Appendix: Normal Distributions</a> for a summary of key formulas, graphs, shortcuts, and R functions for normal distributions.</p>
 </div>
 </div>
 <section id="solution-to-question-5d" class="level4">
@@ -873,7 +873,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>See <a href="#sec-append">Appendix: Summary of Common Continuous Random Variables</a> for a summary of key formulas, graphs, shortcuts, and R functions for exponential distributions.</p>
+<p>See <a href="#sec-append-exp">Appendix: Exponential Distributions</a> for a summary of key formulas, graphs, shortcuts, and R functions for exponential distributions.</p>
 </div>
 </div>
 <section id="question-8" class="level2">
@@ -890,7 +890,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>See <a href="#sec-append">Appendix: Summary of Common Continuous Random Variables</a> for useful properties of exponential distributions.</p>
+<p>See <a href="#sec-append-exp">Appendix: Exponential Distributions</a> for useful properties of exponential distributions.</p>
 </div>
 </div>
 <section id="question-8a" class="level3">
@@ -945,7 +945,19 @@ Tip
 <h3 class="anchored" data-anchor-id="question-8e">Question 8e</h3>
 <hr>
 <p>Ninety-percent of all calls occur within how many minutes of the previous call?</p>
-<p><em>Hint: Use your previous answer in <a href="#question-8d">Question 8d</a>.</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use your previous answer in <a href="#question-8d">Question 8d</a>.</p>
+</div>
+</div>
 <section id="solution-to-8e" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-8e">Solution to 8e</h4>
 <hr>
@@ -958,7 +970,19 @@ Tip
 <h3 class="anchored" data-anchor-id="question-8f">Question 8f</h3>
 <hr>
 <p>Suppose that two minutes have elapsed since the last call. Find the probability that the next call will occur within the next minute.</p>
-<p><em>Hint: This is a conditional probability, so consider using <a href="./04-Overview-of-Probability.html">Bayes’ Theorem</a>.</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a conditional probability, so consider using <a href="./04-Overview-of-Probability.html" target="_blank">Bayes’ Theorem</a>.</p>
+</div>
+</div>
 <section id="solution-to-8f" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-8f">Solution to 8f</h4>
 <hr>
@@ -992,8 +1016,8 @@ Tip
 </ul></li>
 <li>Use <code>rnorm(n, mu, sigma)</code> to generate a random sample of size <span class="math inline">\(n\)</span> from population <span class="math inline">\(X \sim N(mu, sigma)\)</span>.</li>
 <li>Use <code>qnorm(q, mu, sigma)</code> to find the q<sup>th</sup> percentile.</li>
-<li>We have the <span style="color:dodgerblue"><strong>68%-95%-99.5% Empirical Rule</strong></span>.</li>
-<li>We can standardize the normal distribution using <span style="color:dodgerblue"><strong>z-scores</strong></span>: <span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span></li>
+<li>We have the <a href="#sec-empirical"><strong>68%-95%-99.5% Empirical Rule</strong></a>.</li>
+<li>We can standardize the normal distribution using <a href="#sec-zscore"><strong>z-scores</strong></a>: <span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">

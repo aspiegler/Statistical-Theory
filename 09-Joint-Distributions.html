@@ -418,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap2/09-Joint-Distributions.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap2/09-Joint-Distributions.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
 <section id="situations-with-multiple-random-variables" class="level1">
 <h1>Situations with Multiple Random Variables</h1>
 <hr>
@@ -668,10 +668,10 @@ ul.task-list li input[type="checkbox"] {
 <h1>Expected Values with Joint Distributions</h1>
 <hr>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random variables with joint pdf <span class="math inline">\(f(x,y)\)</span>. If <span class="math inline">\(\color{dodgerblue}{Z=h(X,Y)}\)</span>, then</p>
-<p><span class="math display">\[E( \color{dodgerblue}{Z} ) = E( {\color{dodgerblue}{h(X,Y)}} ) = \left\{ \begin{array}{ll}
-\displaystyle \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \color{dodgerblue}{h(x,y)}\cdot f(x,y) \, dx \, dy , &amp; \mbox{if X and Y are continuous} \\
+<p><span class="math display">\[E( {\color{dodgerblue}{Z}} ) = E( {\color{dodgerblue}{h(X,Y)}} ) = \left\{ \begin{array}{ll}
+\displaystyle \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} {\color{dodgerblue}{h(x,y)}} \cdot f(x,y) \, dx \, dy , &amp; \mbox{if X and Y are continuous} \\
 &amp; \\
-\displaystyle \sum_y \sum_x \color{dodgerblue}{h(x,y)} \cdot f(x,y) , &amp;  \mbox{if X and Y are discrete} \end{array} \right. .\]</span></p>
+\displaystyle \sum_y \sum_x {\color{dodgerblue}{h(x,y)}} \cdot f(x,y) , &amp;  \mbox{if X and Y are discrete} \end{array} \right. .\]</span></p>
 <p>This is often referred to as the <span style="color:dodgerblue"><em>Law of the Unconscious Statistician</em></span> since we do not need to know the distribution <span class="math inline">\(f_Z(z)\)</span> in order to compute <span class="math inline">\(E(Z)\)</span>.</p>
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
@@ -714,12 +714,12 @@ Note
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two continuous random variables and let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> denote two constants. Then we have</p>
 <p><span class="math display">\[\begin{aligned}
 E(aX+bY) &amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (ax+by)f(x,y) \, dx \, dy  &amp; \mbox{Law of the Unconscious Statistician} \\
-&amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \color{dodgerblue}{axf(x,y)} \, dx \, dy  + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \color{dodgerblue}{byf(x,y)} \, dx \, dy &amp; \mbox{Explain step 1} \\
-&amp;= \color{dodgerblue}{a} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xf(x,y) \, dx \, dy  + \color{dodgerblue}{b} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} yf(x,y) \, dx \, dy &amp; \mbox{Explain step 2} \\
-&amp;= a \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xf(x,y) \, \color{dodgerblue}{dy \, dx}  + b \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} yf(x,y) \, dx \, dy &amp; \mbox{Explain step 3} \\
-&amp;= a \int_{-\infty}^{\infty} \color{dodgerblue}{x} \left( \int_{-\infty}^{\infty} f(x,y) \, dy \right) \, dx  + b \int_{-\infty}^{\infty} \color{dodgerblue}{y} \left( \int_{-\infty}^{\infty} f(x,y) \, dx \right) \, dy &amp; \mbox{Explain step 4} \\
-&amp;= a \int_{-\infty}^{\infty} x \color{dodgerblue}{f_X(x)} \, dx  + b \int_{-\infty}^{\infty} y\color{dodgerblue}{f_Y(y)} \, dy &amp; \mbox{Explain step 5} \\
-&amp;= a \color{dodgerblue}{E(X)}  + b \color{dodgerblue}{E(Y)} &amp; \mbox{Explain step 6} \\
+&amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} {\color{dodgerblue}{axf(x,y)}} \, dx \, dy  + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} {\color{dodgerblue}{byf(x,y)}} \, dx \, dy &amp; \mbox{Explain step 1} \\
+&amp;= {\color{dodgerblue}{a}} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xf(x,y) \, dx \, dy  + {\color{dodgerblue}{b}} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} yf(x,y) \, dx \, dy &amp; \mbox{Explain step 2} \\
+&amp;= a \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xf(x,y) \, {\color{dodgerblue}{dy \, dx}}  + b \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} yf(x,y) \, dx \, dy &amp; \mbox{Explain step 3} \\
+&amp;= a \int_{-\infty}^{\infty} {\color{dodgerblue}{x}} \left( \int_{-\infty}^{\infty} f(x,y) \, dy \right) \, dx  + b \int_{-\infty}^{\infty} {\color{dodgerblue}{y}} \left( \int_{-\infty}^{\infty} f(x,y) \, dx \right) \, dy &amp; \mbox{Explain step 4} \\
+&amp;= a \int_{-\infty}^{\infty} x {\color{dodgerblue}{f_X(x)}} \, dx  + b \int_{-\infty}^{\infty} y {\color{dodgerblue}{f_Y(y)}} \, dy &amp; \mbox{Explain step 5} \\
+&amp;= a {\color{dodgerblue}{E(X)}}  + b {\color{dodgerblue}{E(Y)}} &amp; \mbox{Explain step 6} \\
 \end{aligned}\]</span></p>
 <section id="explanation-of-steps-of-proof" class="level4">
 <h4 class="anchored" data-anchor-id="explanation-of-steps-of-proof">Explanation of Steps of Proof:</h4>
@@ -764,18 +764,18 @@ Warning
 <h3 class="anchored" data-anchor-id="solution-to-question-8">Solution to Question 8</h3>
 <hr>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two continuous, independent random variables. Then using the property <span class="math inline">\(\mbox{Var}(X) = E(X^2) - \big( E(X) \big)^2\)</span>, we have</p>
-<p><span class="math display">\[\mbox{Var}(aX+bY) = E \left( \color{tomato}{??} \right) - \left( \color{tomato}{??} \right)^2.\]</span></p>
+<p><span class="math display">\[\mbox{Var}(aX+bY) = E \left( {\color{tomato}{??}} \right) - \left( {\color{tomato}{??}} \right)^2.\]</span></p>
 <p>Using the previous result, we have</p>
-<p><span class="math display">\[\left( E(aX+bY) \right)^2 = \color{tomato}{??}\]</span></p>
+<p><span class="math display">\[\left( E(aX+bY) \right)^2 = {\color{tomato}{??}}\]</span></p>
 <p>Next we simplify <span class="math inline">\(E \left( (aX+bY)^2 \right)\)</span> as follows</p>
-<p><span class="math display">\[E \left( (aX+bY)^2 \right) =\color{tomato}{??}\]</span></p>
-<p>Since <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, we can apply the property that <span class="math inline">\(\color{mediumseagreen}{E(XY) = E(X) E(Y)}\)</span>. This gives</p>
+<p><span class="math display">\[E \left( (aX+bY)^2 \right) = {\color{tomato}{??}}\]</span></p>
+<p>Since <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, we can apply the property that <span class="math inline">\({\color{mediumseagreen}{E(XY) = E(X) E(Y)}}\)</span>. This gives</p>
 <p><span class="math display">\[\begin{aligned}
 \mbox{Var}(aX+bY) &amp;= E \left( (aX+bY)^2 \right) - \left( E(aX+bY) \right)^2\\
-&amp;= \left( \color{dodgerblue}{a^2 E(X^2)} + \color{mediumseagreen}{ab E(X)E(Y)} + \color{tomato}{b^2 E(Y^2)} \right) - \left( \color{dodgerblue}{a^2 \big( E(X) \big)^2} + \color{mediumseagreen}{abE(X)E(Y)} + \color{tomato}{b^2 \big( E(Y) \big)^2} \right) \\
-&amp;= \color{dodgerblue}{\left( a^2 E(X^2) - a^2 \big( E(X) \big)^2 \right)} + \color{tomato}{\left( b^2 E(Y^2) - b^2 \big( E(Y) \big)^2 \right)}\\
-&amp;=  a^2 \color{dodgerblue}{\left(E(X^2) - \big( E(X) \big)^2 \right)} + b^2 \color{tomato}{\left(  E(Y^2) - \big( E(Y) \big)^2 \right)}\\
-&amp;= a^2 \color{dodgerblue}{\mbox{Var}(X)} + b^2 \color{tomato}{\mbox{Var}(Y)}
+&amp;= \left( {\color{dodgerblue}{a^2 E(X^2)}} + {\color{mediumseagreen}{ab E(X)E(Y)}} + {\color{tomato}{b^2 E(Y^2)}} \right) - \left( {\color{dodgerblue}{a^2 \big( E(X) \big)^2}} + {\color{mediumseagreen}{abE(X)E(Y)}} + {\color{tomato}{b^2 \big( E(Y) \big)^2}} \right) \\
+&amp;= {\color{dodgerblue}{\left( a^2 E(X^2) - a^2 \big( E(X) \big)^2 \right)}} + {\color{tomato}{\left( b^2 E(Y^2) - b^2 \big( E(Y) \big)^2 \right)}}\\
+&amp;=  a^2 {\color{dodgerblue}{\left(E(X^2) - \big( E(X) \big)^2 \right)}} + b^2 {\color{tomato}{\left(  E(Y^2) - \big( E(Y) \big)^2 \right)}}\\
+&amp;= a^2 {\color{dodgerblue}{\mbox{Var}(X)}} + b^2 {\color{tomato}{\mbox{Var}(Y)}}
 \end{aligned}\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
