@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -467,17 +467,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap2/05-Intro-to-Random-Variables.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap2/05-Intro-to-Random-Variables.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
 <section id="randomness-in-a-music-playlist" class="level1">
 <h1>Randomness in a Music Playlist</h1>
 <hr>
 <section id="importing-the-spotify-hits-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="importing-the-spotify-hits-data-set">Importing the Spotify Hits Data Set</h2>
 <hr>
-<p>The data set <em>spotify-hits.csv</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is stored online and contains audio statistics of the top 2000 tracks on Spotify from 2000-2019. The data is stored in a <span style="color:dodgerblue"><strong>comma separated file (csv)</strong></span>.</p>
-<ul>
-<li>We can use the function <code>read.csv()</code> to import the csv file into an R data frame we call <code>hits</code>.</li>
-</ul>
+<p>The data set <em>spotify-hits.csv</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is stored online and contains audio statistics of the top 2000 tracks on Spotify from 2000-2019. The data is stored in a <span style="color:dodgerblue"><strong>comma separated file (csv)</strong></span>. We can use the function <code>read.csv()</code> to import the csv file into an R data frame we call <code>hits</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>hits <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/CU-Denver-MathStats-OER/Statistical-Theory/main/Data/spotify-hits.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -522,7 +519,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-1" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-1">Solution to Question 1</h3>
 <hr>
-<p>&nbsp; &nbsp; &nbsp;</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="creating-a-random-playlist" class="level2">
@@ -549,18 +548,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>playlist <span class="ot">&lt;-</span> hits[index,]  <span class="co"># save each song from index to a playlist</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(playlist)  <span class="co"># print the playlist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                    artist                                            song
-1047             Timbaland    If We Ever Meet Again (Featuring Katy Perry)
-1643 Fitz and The Tantrums                                        HandClap
-1968                DaBaby                                            Suge
-476            Alicia Keys Diary (feat. Tony! Toni! Tone! &amp; Jermaine Paul)
-738               Fabolous                                  Make Me Better
-       tempo             genre
-1047 126.091 hip hop, pop, R&amp;B
-1643 139.956         pop, rock
-1968  75.445           hip hop
-476  127.932          pop, R&amp;B
-738   86.491 hip hop, pop, R&amp;B</code></pre>
+<pre><code>            artist             song   tempo                          genre
+1681    Steve Aoki     Just Hold On 114.991 hip hop, pop, Dance/Electronic
+563           2Pac    Ghetto Gospel  80.569                        hip hop
+1425  O.T. Genasis             CoCo 119.906                   hip hop, pop
+329  Delta Goodrem Lost Without You 146.301                            pop
+1827         Migos       MotorSport 137.996                   hip hop, pop</code></pre>
 </div>
 </div>
 </section>
@@ -620,10 +613,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-2" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-2">Solution to Question 2</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
@@ -695,10 +687,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-3" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-3">Solution to Question 3</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-4" class="level2">
@@ -708,10 +699,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-4" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-4">Solution to Question 4</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 <section id="plotting-distribution-functions" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-distribution-functions">Plotting Distribution Functions</h3>
@@ -722,19 +712,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n  <span class="co"># vector from 0 to n=3</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p), <span class="at">main =</span> <span class="st">"Graph of pmf"</span>, <span class="at">xlab =</span> <span class="st">"Number of Pop Songs"</span>, <span class="at">ylab =</span> <span class="st">"p(x)"</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">pbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p), <span class="at">type=</span><span class="st">"s"</span>, <span class="at">main =</span> <span class="st">"Graph of cdf"</span>, <span class="at">xlab =</span> <span class="st">"Number of Pop Songs"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p), </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Graph of pmf"</span>, </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of Pop Songs"</span>, </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"p(x)"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">pbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p), </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">"s"</span>, </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Graph of cdf"</span>, </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of Pop Songs"</span>, </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"F(x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-Intro-to-Random-Variables_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
 <hr>
-<p>Let <span class="math inline">\(X\)</span> is a discrete random variable with pmf and cdf denoted <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(F(x)\)</span>, respectively. Determine if each statement is True or False.</p>
+<p>Let <span class="math inline">\(X\)</span> a discrete random variable with pmf and cdf denoted <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(F(x)\)</span>, respectively. Determine if each statement is True or False.</p>
 <ol type="a">
 <li><span class="math inline">\(0 \leq p(x) \leq 1\)</span> for all <span class="math inline">\(x\)</span>.</li>
 <li><span class="math inline">\(0 \leq F(x) \leq 1\)</span> for all <span class="math inline">\(x\)</span>.</li>
@@ -749,17 +746,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="solution-to-question-5">Solution to Question 5</h3>
 <hr>
 <p>List the properties (a)-(h) that are indeed TRUE.</p>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 </section>
 <section id="continuous-random-variables" class="level1">
 <h1>Continuous Random Variables</h1>
 <hr>
-<p>Discrete random variables map outcomes in the sample space to integers. In many situations we would like to consider mapping outcomes to a continuous interval of values, not just integers. For example, what is probability that randomly selected song has a tempo less than 82 beats per minute (BPM)?</p>
+<p>Discrete random variables map outcomes in the sample space to integers. In many situations we would like to consider mapping outcomes to a continuous interval of values, not just integers. For example, what is the probability that randomly selected song has a tempo less than 82 beats per minute (BPM)?</p>
 <ul>
 <li>The sample space <span class="math inline">\(\Omega\)</span> consists of the set of all songs in <code>hits</code>.</li>
 <li><span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> where we map each selected song to its tempo (in BPM).</li>
@@ -767,14 +763,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Using modern technology such as music sequencers tempo has become a very precise measurement. Tempo is an important characteristic in electronic dance music where accurate measurement of a tune’s BPM is important to DJ’s when mixing music.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hits<span class="sc">$</span>tempo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hits<span class="sc">$</span>tempo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   60.02   98.99  120.02  120.12  134.27  210.85 </code></pre>
 </div>
 </div>
 <ul>
-<li>From the summary above, we see tempo is continuous measurement (it has decimal values) from a minimum of <span class="math inline">\(60.02\)</span> BPM to a maximum <span class="math inline">\(210.85\)</span> BPM.</li>
+<li>From the summary above, we see tempo is a continuous measurement (it has decimal values) from a minimum of <span class="math inline">\(60.02\)</span> BPM to a maximum <span class="math inline">\(210.85\)</span> BPM.</li>
 </ul>
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
@@ -784,23 +780,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Experiment with the number of breaks to improve the accuracy of your approximation!</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hits<span class="sc">$</span>tempo,  <span class="co"># vector of tempo measurements</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Student To-Do: Adjust breaks</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">10</span>,  <span class="co"># number of bin ranges to use</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################     </span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,  <span class="co"># add count labels above each bar</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (BPM)"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default x-axis ticks</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default y-axis ticks</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">650</span>),  <span class="co"># sets window for y-axis</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Tempos"</span>,  <span class="co"># main label</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">60</span>, <span class="dv">220</span>, <span class="dv">10</span>))  <span class="co"># set custom ticks on x-axis</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">650</span>, <span class="dv">50</span>))  <span class="co"># set custom ticks on y-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hits<span class="sc">$</span>tempo,  <span class="co"># vector of tempo measurements</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Student To-Do: Adjust breaks</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">10</span>,  <span class="co"># number of bin ranges to use</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################     </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,  <span class="co"># add count labels above each bar</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (BPM)"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default x-axis ticks</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default y-axis ticks</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">650</span>),  <span class="co"># sets window for y-axis</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Tempos"</span>,  <span class="co"># main label</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">60</span>, <span class="dv">220</span>, <span class="dv">10</span>))  <span class="co"># set custom ticks on x-axis</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">650</span>, <span class="dv">50</span>))  <span class="co"># set custom ticks on y-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-Intro-to-Random-Variables_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -808,10 +804,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-6" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-6">Solution to Question 6</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="relative-frequency-histograms" class="level2">
@@ -831,20 +826,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Using the output from the code cell below, approximate <span class="math inline">\(P(X &lt; 85)\)</span>. <em>Hint: The area of each bar corresponds to the proportion of songs in <code>hits</code> that are in the corresponding bin range of tempos.</em></p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hits<span class="sc">$</span>tempo,  <span class="co"># vector of tempo measurements</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,  <span class="co"># number of bin ranges to use</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,  <span class="co"># add count labels above each bar</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (BPM)"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default x-axis ticks</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default y-axis ticks</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Relative Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.025</span>),  <span class="co"># sets window for y-axis</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Tempos"</span>,  <span class="co"># main label</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">60</span>, <span class="dv">220</span>, <span class="dv">10</span>))  <span class="co"># set custom ticks on x-axis</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.025</span>, <span class="fl">0.005</span>))  <span class="co"># set custom ticks on y-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hits<span class="sc">$</span>tempo,  <span class="co"># vector of tempo measurements</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,  <span class="co"># number of bin ranges to use</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="cn">TRUE</span>,  <span class="co"># add count labels above each bar</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (BPM)"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default x-axis ticks</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default y-axis ticks</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Relative Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.025</span>),  <span class="co"># sets window for y-axis</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Tempos"</span>,  <span class="co"># main label</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">60</span>, <span class="dv">220</span>, <span class="dv">10</span>))  <span class="co"># set custom ticks on x-axis</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.025</span>, <span class="fl">0.005</span>))  <span class="co"># set custom ticks on y-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-Intro-to-Random-Variables_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -852,10 +847,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-7" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-7">Solution to Question 7</h3>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="density-plots" class="level2">
@@ -866,20 +860,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>First convert the values of a quantitative variable to densities with the <code>density()</code> function.</li>
 </ol>
 <ul>
-<li>For more information, see <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/density">density help documentation</a>.</li>
+<li>For more information, see <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/density" target="_blank">density help documentation</a>.</li>
 </ul>
 <ol start="2" type="1">
 <li>Use the <code>plot()</code> function to plot the densities.</li>
 </ol>
 <ul>
-<li>For more advanced density plots see <a href="https://r-graph-gallery.com/density-plot.html" class="uri">https://r-graph-gallery.com/density-plot.html</a>.</li>
+<li>For more advanced density plots see <a href="https://r-graph-gallery.com/density-plot.html" target="_blank">https://r-graph-gallery.com/density-plot.html</a>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># approximate densities and then plot</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(hits<span class="sc">$</span>tempo),  <span class="co"># convert to density and then plot</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"density (proportion per BPM)"</span>,  <span class="co"># vertical axis label</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (in BPM)"</span>,  <span class="co"># horizontal axis label</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Song Tempos"</span>)  <span class="co"># main title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># approximate densities and then plot</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(hits<span class="sc">$</span>tempo),  <span class="co"># convert to density and then plot</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"density (proportion per BPM)"</span>,  <span class="co"># vertical axis label</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (in BPM)"</span>,  <span class="co"># horizontal axis label</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Song Tempos"</span>)  <span class="co"># main title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-Intro-to-Random-Variables_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -891,30 +885,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><span style="color:dodgerblue"><strong>We approximate the AREA below the density curve over the interval from 0 to 85 BPM.</strong></span></li>
 <li>If we have a theoretical model <span class="math inline">\(f(x)\)</span> for the density, <span style="color:dodgerblue"><strong>we can use definite integrals to compute these proportions!</strong></span></li>
-<li>Run the cod cell below to sketch an area corresponding to <span class="math inline">\(P(X&lt;85)\)</span>. There is nothing to edit in the code cell.</li>
+<li>Run the code cell below to sketch an area corresponding to <span class="math inline">\(P(X&lt;85)\)</span>. There is nothing to edit in the code cell.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">###############################</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Area representing P(X &lt; 85)</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run code without editting</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>den <span class="ot">&lt;-</span> <span class="fu">density</span>(hits<span class="sc">$</span>tempo)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(den,  <span class="co"># plot density of tempo</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"density (proportion per BPM)"</span>,  <span class="co"># vertical axis label</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (in BPM)"</span>,  <span class="co"># horizontal axis label</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">'n'</span>,  <span class="co"># turn off default x-axis ticks</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Song Tempos"</span>)  <span class="co"># main title</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill area from 0 to 85 BPM</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">85</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(den<span class="sc">$</span>x[den<span class="sc">$</span>x <span class="sc">&lt;=</span> value ], value),</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(den<span class="sc">$</span>y[den<span class="sc">$</span>x <span class="sc">&lt;=</span> value ], <span class="dv">0</span>),</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"slateblue1"</span>,</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="dv">1</span>)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, value, value))  <span class="co"># set custom ticks on x-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">###############################</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Area representing P(X &lt; 85)</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run code without editting</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>den <span class="ot">&lt;-</span> <span class="fu">density</span>(hits<span class="sc">$</span>tempo)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(den,  <span class="co"># plot density of tempo</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"density (proportion per BPM)"</span>,  <span class="co"># vertical axis label</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo (in BPM)"</span>,  <span class="co"># horizontal axis label</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">'n'</span>,  <span class="co"># turn off default x-axis ticks</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Song Tempos"</span>)  <span class="co"># main title</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill area from 0 to 85 BPM</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">85</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(den<span class="sc">$</span>x[den<span class="sc">$</span>x <span class="sc">&lt;=</span> value ], value),</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">c</span>(den<span class="sc">$</span>y[den<span class="sc">$</span>x <span class="sc">&lt;=</span> value ], <span class="dv">0</span>),</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"slateblue1"</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="dv">1</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, value, value))  <span class="co"># set custom ticks on x-axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-Intro-to-Random-Variables_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -977,10 +971,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="properties-of-continuous-random-variables" class="level2">
@@ -1005,10 +998,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="solution-to-question-9">Solution to Question 9</h3>
 <hr>
 <p>List the properties (a)-(h) that are indeed TRUE.</p>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-10" class="level2">
@@ -1026,10 +1018,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-10a" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-10a">Solution to Question 10a</h4>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 </section>
 </section>
 <section id="question-10b" class="level3">
@@ -1039,10 +1030,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-to-question-10b" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-10b">Solution to Question 10b</h4>
 <hr>
-<p><br>
-<br>
-<br>
-</p>
+<p><br><br>
+<br><br>
+<br></p>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
@@ -1055,7 +1045,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Downloaded from <a href="https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019">Kaggle</a> May 4, 2023<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Downloaded from <a href="https://www.kaggle.com/datasets/paradisejoy/top-hits-spotify-from-20002019" target="_blank">Kaggle</a> May 4, 2023<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
