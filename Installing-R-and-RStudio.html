@@ -8,7 +8,7 @@
 
 <meta name="author" content="Adam Spiegler, University of Colorado Denver">
 
-<title>Statistical Methods: Exploring the Uncertain</title>
+<title>Statistical Methods: Exploring the Uncertain - Appendix A — Installing R and RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-Intro-to-Inference.html" rel="next">
+<link href="./Intro-to-Vectors-Dataframes.html" rel="next">
+<link href="./25-Error-Types-and-Power-of-Tests.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Installing-R-and-RStudio.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Installing-R-and-RStudio.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -313,6 +348,11 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Installing-R-and-RStudio.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Installing R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Intro-to-Vectors-Dataframes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentals of Working with Data</span></a>
   </div>
 </li>
@@ -333,20 +373,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#what-is-r-and-what-is-rstudio" id="toc-what-is-r-and-what-is-rstudio" class="nav-link active" data-scroll-target="#what-is-r-and-what-is-rstudio">What is R and What is RStudio?</a></li>
+  <li><a href="#installing-r-and-rstudio-is-free" id="toc-installing-r-and-rstudio-is-free" class="nav-link" data-scroll-target="#installing-r-and-rstudio-is-free">Installing R and RStudio is FREE!</a>
   <ul class="collapse">
-  <li><a href="#a-virtual-lab-for-exploring-statistics" id="toc-a-virtual-lab-for-exploring-statistics" class="nav-link" data-scroll-target="#a-virtual-lab-for-exploring-statistics">A Virtual Lab for Exploring Statistics</a></li>
-  <li><a href="#how-to-access-edit-and-save-notebooks" id="toc-how-to-access-edit-and-save-notebooks" class="nav-link" data-scroll-target="#how-to-access-edit-and-save-notebooks">How to Access, Edit and Save Notebooks</a></li>
-  <li><a href="#what-programming-background-is-required" id="toc-what-programming-background-is-required" class="nav-link" data-scroll-target="#what-programming-background-is-required">What Programming Background is Required?</a>
-  <ul class="collapse">
-  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r">What is R?</a></li>
-  <li><a href="#what-is-latex" id="toc-what-is-latex" class="nav-link" data-scroll-target="#what-is-latex">What is LaTex?</a></li>
+  <li><a href="#step-0-visit-httpsposit.codownloadrstudio-desktop" id="toc-step-0-visit-httpsposit.codownloadrstudio-desktop" class="nav-link" data-scroll-target="#step-0-visit-httpsposit.codownloadrstudio-desktop">Step 0: Visit https://posit.co/download/rstudio-desktop/</a></li>
+  <li><a href="#step-1-install-r" id="toc-step-1-install-r" class="nav-link" data-scroll-target="#step-1-install-r">Step 1: Install R</a></li>
+  <li><a href="#step-2-install-rstudio" id="toc-step-2-install-rstudio" class="nav-link" data-scroll-target="#step-2-install-rstudio">Step 2: Install RStudio</a></li>
   </ul></li>
-  <li><a href="#how-to-contact-me" id="toc-how-to-contact-me" class="nav-link" data-scroll-target="#how-to-contact-me">How to Contact Me</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#opening-rstudio" id="toc-opening-rstudio" class="nav-link" data-scroll-target="#opening-rstudio">Opening RStudio</a>
+  <ul class="collapse">
+  <li><a href="#downloading-and-opening-this-file" id="toc-downloading-and-opening-this-file" class="nav-link" data-scroll-target="#downloading-and-opening-this-file">Downloading and Opening this File</a></li>
+  </ul></li>
+  <li><a href="#key-packages-to-get-started" id="toc-key-packages-to-get-started" class="nav-link" data-scroll-target="#key-packages-to-get-started">Key Packages to Get Started</a>
+  <ul class="collapse">
+  <li><a href="#what-are-packages-in-r" id="toc-what-are-packages-in-r" class="nav-link" data-scroll-target="#what-are-packages-in-r"><strong>What are packages in R?</strong></a></li>
+  </ul></li>
+  <li><a href="#loading-libraries-of-functions-in-packages" id="toc-loading-libraries-of-functions-in-packages" class="nav-link" data-scroll-target="#loading-libraries-of-functions-in-packages">Loading Libraries of Functions in Packages</a></li>
+  <li><a href="#what-is-markdown" id="toc-what-is-markdown" class="nav-link" data-scroll-target="#what-is-markdown">What is Markdown?</a></li>
   <li><a href="#creative-commons-license-information" id="toc-creative-commons-license-information" class="nav-link" data-scroll-target="#creative-commons-license-information">Creative Commons License Information</a></li>
-  <li><a href="#quarto-books" id="toc-quarto-books" class="nav-link" data-scroll-target="#quarto-books">Quarto Books</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -355,7 +399,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistical Methods: Exploring the Uncertain</h1>
+<h1 class="title">Appendix A — Installing R and RStudio</h1>
 </div>
 
 
@@ -376,122 +420,132 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<section id="what-is-r-and-what-is-rstudio" class="level1">
+<h1>What is R and What is RStudio?</h1>
 <hr>
-<p><em>Statistical Methods: Exploring the Uncertain</em> is a set of interactive course materials designed to explore statistical methods. These materials are Open Education Resources (OER) designed to serve as both the textbook and in-class labs for MATH 3382: Statistical Theory at University of Colorado Denver. MATH 3382 is an undergraduate course in statistics at the 300 (junior) level that is required for all math majors at University of Colorado Denver. These materials are not intended for an introduction to statistics course for a more general audience of students from various backgrounds that are typically at the 100 or 200 levels. Students of Mathematics, Statistics, Data Science, Economics, Biostatistics, Computer Science and other STEM fields that want to advance beyond a typical introduction to statistics course are the intended audience.</p>
-<p>The materials are designed for full semester (3 credit) course. Topics covered include exploratory data analysis, statistical inference, probability, sampling distributions, maximum likelihood estimators, method of moments estimators, properties of estimators, confidence intervals (both bootstrap and parametric methods), and hypothesis tests (both permutation tests and parametric methods)</p>
-<p>The prerequisite for the course at CU Denver is multivariable calculus; however, students with a background in single variable calculus are able to work through the materials as well. The only instance where multivariable calculus might arise is with joint probability distributions and maximum likelihood estimators for distributions with two or more parameters, both of these applications can be skipped.</p>
-<p>Students are not required to have any previous course work in statistics, probability, or coding in R (or any other language). The “essentials” of probability are covered in Chapter 2 with a focus on how we apply theory from probability to do statistics. These materials do not include a comprehensive treatment of probability.</p>
-<section id="a-virtual-lab-for-exploring-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="a-virtual-lab-for-exploring-statistics">A Virtual Lab for Exploring Statistics</h2>
-<hr>
-<p>These materials are intended as set of activities to experiment and explore statistical theory and methods. Each interactive Jupyter notebooks is a “virtual laboratory” where we perform our experiments and summarize the results. The objectives of experimental mathematics/statistics are generally to make the subject <font color="dodgerblue"><strong>more tangible, lively and fun.</strong></font></p>
-<p>The intent of introducing R is not to avoid a deep and rigorous understanding of statistics or to use R simply as a calculator. There are other sources that skim the surface of statistical concepts and instead focus on the coding side of things. These materials use R as an additional tool for further exploring statistics to gain a deeper insight into statistical models. Some of the objectives of implementing R code cells into the materials are to:</p>
+<p><a href="https://www.r-project.org/about.html">R</a> is a programming language used largely for statistical computing, data wrangling and visualization.</p>
 <ul>
-<li>Easily import and analyze real data from interesting studies and experiments.</li>
-<li>Create insightful data visualizations.</li>
-<li>Explore features of the data to generate statistical questions worth investigating.</li>
-<li>Discover patterns and relationships between variables.</li>
-<li>Introduce and implement resampling methods.</li>
-<li>Develop and test conjectures.</li>
-<li>Confirm analytically derived results.</li>
-<li>Gain further insight and intuition.</li>
-<li><font color="dodgerblue"><strong>Bridge the divide between theory and practice.</strong></font></li>
+<li>R is <strong>FREE</strong> to download.</li>
+<li>The first stable version was released in 2000.</li>
+<li>Open source and works cross all platforms.</li>
+<li>Excellent tool for data wrangling.</li>
+<li>Generates nice graphics.</li>
+<li>Export to pdf, html, Word or PowerPoint.</li>
+<li>Large community with tons of useful packages.</li>
+</ul>
+<p><strong>RStudio</strong> is an IDE (integrated development environment) for R. More simply stated, RStudio is an application that allows you to edit, run, and see results of code.</p>
+<ul>
+<li>RStudio is available in open source editions and runs on Windows, Mac, and Linux.</li>
+<li><strong>RStudio Desktop</strong> is <strong>FREE</strong> to download locally on your device.</li>
+<li><strong>RStudio Server</strong> runs on a remote server through a web browser.</li>
 </ul>
 </section>
-<section id="how-to-access-edit-and-save-notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-access-edit-and-save-notebooks">How to Access, Edit and Save Notebooks</h2>
+<section id="installing-r-and-rstudio-is-free" class="level1">
+<h1>Installing R and RStudio is FREE!</h1>
 <hr>
-<p>This <a href="https://aspiegler.github.io/Statistical-Theory/" target="_blank">html version</a> of the materials is not dynamic. You cannot edit the text or run code with the html version.</p>
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap1/01-Intro-to-Inference.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
-<ul>
-<li>At the top of each notebook is a “button” such as the one above.</li>
-<li>Click the button to open an interactive Jupyter notebook version initialized to run R code in <a href="https://colab.research.google.com/" target="_blank">Google Colaboratory</a> (or Colab).</li>
-<li>You can begin working with the notebook right away in Colab! There is no software to install (or purchase!).</li>
-<li>You can also access the materials directly on GitHub at <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory.git" class="uri">https://github.com/CU-Denver-MathStats-OER/Statistical-Theory.git</a>.</li>
-</ul>
-<p>Each Jupyter notebook contains both narrative text (in Markdown cells) and R code cells that you can create, modify, and run.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Although you do not need a Google account to interact with the notebooks, the Colab notebooks are “shared”, meaning you cannot save any changes to the initial shared document that opens. <strong>If you would like to save your changes, you first need to save a copy to your Google Drive.</strong> Then you can edit and save changes to your own version.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In addition to Jupyter notebooks versions that run in Colab, the original Quarto markdown documents (with file extension .qmd) are also included in the repo if you prefer to run and edit the labs using Posit, RStudio or other available applications. Both the Jupyter (.ipynb) and Quarto markdown (.qmd) versions are identical and both use R.</p>
-</div>
-</div>
+<section id="step-0-visit-httpsposit.codownloadrstudio-desktop" class="level2">
+<h2 class="anchored" data-anchor-id="step-0-visit-httpsposit.codownloadrstudio-desktop">Step 0: Visit <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></h2>
+<hr>
+<p>Go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>.</p>
 </section>
-<section id="what-programming-background-is-required" class="level2">
-<h2 class="anchored" data-anchor-id="what-programming-background-is-required">What Programming Background is Required?</h2>
+<section id="step-1-install-r" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-install-r">Step 1: Install R</h2>
 <hr>
-<p>No prior experience or knowledge of R, Markdown, LaTeX, or Colaboratory is assumed or required to begin working with these materials. After working with these materials, you will have some knowledge and experience with R, Markdown, LaTeX, and Colaboratory!</p>
 <ul>
-<li><a href="https://colab.research.google.com/notebooks/intro.ipynb" target="_blank">Welcome to Colaboratory</a> is a helpful notebook (with videos) to help introduce you to Colab.</li>
-<li>Here’s a helpful <a href="https://colab.research.google.com/notebooks/markdown_guide.ipynb" target="_blank">Markdown guide</a>.</li>
+<li><strong>Mac Users:</strong> Download R by visiting <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a> and clicking on the most recent version. For example depending on the version number, the file name is <code>R-4.3.0-arm64.pkg</code> or <code>R-4.3.0.pkg</code> depending on what type of Mac you own.
+<ul>
+<li><strong>Note there are two versions available for Mac OS</strong>.</li>
+<li>Use the top link for <code>R-4.3.0-arm64.pkg</code> for M1 and higher Macs only.</li>
+<li>Use the second link for <code>R-4.3.0.pkg</code> for Intel Macs.</li>
+<li>If you are not sure which version of Mac you have, <a href="https://www.howtogeek.com/706226/how-to-check-if-your-mac-is-using-an-intel-or-apple-silicon-processor/">here is a good source</a>.</li>
+</ul></li>
+<li><strong>PC Users:</strong> Download R by visiting <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a> and clicking on the most recent version. For example depending on the version number, the file name is <code>R-4.3.0 for Windows</code>.</li>
 </ul>
-<section id="what-is-r" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-r">What is R?</h3>
-<hr>
-<p><a href="https://www.r-project.org/about.html" target="_blank">R</a> is a programming language used largely for statistical computing, data wrangling and visualization. We will be using R as a tool for exploring statistical theory. The first stable version of R was released in 2000, and after all of this time, there is a large community of R users that have already created tons of useful packages and shared interesting data sets that are frequently updated. We will create, modify, and run R code in Jupyter notebooks. <strong>No prior programming experience is required to begin working in R in these materials.</strong></p>
-<p>The goal of these materials are to investigate statistical theory, not learn how to be an expert R programmer. The hope is that we can use R as a tool for experimenting, gaining a deeper insight, and implementing resampling methods. In the process, hopefully you gain a familiarity with R and coding so it is no longer a barrier to future work! Have I mentioned <strong>no prior programming experience is required to begin working in R in these materials</strong>?</p>
 </section>
-<section id="what-is-latex" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-latex">What is LaTex?</h3>
+<section id="step-2-install-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-install-rstudio">Step 2: Install RStudio</h2>
 <hr>
-<p><a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf" target="_blank">LaTeX</a> is a system for rendering nice looking mathematical symbols, expressions, and equations. All of the mathematical notation in these materials are created using LaTeX. You can view and edit all of the LaTeX code in the Markdown cells. You do not need to become an expert in LaTeX, but having a familiarity with LaTeX is quite helpful and LaTeX can be used to typeset math in a number of different applications.</p>
 <ul>
-<li>Here is a useful <a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf" target="_blank">dictionary of LaTeX math symbols</a> to get a glimpse of LaTeX.</li>
+<li>Visit <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></li>
+<li>Select the <strong>DOWNLOAD RSTUDIO DESKTOP</strong> button for the <strong>FREE</strong> open source edition.</li>
+<li>Do NOT choose a version that costs money.</li>
 </ul>
 </section>
 </section>
-<section id="how-to-contact-me" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-contact-me">How to Contact Me</h2>
+<section id="opening-rstudio" class="level1">
+<h1>Opening RStudio</h1>
 <hr>
-<p>If you have any questions, comments, or suggestions about these materials, please feel free to reach out to me (Adam) at <a href="mailto:adam.spiegler@ucdenver.edu">adam.spiegler@ucdenver.edu</a>.</p>
+<p>Now that you have both R and RStudio on your computer, you can begin using R by opening the RStudio program. Open RStudio just as you would any program, by clicking on its icon or other methods such as typing “RStudio” at the Windows Run prompt.</p>
+<section id="downloading-and-opening-this-file" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-and-opening-this-file">Downloading and Opening this File</h2>
+<hr>
+<ol type="1">
+<li><a href="https://drive.google.com/uc?export=download&amp;id=1orbs55eR8xt30tgkSnt0t_945KfNU2IQ">Click Here to Download This Markdown File</a></li>
+<li>From RStudio, choose <code>File -&gt; Open File</code> and select the appropriate file location.</li>
+</ol>
+</section>
+</section>
+<section id="key-packages-to-get-started" class="level1">
+<h1>Key Packages to Get Started</h1>
+<hr>
+<section id="what-are-packages-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-packages-in-r"><strong>What are packages in R?</strong></h2>
+<hr>
+<blockquote class="blockquote">
+<p>“Many useful R function come in packages, free libraries of code written by R’s active user community.” Source: <a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">RStudio support website</a></p>
+</blockquote>
 <ul>
-<li>Considering using these materials in your course? Please let me know if I can help.</li>
-<li>If you do use some of these materials in your course, your feedback is welcome and appreciated.</li>
-<li>If you materials that you would like to share or contribute to this project, great!</li>
+<li>For a nice overview see <a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages" class="uri">https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages</a>.</li>
+<li>You can install a single package such as <code>dplyr</code> by running R the code cell below.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Or you can install several at once, in the Console below (or running the code cell below).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"ggplot2"</span>, <span class="st">"DataExplorer"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>You only need to install a package once (or when updating).</strong></li>
+<li><strong>The packages above have not yet been loaded however!</strong></li>
 </ul>
 </section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<hr>
-<p><img src="https://cdhe.colorado.gov/sites/highered/files/logo.svg" class="img-fluid" style="width:30.0%" data-fig-align="left" target="_blank" alt="Colorado Department of Higher Education"><nbsp></nbsp></p>
-<p>This project was supported by the <a href="https://cdhe.colorado.gov/" target="_blank">Colorado Department of Higher Education (CDHE)</a> OER Grant Program. A big thank you to Megan Patnott for reviewing the materials and providing many great corrections and suggestions to improve the materials!</p>
 </section>
-<section id="creative-commons-license-information" class="level2">
-<h2 class="anchored" data-anchor-id="creative-commons-license-information">Creative Commons License Information</h2>
+<section id="loading-libraries-of-functions-in-packages" class="level1">
+<h1>Loading Libraries of Functions in Packages</h1>
 <hr>
-<p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
+<ul>
+<li>Although we only need to intall a package once in order to access it, <strong>we need to load package each time we start a new R session</strong>.</li>
+<li>You can load the libraries in a package by running the code cell below.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-is-markdown" class="level1">
+<h1>What is Markdown?</h1>
+<hr>
+<p>This is a Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.</p>
+</section>
+<section id="creative-commons-license-information" class="level1">
+<h1>Creative Commons License Information</h1>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Creative Commons License</figcaption>
+</figure>
+</div>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler (University of Colorado Denver)</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. This work is funded by an <a href="https://cdhe.colorado.gov/educators/administration/institutional-groups/open-educational-resources-in-colorado">Institutional OER Grant from the Colorado Department of Higher Education (CDHE)</a>.</p>
 <p>For similar interactive OER materials in other courses funded by this project in the Department of Mathematical and Statistical Sciences at the University of Colorado Denver, visit <a href="https://github.com/CU-Denver-MathStats-OER" class="uri">https://github.com/CU-Denver-MathStats-OER</a>.</p>
-</section>
-<section id="quarto-books" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-books">Quarto Books</h2>
-<hr>
-<p>These materials are creating using Quarto books. To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -730,10 +784,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./25-Error-Types-and-Power-of-Tests.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">6.5: Error Types and Power of Tests</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-Intro-to-Inference.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-title">1.1: Introduction to Statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Intro-to-Vectors-Dataframes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">Fundamentals of Working with Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
