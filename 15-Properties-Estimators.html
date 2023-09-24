@@ -460,9 +460,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/15-Properties-Estimators.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/15-Properties-Estimators.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
 <p><img src="https://www.publicdomainpictures.net/pictures/110000/velka/two-paths-background.jpg" class="img-fluid" style="width:50.0%" data-fig-align="left" alt="Two Paths"> <nbsp></nbsp></p>
-<p>In this section, we continue our study of estimators of population parameters. An <span style="color:dodgerblue"><strong>estimator</strong></span>, denoted <span class="math inline">\(\color{dodgerblue}{\hat{\theta}}\)</span>, is a formula or rule that we use to estimate the value of an unknown population parameter <span class="math inline">\(\theta\)</span>. For a single parameter <span class="math inline">\(\theta\)</span>, there are many (possibly infinite) different estimators <span class="math inline">\(\hat{\theta}\)</span> from which to choose from. We have more deeply investigated two particularly useful methods: <a href="./13-Estimation-MLE.html">maximum likelihood estimates (MLE)</a> and <a href="./14-Estimation-MOM.html">method of moments</a> estimation.</p>
+<p>In this section, we continue our study of estimators of population parameters. An <span style="color:dodgerblue"><strong>estimator</strong></span>, denoted <span class="math inline">\(\color{dodgerblue}{\hat{\theta}}\)</span>, is a formula or rule that we use to estimate the value of an unknown population parameter <span class="math inline">\(\theta\)</span>. For a single parameter <span class="math inline">\(\theta\)</span>, there are many (possibly infinite) different estimators <span class="math inline">\(\hat{\theta}\)</span> from which to choose from. We have more deeply investigated two particularly useful methods: <a href="./13-Estimation-MLE.html" target="_blank">maximum likelihood estimates (MLE)</a> and <a href="./14-Estimation-MOM.html" target="_blank">method of moments</a> estimation.</p>
 <p>We can think of different estimators, <span class="math inline">\(\hat{\theta}\)</span>, as different paths attempting to arrive at the same destination, the value of <span class="math inline">\(\theta\)</span>. Different statisticians might prefer different paths, which path is optimal? Sometimes different methods lead to the same result, and sometimes they differ. When they differ, how do we decide which estimate is best?</p>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
@@ -625,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
 <hr>
-<p>Let <span class="math inline">\(X\)</span> denote the diastolic blood pressure (in mm Hg) of a randomly selected woman from the Pima Indian Community. The <a href="https://itcaonline.com/member-tribes/salt-river-pima-maricopa-indian-community/">Pima Indian Community</a> is mostly located outside of Phoenix, Arizona. The data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> used in this example is from the data frame <code>Pima.tr</code> in the <code>MASS</code> package.</p>
+<p>Let <span class="math inline">\(X\)</span> denote the diastolic blood pressure (in mm Hg) of a randomly selected woman from the Pima Indian Community. The <a href="https://itcaonline.com/member-tribes/salt-river-pima-maricopa-indian-community/" target="_blank">Pima Indian Community</a> is mostly located outside of Phoenix, Arizona. The data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> used in this example is from the data frame <code>Pima.tr</code> in the <code>MASS</code> package.</p>
 <p>If we suppose blood pressure is normally distributed, then we have <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>. We would like to decide which estimator is best for the population mean <span class="math inline">\(\mu\)</span>. We pick a random sample of <span class="math inline">\(n=20\)</span> women in the code cell below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)  <span class="co"># load MASS package to access data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -696,7 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-2b" class="level3">
 <h3 class="anchored" data-anchor-id="question-2b">Question 2b</h3>
 <hr>
-<p>To help decide which estimator performs best, we can consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from the same population. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpnormal">Figure&nbsp;<span>16.1</span></a>, rank the four estimators from least to most bias and from most to least precise. Explain your reasoning.</p>
+<p>To help decide which estimator performs best, we can consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from the same population. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpnormal">Figure&nbsp;<span>16.1</span></a>, rank the four estimators from least to most bias and from most to least precise. <span style="color:dodgerblue">The blue vertical line represents the actual value of <span class="math inline">\(\mu\)</span>.</span> <span style="color:tomato">The red vertical line marks the expected value of the estimator.</span> Explain your reasoning.</p>
 <div id="fig-bpnormal" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -750,7 +750,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="question-2c">Question 2c</h3>
 <hr>
 <p>We still let <span class="math inline">\(X\)</span> denote the diastolic blood pressure (in mm Hg) of a randomly selected woman from the Pima Indian Community. However, now we suppose blood pressure is <strong>uniformly distributed</strong> over the interval <span class="math inline">\(\lbrack 41.26, 101.26 \rbrack\)</span>. Although a uniform distribution would not make practical sense for blood pressure, we make this assumption in order to investigate how the shape of the population may affect which estimator works best.</p>
-<p>Consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from a <strong>uniformly distributed population</strong>. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpunif">Figure&nbsp;<span>16.2</span></a>, rank the four estimators again from least to most bias and from most to least precise. <strong>Compare your updated rankings to those from <a href="#question-2b">Question 2b</a>. Did your rankings change?</strong></p>
+<p>Consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from a <strong>uniformly distributed population</strong>. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpunif">Figure&nbsp;<span>16.2</span></a>, rank the four estimators again from least to most bias and from most to least precise. <span style="color:dodgerblue">The blue vertical line represents the actual value of <span class="math inline">\(\mu\)</span>.</span> <span style="color:tomato">The red vertical line marks the expected value of the estimator.</span> <strong>Compare your updated rankings to those from <a href="#question-2b">Question 2b</a>. Did your rankings change?</strong></p>
 <div id="fig-bpunif" class="cell quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -831,7 +831,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use <a href="./06-Expected-Value-and-Variance.html#sec-prop-exp">properties of expected value</a> and recall these useful formulas for <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span>,</p>
+<p>Use <a href="./06-Expected-Value-and-Variance.html#sec-prop-exp" target="_blank">properties of expected value</a> and recall these useful formulas for <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span>,</p>
 <p><span class="math display">\[E(X) = np \quad \mbox{and} \quad \mbox{Var}(X) = np(1-p).\]</span></p>
 </div>
 </div>
@@ -1036,7 +1036,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Recall properties we can apply when finding the <a href="./06-Expected-Value-and-Variance.html#sec-prop-var">variance of a linear combination of independent random variables</a>, and note <strong>the variances will depend on the unknown value of the population variance,</strong> <span class="math inline">\(\mathbf{\sigma^2}\)</span>.</p>
+<p>Recall properties we can apply when finding the <a href="./06-Expected-Value-and-Variance.html#sec-prop-var" target="_blank">variance of a linear combination of independent random variables</a>, and note <strong>the variances will depend on the unknown value of the population variance,</strong> <span class="math inline">\(\mathbf{\sigma^2}\)</span>.</p>
 </div>
 </div>
 <section id="solution-to-question-5b" class="level4">
@@ -1072,7 +1072,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use <a href="./06-Expected-Value-and-Variance.html#sec-prop-var">properties of variance</a> and recall these useful formulas for <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span>,</p>
+<p>Use <a href="./06-Expected-Value-and-Variance.html#sec-prop-var" target="_blank">properties of variance</a> and recall these useful formulas for <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span>,</p>
 <p><span class="math display">\[E(X) = np \quad \mbox{and} \quad \mbox{Var}(X) = np(1-p).\]</span></p>
 </div>
 </div>

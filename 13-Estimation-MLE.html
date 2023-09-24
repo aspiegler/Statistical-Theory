@@ -499,12 +499,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/13-Estimation-MLE.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/13-Estimation-MLE.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
 <p><img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/60165/arrows-in-the-target-clipart-md.png" class="img-fluid" style="width:30.0%" data-fig-align="left" alt="Arrows Hitting a Target"> <nbsp></nbsp></p>
 <p>In Chapter 3, we explored properties of sample statistics picked from a population with a known distribution.</p>
 <ul>
-<li>We analyzed the <a href="./10-Sampling-Dist-Mean.html">distribution of sample means</a> picked from normal and exponential distributions.</li>
-<li>We analyzed the <a href="./11-Sampling-Dist-Prop.html">distribution of sample proportions</a> independently pick from a binomial population.</li>
+<li>We analyzed the <a href="./10-Sampling-Dist-Mean.html" target="_blank">distribution of sample means</a> picked from normal and exponential distributions.</li>
+<li>We analyzed the <a href="./11-Sampling-Dist-Prop.html" target="_blank">distribution of sample proportions</a> independently picked from a binomial population.</li>
 <li>Sampling distributions allowed us to predict how likely we are to pick certain sample statistics when the population is fixed and known.</li>
 </ul>
 <p>However, statistical inference is applied in situations where <span style="color:dodgerblue"><strong>properties of the populations are unknown</strong></span>. A typical workflow for statistical inference is:</p>
@@ -518,14 +518,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Case Study: Slot Machine Jackpots</h1>
 <hr>
 <p><img src="https://cdn.pixabay.com/photo/2018/06/22/17/54/casino-3491252_1280.jpg" class="img-fluid" style="width:50.0%" data-fig-align="left" alt="Slot Machines"> <nbsp></nbsp></p>
-<p>A strategic gambler believes they have identified a faulty slot machine which pays out significantly more money than the other slot machines. She and her friends watch the machine 24 hours a day for 7 days and observed the slot machine paid out the $<span class="math inline">\(1,\!000,\!000\)</span> jackpot prize 10 times during the week. How can she figure out whether the machine is faulty or whether the number of jackpot prizes are within reason?</p>
+<p>A strategic gambler believes they have identified a faulty slot machine which pays out significantly more money than the other slot machines. She and her friends watched the machine 24 hours a day for 7 days and observed the slot machine paid out the $<span class="math inline">\(1,\!000,\!000\)</span> jackpot prize 10 times during the week. How can she figure out whether the machine is faulty or whether the number of jackpot prizes are within reason?</p>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <hr>
 <p>They decide to compare the performance of the suspect slot machine to other slot machines. They pick a random sample of <span class="math inline">\(n=4\)</span> other slot machines and record how many jackpot prizes each machine pays over a one week time frame. Let random variable <span class="math inline">\(X\)</span> denote the number of jackpots a randomly selected slot machine pays out in week. What distribution do you think best models <span class="math inline">\(X\)</span>? Give a corresponding formula for the probability mass function of <span class="math inline">\(X\)</span>.</p>
 <ul>
 <li><em>Hint: Should we use a discrete or continuous random variable?</em></li>
-<li><em>Hint: See either <a href="./07-Common-Discrete-RandVar.html#sec-append">appendix of common discrete random variables</a> or <a href="./08-Common-Continuous-Distributions.html#sec-append">appendix of common continuous random variables</a> for additional help.</em></li>
+<li><em>Hint: See either <a href="./07-Common-Discrete-RandVar.html#sec-append" target="_blank">appendix of common discrete random variables</a> or <a href="./08-Common-Continuous-Distributions.html#sec-append" target="_blank">appendix of common continuous random variables</a> for additional help.</em></li>
 </ul>
 <section id="solution-to-question-1" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-1">Solution to Question 1</h3>
@@ -551,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pick a population mean that will be fixed but unknown to us</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>true.mean <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">size=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next, we generate a sample size <span class="math inline">\(n=4\)</span>.</p>
+<p>Next, we generate a sample of size <span class="math inline">\(n=4\)</span>.</p>
 <ul>
 <li>Run the code cell below to generate your random sample.</li>
 <li>Each observation <span class="math inline">\(x_i\)</span> in the vector <code>x</code> corresponds to the number of jackpots a randomly selected slot machine paid out in one week.</li>
@@ -737,17 +737,22 @@ Important
 <section id="improving-the-code-for-a-likelihood-function" class="level2">
 <h2 class="anchored" data-anchor-id="improving-the-code-for-a-likelihood-function">Improving the Code for a Likelihood Function</h2>
 <hr>
-<p>If we have a sample size <span class="math inline">\(n=100\)</span> instead of <span class="math inline">\(n=4\)</span>, we would not want to code the likelihood as we did in the previous code cell. We can streamline the process using a for loop that utilizes the structure of likelihood functions:</p>
+<p>If we have a sample size <span class="math inline">\(n=100\)</span> instead of <span class="math inline">\(n=4\)</span>, we would not want to code the likelihood as we did in the previous code cell. We can streamline the code using vectorized functions. In the slot machine example, we have <span class="math inline">\(X \sim \mbox{Pois}(\lambda)\)</span> and a sample <span class="math inline">\(x_1=9\)</span>, <span class="math inline">\(x_2=8\)</span> , <span class="math inline">\(x_3=6\)</span>, and <span class="math inline">\(x_4=5\)</span>.</p>
 <ul>
-<li>Each term in the product uses the same formula for the pmf.</li>
-<li>The likelihood function is a product of all the pmf’s.</li>
-</ul>
-<p>In the slot machine example, we have <span class="math inline">\(X \sim \mbox{Pois}(\lambda)\)</span> and a sample <span class="math inline">\(x_1=9\)</span>, <span class="math inline">\(x_2=8\)</span> , <span class="math inline">\(x_3=6\)</span>, and <span class="math inline">\(x_4=5\)</span>. The vectors <code>x</code> and <code>pmf</code> are therefore</p>
-<p><span class="math display">\[ x = (9, 8, 6, 5) \quad \mbox{and} \quad \mbox{pmf} = \left( \frac{\lambda^{9} e^{-\lambda}}{9!} , \frac{\lambda^{8} e^{-\lambda}}{8!} , \frac{\lambda^{6} e^{-\lambda}}{6!} , \frac{\lambda^{5} e^{-\lambda}}{5!} \right).\]</span></p>
-<p>The likelihood function <code>like</code> is the product of the entries in the vector <code>pmf</code>. We can substitute different values for the parameter <span class="math inline">\(\lambda\)</span> into the function <code>like</code> and compute different values of the likelihood function.</p>
+<li>In a previous code cell, we stored the sample in the vector <code>x</code> <span class="math inline">\(= (9, 8, 6, 5)\)</span>.</li>
+<li>We create the vector <code>pmf</code> as follows:
 <ul>
-<li>Run the code cell below to compute the likelihood that <span class="math inline">\(\lambda = 7\)</span> given the sample <code>x</code>.</li>
+<li><code>lam^x</code> is the vector <span class="math inline">\(\left( \lambda^9, \lambda^8 , \lambda^6 , \lambda^5 \right)\)</span>.</li>
+<li><code>exp(-lam)/factorial(x)</code> is the vector <span class="math inline">\(\left( \frac{e^{-\lambda}}{9!}, \frac{e^{-\lambda}}{8!}, \frac{e^{-\lambda}}{6!}, \frac{e^{-\lambda}}{5!} \right)\)</span>.</li>
+<li>The product of these two vectors in R results in the vector <code>pmf</code>,</li>
+</ul></li>
 </ul>
+<p><span class="math display">\[\mbox{pmf} = \left( \lambda^9 \cdot \frac{e^{-\lambda}}{9!},  \lambda^8 \cdot \frac{e^{-\lambda}}{8!}, \lambda^6 \cdot \frac{e^{-\lambda}}{6!}, \lambda^5 \cdot \frac{e^{-\lambda}}{5!} \right).\]</span></p>
+<ul>
+<li>The function <code>prod(pmf)</code> will take the product of all entries in the vector <code>pmf</code>,</li>
+</ul>
+<p><span class="math display">\[\mbox{like(lam)} =  \left( \frac{\lambda^9 e^{-\lambda}}{9!} \right) \cdot \left( \frac{\lambda^8 e^{-\lambda}}{8!} \right) \cdot \left( \frac{\lambda^6 e^{-\lambda}}{6!} \right) \cdot \left( \frac{\lambda^5 e^{-\lambda}}{5!} \right). \]</span></p>
+<p>Once we define the function <code>like</code>, we can substitute different values for the parameter <span class="math inline">\(\lambda\)</span> into the function <code>like</code> and compute values of the likelihood function. <strong>Run the code cell below to compute the likelihood that <span class="math inline">\(\lambda = 7\)</span> given the sample <code>x</code>.</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>like <span class="ot">&lt;-</span> <span class="cf">function</span>(lam){</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  pmf <span class="ot">&lt;-</span> lam<span class="sc">^</span>x <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>lam)<span class="sc">/</span><span class="fu">factorial</span>(x)</span>
@@ -1349,8 +1354,8 @@ Tip
 </ul>
 <p>For <strong>normal distributions</strong> <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, the maximum likelihood estimates of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\theta\)</span> are <span class="math display">\[\hat{\mu}_{\rm{MLE}} = \frac{1}{n} \sum_{i=1}^n x_i = \bar{x} \quad \mbox{ and } \quad \hat{\sigma}_{\rm{MLE}} = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2}.\]</span></p>
 <ul>
-<li>See <a href="https://towardsdatascience.com/maximum-likelihood-estimation-explained-normal-distribution-6207b322e47f">this post</a> for a derivation of the MLE formulas for <span class="math inline">\(\hat{\mu}_{\rm{MLE}}\)</span> and <span class="math inline">\(\hat{\sigma}_{\rm{MLE}}\)</span>.</li>
-<li><a href="https://online.stat.psu.edu/stat415/lesson/1/1.2">These materials from Penn State</a> also explain how to derive the MLE formulas for <span class="math inline">\(\hat{\mu}_{\rm{MLE}}\)</span> and <span class="math inline">\(\hat{\sigma}_{\rm{MLE}}\)</span>.</li>
+<li>See <a href="https://towardsdatascience.com/maximum-likelihood-estimation-explained-normal-distribution-6207b322e47f" target="_blank">this post</a> for a derivation of the MLE formulas for <span class="math inline">\(\hat{\mu}_{\rm{MLE}}\)</span> and <span class="math inline">\(\hat{\sigma}_{\rm{MLE}}\)</span>.</li>
+<li><a href="https://online.stat.psu.edu/stat415/lesson/1/1.2" target="_blank">These materials from Penn State</a> also explain how to derive the MLE formulas for <span class="math inline">\(\hat{\mu}_{\rm{MLE}}\)</span> and <span class="math inline">\(\hat{\sigma}_{\rm{MLE}}\)</span>.</li>
 </ul>
 </section>
 <section id="recap-of-maximum-likelihood-estimates" class="level1">

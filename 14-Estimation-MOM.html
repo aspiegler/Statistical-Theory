@@ -442,8 +442,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/14-Estimation-MOM.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
-<p>Estimation is generally the process of predicting the value(s) of unknown population parameters using data collected from a sample. There are different statistical methods that can be applied to a data set to reach the same ultimate goal, such as finding an accurate estimate for a parameter. We explored the method of <a href="./13-Estimation-MLE.html">maximum likelihood estimation (MLE)</a>. With MLE estimation, we find the most likely value of a parameter, <span class="math inline">\(\theta\)</span>, by identifying the value for <span class="math inline">\(\theta\)</span> that gives the maximimum value of the likelihood function.</p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/14-Estimation-MOM.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p>Estimation is generally the process of predicting the value(s) of unknown population parameters using data collected from a sample. There are different statistical methods that can be applied to a data set to reach the same ultimate goal, such as finding an accurate estimate for a parameter. We explored the method of <a href="./13-Estimation-MLE.html" target="_blank">maximum likelihood estimation (MLE)</a>. With MLE estimation, we find the most likely value of a parameter, <span class="math inline">\(\theta\)</span>, by identifying the value for <span class="math inline">\(\theta\)</span> that gives the maximimum value of the likelihood function.</p>
 <p>We now explore another estimation method called the <span style="color:dodgerblue"><strong>method of moments</strong></span> (commonly abbreviated as <span style="color:dodgerblue"><strong>MoM</strong></span>). Both MLE and MoM estimates are used to answer the same question, what is the value of an unknown population parameter, <span class="math inline">\(\theta\)</span>? MoM estimates approach the question following a different objective then MLE. We find the values for the population parameters such that certain properties of the population (for example <span class="math inline">\(\mu_X=E(X)\)</span> and <span class="math inline">\(\sigma^2_X = \mbox{Var}(X)\)</span>) are equal to the corresponding statistics (such as the sample mean, <span class="math inline">\(\bar{x}\)</span>, and sample variance, <span class="math inline">\(s^2\)</span>) that we calculate from a randomly selected sample.</p>
 <section id="building-a-model-for-bear-cub-weight" class="level1">
 <h1>Building a Model for Bear Cub Weight</h1>
@@ -509,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>What type of continuous distribution best matches the graph you selected? Explain why in terms of birth weights of black bear cubs this distribution is reasonable and makes practical sense.</p>
 <ul>
-<li><em>Hint: See the <a href="./08-Common-Continuous-Distributions.html#sec-append">appendix of common continuous random variables section</a> for some options.</em></li>
+<li><em>Hint: See the <a href="./08-Common-Continuous-Distributions.html#sec-append" target="_blank">appendix of common continuous random variables section</a> for some options.</em></li>
 </ul>
 <section id="solution-to-question-1b" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-1b">Solution to Question 1b</h4>
@@ -539,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="identifying-key-properties-for-our-model" class="level2">
 <h2 class="anchored" data-anchor-id="identifying-key-properties-for-our-model">Identifying Key Properties for Our Model</h2>
 <hr>
-<p>Let <span class="math inline">\(X\)</span> be a random variable with pdf <span class="math inline">\(f(x; \theta_1, \theta_2, \ \ldots \theta_k)\)</span> that depends on parameters <span class="math inline">\(\theta_1, \theta_2, \ldots , \theta_k\)</span>. If we independently pick a random variables <span class="math inline">\(X_1, X_2, \ldots X_n\)</span> from population <span class="math inline">\(X\)</span>, we can determine the values of <span class="math inline">\(\theta_1, \theta_2, \ldots , \theta_k\)</span> that best fit the data in the following sense:</p>
+<p>Let <span class="math inline">\(X\)</span> be a random variable with pdf <span class="math inline">\(f(x; \theta_1, \theta_2, \ \ldots \theta_k)\)</span> that depends on parameters <span class="math inline">\(\theta_1, \theta_2, \ldots , \theta_k\)</span>. If we independently pick random variables <span class="math inline">\(X_1, X_2, \ldots X_n\)</span> from population <span class="math inline">\(X\)</span>, we can determine the values of <span class="math inline">\(\theta_1, \theta_2, \ldots , \theta_k\)</span> that best fit the data in the following sense:</p>
 <ul>
 <li>The mean <span class="math inline">\(\mu_X = E(X)\)</span> of the population <span class="math inline">\(X\)</span> equals the sample mean, <span class="math inline">\(\bar{x}\)</span>.</li>
 <li>The variance <span class="math inline">\(\sigma^2_X = \mbox{Var}(X)\)</span> of the population equals the variance of the sample, <span class="math inline">\(s^2\)</span>.</li>
