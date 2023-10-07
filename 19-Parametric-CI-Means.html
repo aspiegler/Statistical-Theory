@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18-Bootstrap-Other-Stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3: Bootstrapping Comparitive Statistics</span></a>
+  <a href="./18-Bootstrap-Other-Stats.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3: Bootstrapping Comparative Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -513,14 +513,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap5/19-Parametric-CI-Means.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
+<p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap5/19-Parametric-CI-Means.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> &nbsp;</p>
 <section id="parametric-and-non-parametric-methods" class="level1">
 <h1>Parametric and Non-Parametric Methods</h1>
 <hr>
 <p>We have been investigating <a href="./16-Bootstrap-Dist.html">resampling methods</a> as a tool to estimate the variability in sample statistics. Statistics such as means and proportions are linear combinations of random variables, and using <a href="./06-Expected-Value-and-Variance.html#sec-prop-exp">theory from probability</a>, we are able the derive the <a href="./10-Sampling-Dist-Mean.html#sec-cltmeans">Central Limit Theorem (CLT) formulas</a> to model sampling distributions for means and proportions. In this section we will construct confidence intervals by applying a <em>parametric</em> approach that uses formulas from the CLT to measure the uncertainty (standard error) in our estimate.</p>
 <ul>
-<li>With <span style="color:dodgerblue"><strong>parametric methods</strong></span>, we perform inference using formulas derived from theory.</li>
-<li>Monte Carlo methods such as bootstrap resampling are non-parametric.</li>
+<li>With <span style="color:dodgerblue"><strong>parametric methods</strong></span>, we perform inference using formulas derived from theory to model the shape, center and spread of sampling distributions.</li>
+<li>Monte Carlo methods such as bootstrap resampling are non-parametric since they use simulations to estimate sampling distributions.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -549,7 +549,7 @@ Note
 <section id="loading-storms-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-storms-data">Loading Storms Data</h2>
 <hr>
-<p>When practicing <a href="./03-EDA-Quantitative.html#sec-storms">exploratory data analysis earlier</a>, we accessed the <code>dplyr</code> package that contains a data set from the <a href="https://www.nhc.noaa.gov/data/#hurdat">NOAA Hurricane Best Track Data</a>, called <code>storms</code>, with data on many different storm attributes. We will begin analyzing the variable <code>wind</code> that gives the wind speed in knots. Run the code cell below to:</p>
+<p>When practicing <a href="./03-EDA-Quantitative.html#sec-storms">exploratory data analysis earlier</a>, we accessed the <code>dplyr</code> package that contains a data set from the <a href="https://www.nhc.noaa.gov/data/#hurdat" target="_blank">NOAA Hurricane Best Track Data</a>, called <code>storms</code>, with data on many different storm attributes. We will begin analyzing the variable <code>wind</code> that gives the wind speed in knots. Run the code cell below to:</p>
 <ul>
 <li>Load the <code>dplyr</code> package (which should already be installed), and</li>
 <li>Store the wind speeds to a new vector called <code>population</code>.</li>
@@ -804,7 +804,7 @@ Tip
 0.95 &amp;= P \left( -1.96 &lt; Z &lt; 1.96 \right) &amp; \mbox{from Question 3d}\\
 0.95   &amp;= P \left( -1.96 &lt; \frac{\overline{X} - \mu_{\overline{X}}}{\sigma_{\overline{X}}} &lt; 1.96 \right) &amp; \mbox{Explanation 1}\\
 0.95   &amp;=  P \left( -1.96 &lt; \frac{\overline{X} - \mu}{\frac{\sigma}{\sqrt{n}}} &lt; 1.96 \right) &amp; \mbox{Explanation 2}\\
-0.95   &amp;= P \left( -1.96 \cdot \frac{\sigma}{\sqrt{n}} &lt; - \mu &lt;  1.96 \cdot \frac{\sigma}{\sqrt{n}} \right) &amp; \mbox{Explanation 3} \\
+0.95   &amp;= P \left( -1.96 \cdot \frac{\sigma}{\sqrt{n}} &lt; \overline{X}- \mu &lt;  1.96 \cdot \frac{\sigma}{\sqrt{n}} \right) &amp; \mbox{Explanation 3} \\
 0.95   &amp;= P \left( - \overline{X} -1.96 \cdot \frac{\sigma}{\sqrt{n}} &lt; - \mu &lt;  - \overline{X} + 1.96 \cdot \frac{\sigma}{\sqrt{n}} \right) &amp; \mbox{Explanation 4} \\
 0.95   &amp;= P \left( \overline{X} - 1.96 \cdot \frac{\sigma}{\sqrt{n}} &lt; \mu &lt; \overline{X}+1.96 \cdot \frac{\sigma}{\sqrt{n}} \right) &amp; \mbox{Explanation 5}\\
 \end{aligned}\]</span></p>
@@ -913,7 +913,7 @@ Tip
 <hr>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pick another random sample of 36 wind speeds without replacement</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">their.sample</span>(??, <span class="at">size =</span> ??, <span class="at">replace =</span> ??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>their.sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(??, <span class="at">size =</span> ??, <span class="at">replace =</span> ??)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br><br>
 <br></p>
@@ -996,7 +996,7 @@ Tip
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
 <hr>
-<p>A researcher collects a random sample size <span class="math inline">\(n=36\)</span> of wind speeds for storms in the North Atlantic and calculates a 95% confidence interval for the mean wind speed that is from <span class="math inline">\(48.75\)</span> knots to <span class="math inline">\(65.41\)</span> knots. <strong>For each statement, determine whether the interpretation is correct or not. If not, explain why not.</strong></p>
+<p>A researcher collects a random sample of size <span class="math inline">\(n=36\)</span> of wind speeds for storms in the North Atlantic and calculates a 95% confidence interval for the mean wind speed that is from <span class="math inline">\(48.75\)</span> knots to <span class="math inline">\(65.41\)</span> knots. <strong>For each statement, determine whether the interpretation is correct or not. If not, explain why not.</strong></p>
 <section id="question-6a" class="level3">
 <h3 class="anchored" data-anchor-id="question-6a">Question 6a</h3>
 <hr>
@@ -1118,7 +1118,7 @@ Tip
 <hr>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>new.z <span class="ot">&lt;-</span> ??  <span class="co"># Enter a command to calculate z value for 90% Conf Level</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>wind.lowe90 <span class="ot">&lt;-</span> ??   <span class="co"># Enter a command to calculate the lower limit</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>wind.lower90 <span class="ot">&lt;-</span> ??   <span class="co"># Enter a command to calculate the lower limit</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>wind.upper90 <span class="ot">&lt;-</span> ??   <span class="co"># Enter a command to calculate the upper limit</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print your answers</span></span>
@@ -1438,7 +1438,7 @@ Tip
 <p>Side-by-side box plots give a nice graphical summary of the distribution of winds speeds by month. As we might suspect, from this first plot we rule out some months from this analysis. Some months appear to have very similar distributions upon inspection of box plots. We dig a little into the sample data to determine which months have the greatest sample mean wind speeds.</p>
 <ul>
 <li>We use the <code>tapply()</code> function below to calculate and compare sample mean wind speeds by month.</li>
-<li>Here is a <a href="https://www.statology.org/tapply-r/">nice introduction</a> to the <code>tapply()</code> function.</li>
+<li>Here is a <a href="https://www.statology.org/tapply-r/" target="_blank">nice introduction</a> to the <code>tapply()</code> function.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(storms<span class="sc">$</span>wind, storms<span class="sc">$</span>month, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1878,7 +1878,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./18-Bootstrap-Other-Stats.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.3: Bootstrapping Comparitive Statistics</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5.3: Bootstrapping Comparative Statistics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
