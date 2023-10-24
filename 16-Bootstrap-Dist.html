@@ -811,8 +811,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>temp.samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(jaw.sample, <span class="at">size=</span><span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)  <span class="co"># sample with replacement</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>temp.samp  <span class="co"># print sample to screen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 110 110 111 107 107 107 107 120 116 114 105 111 114 120 107 111 113 110 113
-[20] 111</code></pre>
+<pre><code> [1] 114 111 107 107 105 111 107 117 111 111 107 120 110 105 106 106 107 116 108
+[20] 107</code></pre>
 </div>
 </div>
 </section>
@@ -823,7 +823,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(temp.samp)  <span class="co"># mean of bootstrap resample</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 111.2</code></pre>
+<pre><code>[1] 109.65</code></pre>
 </div>
 </div>
 </section>
@@ -893,7 +893,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Measuring the Bias of Booststrap Estimates</h1>
 <hr>
 <p>Recall if <span class="math inline">\({\color{tomato}{\widehat{\theta}}}\)</span> is an <span style="color:tomato">estimator</span> for the <span style="color:mediumseagreen">parameter</span> <span class="math inline">\({\color{mediumseagreen}{\theta}}\)</span>, then we define the <span style="color:dodgerblue"><strong>bias</strong></span> of an estimator as</p>
-<p><span class="math display">\[{\large \color{dodgerblue}{ \boxed{\mbox{Bias}(\widehat{\theta}) = {\color{tomato}{\widehat{\theta}}} - {\color{mediumseagreen}{\theta}}}.}}\]</span></p>
+<p><span class="math display">\[{\large \color{dodgerblue}{ \boxed{\mbox{Bias}(\widehat{\theta}) = {\color{tomato}{E \left( \widehat{\theta} \right)}} - {\color{mediumseagreen}{\theta}}}.}}\]</span></p>
 <p><strong>In the case of bootstrapping:</strong></p>
 <ul>
 <li>We use the <span style="color:tomato">center of the bootstrap distribution</span>, <span class="math inline">\({\color{tomato}{\hat{\mu}_{\rm{boot}}}}\)</span>, as the <span style="color:tomato">bootstrap estimator</span>.</li>
@@ -1190,8 +1190,8 @@ Caution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare bootstrap dist to normal dist</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># run to create a qq-plot</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(boot.dist)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(boot.dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(boot.arsenic)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(boot.arsenic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br><br>
 <br></p>
