@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -411,7 +411,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-difference-in-two-proportions" id="toc-a-difference-in-two-proportions" class="nav-link" data-scroll-target="#a-difference-in-two-proportions">A Difference in Two Proportions</a>
   <ul class="collapse">
   <li><a href="#central-limit-theorem-for-widehatp_1---widehatp_2" id="toc-central-limit-theorem-for-widehatp_1---widehatp_2" class="nav-link" data-scroll-target="#central-limit-theorem-for-widehatp_1---widehatp_2">Central Limit Theorem for <span class="math inline">\(\widehat{P}_1 - \widehat{P}_2\)</span></a></li>
-  <li><a href="#confidence-interval-for-widehatp_1---widehatp_2" id="toc-confidence-interval-for-widehatp_1---widehatp_2" class="nav-link" data-scroll-target="#confidence-interval-for-widehatp_1---widehatp_2">Confidence Interval for <span class="math inline">\(\widehat{P}_1 - \widehat{P}_2\)</span></a></li>
+  <li><a href="#confidence-interval-for-widehatp_1---widehatp_2" id="toc-confidence-interval-for-widehatp_1---widehatp_2" class="nav-link" data-scroll-target="#confidence-interval-for-widehatp_1---widehatp_2">Confidence Interval for <span class="math inline">\(\widehat{P}_1 - \widehat{P}_2\)</span></a>
+  <ul class="collapse">
+  <li><a href="#a-wald-confidence-interval-for-p_1---p_2-using-prop.test" id="toc-a-wald-confidence-interval-for-p_1---p_2-using-prop.test" class="nav-link" data-scroll-target="#a-wald-confidence-interval-for-p_1---p_2-using-prop.test">A Wald Confidence Interval for <span class="math inline">\(p_1 - p_2\)</span> Using <code>prop.test()</code></a></li>
+  </ul></li>
   <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a>
   <ul class="collapse">
   <li><a href="#solution-to-question-5" id="toc-solution-to-question-5" class="nav-link" data-scroll-target="#solution-to-question-5">Solution to Question 5</a></li>
@@ -425,7 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
   <ul class="collapse">
   <li><a href="#sec-score" id="toc-sec-score" class="nav-link" data-scroll-target="#sec-score">Deriving the Score Confidence Interval Formulas</a></li>
-  <li><a href="#sec-score-corr" id="toc-sec-score-corr" class="nav-link" data-scroll-target="#sec-score-corr">Applying a Continuity Correction</a></li>
+  <li><a href="#sec-score-corr" id="toc-sec-score-corr" class="nav-link" data-scroll-target="#sec-score-corr">Applying a Continuity Correction to a Score Confidence Interval</a></li>
   <li><a href="#sec-clt-diffprop" id="toc-sec-clt-diffprop" class="nav-link" data-scroll-target="#sec-clt-diffprop">CLT: Difference in Two Proportions</a>
   <ul class="collapse">
   <li><a href="#proof-of-clt-for-difference-in-two-proportions" id="toc-proof-of-clt-for-difference-in-two-proportions" class="nav-link" data-scroll-target="#proof-of-clt-for-difference-in-two-proportions">Proof of CLT for Difference in Two Proportions</a></li>
@@ -637,6 +640,7 @@ Tip
 <li>The advantage of this estimate is we can do it by hand.</li>
 <li>The downside is we have introduced additional uncertainty using <span class="math inline">\(\hat{p}\)</span> in place of <span class="math inline">\(p\)</span> when estimating the standard error.</li>
 </ul>
+<p>We <span style="color:mediumseagreen"><strong>use the standard normal distribution</strong></span> to identify <span class="math inline">\({\color{mediumseagreen}{z_{\alpha/2}}}\)</span> when finding the margin of error since we are using a <span style="color:mediumseagreen">continuous distribution</span> (proportions) to approximate a <span style="color:mediumseagreen">binomial distribution</span> (counts).</p>
 </section>
 <section id="agresti-coull-confidence-interval-for-a-proportion" class="level1">
 <h1>Agresti-Coull Confidence Interval for a Proportion</h1>
@@ -644,9 +648,8 @@ Tip
 <p>When constructing a Wald confidence interval for a proportion, we use the sample proportion <span class="math inline">\(\hat{p}\)</span> as an estimator for <span class="math inline">\(p\)</span>. The sample proportion is a very reasonable and intuitive point estimate. In addition, <span class="math inline">\(\hat{p}\)</span> is an <strong>unbiased</strong> estimator for <span class="math inline">\(p\)</span>. However, there are many other estimators that could make sense to use in place of the parameter <span class="math inline">\(p\)</span>, and there are other properties of estimators we should take into account. In particular, using a less precise estimator such as <span class="math inline">\(\hat{p}\)</span> results in a larger margin of error in the confidence interval compared to some other estimators.</p>
 <p>When studying properties of estimators, we <a href="./15-Properties-Estimators.html#sec-compare-prop">considered another estimator for the parameter <span class="math inline">\(p\)</span></a>, namely <span class="math inline">\({\color{tomato}{\tilde{p} = \frac{X+2}{n+4}}}\)</span>, where <span class="math inline">\(X\)</span> denotes the number of “successes”. Comparing estimators <span class="math inline">\(\hat{p}\)</span> and <span class="math inline">\(\tilde{p}\)</span>, we discovered that:</p>
 <ul>
-<li>The sample proportion <span class="math inline">\(\hat{p}\)</span> is unbiased but less precise.</li>
-<li>The modified sample proportion <span class="math inline">\({\color{tomato}{\tilde{p}}}\)</span> is <strong>slightly biased but more precise</strong>.</li>
-<li>The confidence interval using <span class="math inline">\({\color{tomato}{\tilde{p}}}\)</span> will usually have a <strong>smaller margin of error</strong> than using <span class="math inline">\(\hat{p}\)</span>.</li>
+<li>The modified sample proportion <span class="math inline">\({\color{tomato}{\tilde{p}}}\)</span> is <strong>slightly biased but more precise</strong> than <span class="math inline">\(\hat{p}\)</span> as long as <span class="math inline">\(p\)</span> is not close to either <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>.</li>
+<li>Thus, the confidence interval using <span class="math inline">\({\color{tomato}{\tilde{p}}}\)</span> will have a <strong>smaller margin of error</strong> than using <span class="math inline">\(\hat{p}\)</span> when <span class="math inline">\(p\)</span> is not close to either <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>.</li>
 </ul>
 <p>The <span style="color:dodgerblue"><strong>Agresti-Coull confidence interval for a proportion</strong></span> is</p>
 <p><span class="math display">\[{\large \boxed{ \mbox{Agresti-Coull:} \qquad {\color{tomato}{\tilde{p}}} - z_{\alpha/2} \left( \sqrt{ \frac{{\color{tomato}{\tilde{p}}}(1-{\color{tomato}{\tilde{p}}})}{{\color{dodgerblue}{n+4}}}} \right) &lt; p &lt;  {\color{tomato}{\tilde{p}}} + z_{\alpha/2} \left( \sqrt{ \frac{{\color{tomato}{\tilde{p}}}(1-{\color{tomato}{\tilde{p}}})}{{\color{dodgerblue}{n+4}}}} \right)}}.\]</span></p>
@@ -811,14 +814,22 @@ Tip
 </ul>
 <p><span class="math display">\[\mbox{SE} \left( \widehat{P}_1 - \widehat{P}_2 \right) = \sqrt{ \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}} \approx \sqrt{ \frac{{\color{mediumseagreen}{\hat{p}_1}}(1-{\color{mediumseagreen}{\hat{p}_1}})}{n_1} + \frac{{\color{mediumseagreen}{\hat{p}_2}}(1-{\color{mediumseagreen}{\hat{p}_2}})}{n_2}}\]</span></p>
 <ul>
-<li>We <strong>use the standard normal distribution</strong> to identify <span class="math inline">\(z_{\alpha/2}\)</span> to find the <span style="color:tomato">margin of error</span>.</li>
+<li>Since we are using a continuous distribution (proportions) to approximate a binomial distribution (counts), we <strong>use the standard normal distribution</strong> to identify <span class="math inline">\(z_{\alpha/2}\)</span> to find the <span style="color:tomato">margin of error</span>.
+<ul>
+<li>Note: A normal distribution is an accurate model assuming <span style="color:tomato"><strong>all four</strong></span> of the conditions are true: <span style="color:tomato"><span class="math inline">\(n_1 p_1 \geq 10\)</span>, <span class="math inline">\(n_1(1-p_1) \geq 10\)</span>, <span class="math inline">\(n_2 p_2 \geq 10\)</span>, and <span class="math inline">\(n_2(1-p_2) \geq 10\)</span></span>.</li>
+</ul></li>
+<li>Thus, we have a <span style="color:dodgerblue"><strong>Wald confidence interval for a difference in proportions</strong></span>.</li>
 </ul>
-<p><span class="math display">\[({\color{dodgerblue}{\hat{p}_1 - \hat{p}_2}}) - {\color{tomato}{z_{\alpha/2} \cdot \sqrt{ \dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \dfrac{\hat{p}_2 (1-\hat{p}_2) }{n_2}}}}  &lt; p_1-p_2 &lt; ({\color{dodgerblue}{\hat{p}_1 - \hat{p}_2}}) + {\color{tomato}{z_{\alpha/2} \cdot \sqrt{ \dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \dfrac{\hat{p}_2 (1-\hat{p}_2) }{n_2}}}}.\]</span></p>
-<p>We use Wald confidence intervals for a difference in two proportions, but be aware there are other variations of confidence intervals for a difference in two proportions, similar to the Agresti-Coull and score confidence intervals. In R, the command</p>
+<p><span class="math display">\[({\color{dodgerblue}{\hat{p}_1 - \hat{p}_2}}) - {\color{tomato}{z_{\alpha/2} \cdot \sqrt{ \dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \dfrac{\hat{p}_2 (1-\hat{p}_2) }{n_2}}}}  &lt; p_1-p_2 &lt; ({\color{dodgerblue}{\hat{p}_1 - \hat{p}_2}}) + {\color{tomato}{z_{\alpha/2} \cdot \sqrt{ \dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \dfrac{\hat{p}_2 (1-\hat{p}_2) }{n_2}}}}\]</span></p>
+<section id="a-wald-confidence-interval-for-p_1---p_2-using-prop.test" class="level3">
+<h3 class="anchored" data-anchor-id="a-wald-confidence-interval-for-p_1---p_2-using-prop.test">A Wald Confidence Interval for <span class="math inline">\(p_1 - p_2\)</span> Using <code>prop.test()</code></h3>
+<hr>
+<p>The formulas above give a Wald confidence intervals for a difference in two proportions. Be aware there are other variations of confidence intervals for a difference in two proportions similar to the Agresti-Coull and score confidence intervals.</p>
+<p>In R, the command</p>
 <center>
-<code>prop.test(c(x1, x2), c(n1, n2), conf.level = CL, correct = TRUE)$conf.int</code>
+<code>prop.test(c(x1, x2), c(n1, n2), conf.level = CL, correct = FALSE)$conf.int</code>
 </center>
-<p><br> computes a <strong>Wald confidence interval</strong> for a difference in two proportions with a continuity correction applied.</p>
+<p><br> computes a <strong>Wald confidence interval</strong> for a difference in two proportions without a continuity correction applied. If we want to apply a continuity correction<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, we use the option <code>correct = TRUE</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -836,6 +847,7 @@ Note
 </ul>
 </div>
 </div>
+</section>
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
@@ -1008,7 +1020,7 @@ Note
 <p>The resulting equation is the same as with the first case we solved. Thus, solving the equation above gives the same expressions for <span class="math inline">\(U\)</span> and <span class="math inline">\(L\)</span>.</p>
 </section>
 <section id="sec-score-corr" class="level2">
-<h2 class="anchored" data-anchor-id="sec-score-corr">Applying a Continuity Correction</h2>
+<h2 class="anchored" data-anchor-id="sec-score-corr">Applying a Continuity Correction to a Score Confidence Interval</h2>
 <hr>
 <p>Recall, when using a normal distribution to approximate a discrete, binomial distribution <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span>, we can improve the estimate by using a <a href="./11-Sampling-Dist-Prop.html#sec-cont-corr">continuity correction</a>.</p>
 <p>In the case of a score confidence interval for a proportion, the continuity correction is applied as follows:</p>
@@ -1037,11 +1049,13 @@ Note
 <h3 class="anchored" data-anchor-id="proof-of-clt-for-difference-in-two-proportions">Proof of CLT for Difference in Two Proportions</h3>
 <hr>
 <p>Below we prove both <span class="math inline">\(E(\widehat{P_1}-\widehat{P_2}) = \mu_{\widehat{P}_1 - \widehat{P}_2} =p_1 - p_2\)</span> and <span class="math inline">\(\mbox{SE}(\widehat{P}_1 - \widehat{P}_2) = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}\)</span>.</p>
-<section id="mean-of-sampling-distribution-for-widehatp_1---widehatp_2" class="level4">
-<h4 class="anchored" data-anchor-id="mean-of-sampling-distribution-for-widehatp_1---widehatp_2">Mean of Sampling Distribution for <span class="math inline">\(\widehat{P}_1 - \widehat{P}_2\)</span></h4>
+<p>In proving the claims about a difference in proportions, we use the results of the Central Limit Theorem for a single proportion. If <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span> and <span class="math inline">\(\widehat{P} = \frac{X}{n}\)</span>, then</p>
+<p><span class="math display">\[E \left( \widehat{P} \right) = p \qquad \mbox{and} \qquad \mbox{Var} \left( \widehat{P} \right) = \sqrt{\frac{p(1-p)}{n}}.\]</span></p>
+<section id="expected-value-of-sampling-distribution-for-widehatp_1---widehatp_2" class="level4">
+<h4 class="anchored" data-anchor-id="expected-value-of-sampling-distribution-for-widehatp_1---widehatp_2">Expected Value of Sampling Distribution for <span class="math inline">\(\widehat{P}_1 - \widehat{P}_2\)</span></h4>
 <hr>
-<p>We have <span class="math inline">\(E (\widehat{P_1}-\widehat{P_2}) = E \left( \frac{X_1}{n_1} -\frac{X_2}{n_2} \right)\)</span>. Using <a href="./06-Expected-Value-and-Variance.html#sec-prop-exp">properties of expected value</a>, we have</p>
-<p><span class="math display">\[E (\widehat{P_1}-\widehat{P_2}) = E \left( \frac{X_1}{n_1} -\frac{X_2}{n_2} \right) = \frac{1}{n_1} E(X_1) - \frac{1}{n_2} E(X_2).\]</span></p>
+<p>Using <a href="./06-Expected-Value-and-Variance.html#sec-prop-exp">properties of expected value</a>, we have</p>
+<p><span class="math display">\[E \left( \widehat{P}_1 - \widehat{P}_2 \right) = E \left( \widehat{P}_1 \right) - E \left( \widehat{P}_2 \right) = p_1 - p_2.\]</span></p>
 <p>Since <span class="math inline">\(X_1 \sim \mbox{Binom}(n_1,p_1)\)</span> and <span class="math inline">\(X_2 \sim \mbox{Binom}(n_2,p_2)\)</span>, we know <span class="math inline">\({\color{dodgerblue}{E(X_1) = n_1p_1}}\)</span> and <span class="math inline">\({\color{tomato}{E(X_2) = n_2p_2}}\)</span>. Thus we have</p>
 <p><span class="math display">\[E (\widehat{P_1}-\widehat{P_2}) = \frac{1}{n_1} {\color{dodgerblue}{n_1p_1}} - \frac{1}{n_2} {\color{tomato}{n_2p_2}}=p_1-p_2.\]</span></p>
 <p>This concludes the proof that <span class="math inline">\(E (\widehat{P_1}-\widehat{P_2}) =p_1-p_2\)</span>.</p>
@@ -1049,12 +1063,10 @@ Note
 <section id="standard-error-of-sampling-distribution-for-widehatp_1---widehatp_2" class="level4">
 <h4 class="anchored" data-anchor-id="standard-error-of-sampling-distribution-for-widehatp_1---widehatp_2">Standard Error of Sampling Distribution for <span class="math inline">\(\widehat{P}_1 - \widehat{P}_2\)</span></h4>
 <hr>
-<p>We have <span class="math inline">\(\mbox{Var} (\widehat{P_1}-\widehat{P_2}) = \mbox{Var} \left( \frac{X_1}{n_1} -\frac{X_2}{n_2} \right)\)</span>. <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent random variables, so we can use <a href="./06-Expected-Value-and-Variance.html#sec-prop-var">properties of variance</a>:</p>
-<p><span class="math display">\[\mbox{Var} \left( \frac{X_1}{n_1} -\frac{X_2}{n_2} \right) = \left(\frac{1}{n_1}\right)^2 \mbox{Var}(X_1) + \left(- \frac{1}{n_2} \right)^2 \mbox{Var}(X_2) = \frac{1}{n_1^2}\mbox{Var}(X_1) + \frac{1}{n_2^2}\mbox{Var}(X_2).\]</span></p>
-<p>Since <span class="math inline">\(X_1 \sim \mbox{Binom}(n_1,p_1)\)</span> and <span class="math inline">\(X_2 \sim \mbox{Binom}(n_2,p_2)\)</span>, we know <span class="math inline">\({\color{dodgerblue}{\mbox{Var}(X_1) = n_1p_1(1-p_1)}}\)</span> and <span class="math inline">\({\color{tomato}{\mbox{Var}(X_2) = n_2p_2(1-p_2)}}\)</span>. Thus we have</p>
-<p><span class="math display">\[\mbox{Var} (\widehat{P_1}-\widehat{P_2}) = \frac{1}{n_1^2} {\color{dodgerblue}{n_1p_1(1-p_1)}} - \frac{1}{n_2^2} {\color{tomato}{n_2p_2(1-p_2)}}= \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}.\]</span></p>
-<p>The standard error of the sampling distribution is the square root of the variance, thus we have</p>
-<p><span class="math display">\[\mbox{SE} (\widehat{P_1}-\widehat{P_2}) = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}.\]</span></p>
+<p>Using <a href="./06-Expected-Value-and-Variance.html#sec-prop-var">properties of variance</a>, we have</p>
+<p><span class="math display">\[\mbox{Var} \left( \widehat{P}_1 - \widehat{P}_2 \right) = \mbox{Var} \left( \widehat{P}_1 \right) + (-1)^2 \cdot \mbox{Var} \left( \widehat{P}_2 \right) = \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}.\]</span></p>
+<p>Therefore, the standard error for the sampling distribution of the difference in sample proportions is</p>
+<p><span class="math display">\[\mbox{SE}\left( \widehat{P}_1 - \widehat{P}_2 \right) = \sqrt{ \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}.\]</span></p>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
@@ -1068,6 +1080,7 @@ Note
 <hr>
 <ol>
 <li id="fn1"><p>“Politics still drives how Americans fell about COVID response, one year in”, <a href="https://www.pbs.org/newshour/politics/politics-still-drives-how-americans-feel-about-covid-response-one-year-in" target="_blank">PBS/News Hour</a>, March 11, 2021<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See <a href="https://colab.research.google.com/drive/1su7go-u4AAUtPS_CLeCIVSJjYx1gaqbY?usp=sharing" target="_blank">Colab Notebook</a> for an explanation of how a continuity correction is applied to a difference in proportions with <code>prop.test()</code> in R.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
