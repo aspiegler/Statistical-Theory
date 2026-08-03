@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistical Methods: Exploring the Uncertain - 4.3: Properties of Estimators</title>
+<title>4.3: Properties of Estimators – Statistical Methods: Exploring the Uncertain</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -66,22 +70,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./16-Bootstrap-Dist.html" rel="next">
 <link href="./14-Estimation-MOM.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,28 +101,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-Estimation-MLE.html">Chapter 4: Estimation</a></li><li class="breadcrumb-item"><a href="./15-Properties-Estimators.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">4.3: Properties of Estimators</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-Estimation-MLE.html">Chapter 4: Estimation</a></li><li class="breadcrumb-item"><a href="./15-Properties-Estimators.html"><span class="chapter-title">4.3: Properties of Estimators</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -121,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistical Methods: Exploring the Uncertain</a> 
@@ -149,9 +189,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Chapter 1: Exploring Data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -175,9 +215,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Chapter 2: Probability Essentials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -216,9 +256,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Chapter 3: Sampling Distributions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -242,9 +282,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Chapter 4: Estimation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -268,9 +308,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Chapter 5: Interval Estimates</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -304,9 +344,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Chapter 6: Hypothesis Tests</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -340,9 +380,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -362,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -443,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-Estimation-MLE.html">Chapter 4: Estimation</a></li><li class="breadcrumb-item"><a href="./15-Properties-Estimators.html"><span class="chapter-title">4.3: Properties of Estimators</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">4.3: Properties of Estimators</span></h1>
 </div>
@@ -458,53 +498,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
+
 <p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/15-Properties-Estimators.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
-<p><img src="https://www.publicdomainpictures.net/pictures/110000/velka/two-paths-background.jpg" class="img-fluid" style="width:50.0%" data-fig-align="left" alt="Two Paths"> <nbsp></nbsp></p>
+<p><img src="https://www.publicdomainpictures.net/pictures/110000/velka/two-paths-background.jpg" class="img-fluid quarto-figure quarto-figure-left" style="width:50.0%" alt="Two Paths"> <nbsp></nbsp></p>
 <p>In this section, we continue our study of estimators of population parameters. An <span style="color:dodgerblue"><strong>estimator</strong></span>, denoted <span class="math inline">\(\color{dodgerblue}{\hat{\theta}}\)</span>, is a formula or rule that we use to estimate the value of an unknown population parameter <span class="math inline">\(\theta\)</span>. For a single parameter <span class="math inline">\(\theta\)</span>, there are many (possibly infinite) different estimators <span class="math inline">\(\hat{\theta}\)</span> from which to choose from. We have more deeply investigated two particularly useful methods: <a href="./13-Estimation-MLE.html" target="_blank">maximum likelihood estimates (MLE)</a> and <a href="./14-Estimation-MOM.html" target="_blank">method of moments</a> estimation.</p>
 <p>We can think of different estimators, <span class="math inline">\(\hat{\theta}\)</span>, as different paths attempting to arrive at the same destination, the value of <span class="math inline">\(\theta\)</span>. Different statisticians might prefer different paths, which path is optimal? Sometimes different methods lead to the same result, and sometimes they differ. When they differ, how do we decide which estimate is best?</p>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <hr>
-<p>Suppose our population parameter of interest is the center of a dart board. We use four different methods for throwing darts and the results of those four different methods are displayed in <a href="#fig-dart-board">Figure&nbsp;<span>15.1</span></a>.</p>
+<p>Suppose our population parameter of interest is the center of a dart board. We use four different methods for throwing darts and the results of those four different methods are displayed in <a href="#fig-dart-board" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>.</p>
 <div id="fig-dart-board" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dart-board-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/15fig-dart1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Dart Method 1</figcaption>
+<figcaption>Dart Method 1</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/15fig-dart2.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Dart Method 2</figcaption>
+<figcaption>Dart Method 2</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/15fig-dart3.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Dart Method 3</figcaption>
+<figcaption>Dart Method 3</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/15fig-dart4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Dart Method 4</figcaption>
+<figcaption>Dart Method 4</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;15.1: Comparing the results of four different methods for throwing darts. <br> Credit: <a href="https://commons.wikimedia.org/wiki/File:Accuracy_and_Precision.svg">Arbeck</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dart-board-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: Comparing the results of four different methods for throwing darts. <br> Credit: <a href="https://commons.wikimedia.org/wiki/File:Accuracy_and_Precision.svg">Arbeck</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons
+</figcaption>
 </figure>
 </div>
 <section id="question-1a" class="level3">
@@ -546,46 +592,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-1d" class="level3">
 <h3 class="anchored" data-anchor-id="question-1d">Question 1d</h3>
 <hr>
-<p>Four different sampling distributions of the results of the four dart throwing methods are plotted in <a href="#fig-dartdist">Figure&nbsp;<span>15.2</span></a>. The location of the <span style="color:tomato">population parameter</span> (the center of the dart board) is indicated by the <span style="color:tomato">dashed red line</span>. The <span style="color:dodgerblue">mean of the sampling distribution</span> is indicated by the <span style="color:dodgerblue">solid blue vertical line</span>. Match each of the distributions labeled A-D below to one of the four dart boards displayed in <a href="#question-1">Question 1</a>.</p>
-<div id="fig-dartdist" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-dartdist-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-dartdist-1.png" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672"></p>
-<figcaption class="figure-caption">(a)</figcaption>
+<p>Four different sampling distributions of the results of the four dart throwing methods are plotted in <a href="#fig-dartdist" class="quarto-xref">Figure&nbsp;<span>15.2</span></a>. The location of the <span style="color:tomato">population parameter</span> (the center of the dart board) is indicated by the <span style="color:tomato">dashed red line</span>. The <span style="color:dodgerblue">mean of the sampling distribution</span> is indicated by the <span style="color:dodgerblue">solid blue vertical line</span>. Match each of the distributions labeled A-D below to one of the four dart boards displayed in <a href="#question-1">Question 1</a>.</p>
+<div id="fig-dartdist" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dartdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-dartdist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dartdist-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-dartdist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-dartdist-1.png" id="fig-dartdist-1" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dartdist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-dartdist-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-dartdist-2.png" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672"></p>
-<figcaption class="figure-caption">(b)</figcaption>
-</figure>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-dartdist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dartdist-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-dartdist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-dartdist-2.png" id="fig-dartdist-2" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672">
 </div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-dartdist-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-dartdist-3.png" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672"></p>
-<figcaption class="figure-caption">(c)</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-dartdist-4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-dartdist-4.png" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672"></p>
-<figcaption class="figure-caption">(d)</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dartdist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;15.2: Matching Distributions to Dart Boards</figcaption><p></p>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-dartdist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dartdist-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-dartdist-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-dartdist-3.png" id="fig-dartdist-3" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dartdist-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-dartdist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dartdist-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-dartdist-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-dartdist-4.png" id="fig-dartdist-4" class="img-fluid figure-img" data-ref-parent="fig-dartdist" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-dartdist-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dartdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.2: Matching Distributions to Dart Boards
+</figcaption>
 </figure>
 </div>
 <section id="solution-to-question-1d" class="level4">
@@ -628,12 +694,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let <span class="math inline">\(X\)</span> denote the diastolic blood pressure (in mm Hg) of a randomly selected woman from the Pima Indian Community. The <a href="https://itcaonline.com/member-tribes/salt-river-pima-maricopa-indian-community/" target="_blank">Pima Indian Community</a> is mostly located outside of Phoenix, Arizona. The data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> used in this example is from the data frame <code>Pima.tr</code> in the <code>MASS</code> package.</p>
 <p>If we suppose blood pressure is normally distributed, then we have <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>. We would like to decide which estimator is best for the population mean <span class="math inline">\(\mu\)</span>. We pick a random sample of <span class="math inline">\(n=20\)</span> women in the code cell below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)  <span class="co"># load MASS package to access data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)  <span class="co"># load MASS package to access data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)  <span class="co"># fix randomization of sample</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)  <span class="co"># fix randomization of sample</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(Pima.tr<span class="sc">$</span>bp, <span class="at">size=</span><span class="dv">20</span>)  <span class="co"># pick a random sample of 20 blood pressures</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  58  64  64  80  68  76  72 102  68  52  90  70  56  62  74  74  76  82  85
 [20]  52</code></pre>
@@ -642,27 +708,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The random sample of diastolic blood pressure values is <span class="math display">\[\mathbf{x} = (58, 64, 64, 80, 68, 76, 72, 102, 68, 52, 90, 70, 56, 62, 74, 74, 76, 82, 85, 52).\]</span> Consider the following estimates for the population mean <span class="math inline">\(\mu\)</span>:</p>
 <p><span style="color:dodgerblue">1. The <strong>sample mean</strong>: <span class="math inline">\(\hat{\mu}_1 = \bar{X} = \dfrac{\sum_{i=1}^n X_i}{n}\)</span>.</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. calculate sample mean</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. calculate sample mean</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mu.hat1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mu.hat1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mu.hat1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 71.25</code></pre>
 </div>
 </div>
 <p><span style="color:tomato">2. The <strong>sample median</strong>, denoted <span class="math inline">\(\hat{\mu}_2 = \mbox{median}\)</span>.</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. calculate sample median</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. calculate sample median</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mu.hat2 <span class="ot">&lt;-</span> <span class="fu">median</span>(x)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mu.hat2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mu.hat2 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 71</code></pre>
 </div>
 </div>
 <p><span style="color:mediumseagreen">3. The <strong>mid-range</strong> of the sample, <span class="math inline">\(\hat{\mu}_3 = \dfrac{X_{\rm{max}} + X_{\rm{min}}}{2}\)</span>.</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. calculate sample mid range</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. calculate sample mid range</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mu.hat3 <span class="ot">&lt;-</span> (<span class="fu">max</span>(x) <span class="sc">+</span> <span class="fu">min</span>(x)) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mu.hat3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mu.hat3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 77</code></pre>
 </div>
@@ -674,9 +740,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We compute the mean of the remaining 16 values.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. calculate sample trimmed (10%) mean</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. calculate sample trimmed (10%) mean</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mu.hat4 <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">trim =</span> <span class="fl">0.1</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>mu.hat4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>mu.hat4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 70.5625</code></pre>
 </div>
@@ -696,46 +762,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-2b" class="level3">
 <h3 class="anchored" data-anchor-id="question-2b">Question 2b</h3>
 <hr>
-<p>To help decide which estimator performs best, we can consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from the same population. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpnormal">Figure&nbsp;<span>16.1</span></a>, rank the four estimators from least to most bias and from most to least precise. <span style="color:dodgerblue">The blue vertical line represents the actual value of <span class="math inline">\(\mu\)</span>.</span> <span style="color:tomato">The red vertical line marks the expected value of the estimator.</span> Explain your reasoning.</p>
-<div id="fig-bpnormal" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpnormal-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-1.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672"></p>
-<figcaption class="figure-caption">(a) Distribution of Sample Means</figcaption>
+<p>To help decide which estimator performs best, we can consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from the same population. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpnormal" class="quarto-xref">Figure&nbsp;<span>16.1</span></a>, rank the four estimators from least to most bias and from most to least precise. <span style="color:dodgerblue">The blue vertical line represents the actual value of <span class="math inline">\(\mu\)</span>.</span> <span style="color:tomato">The red vertical line marks the expected value of the estimator.</span> Explain your reasoning.</p>
+<div id="fig-bpnormal" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bpnormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpnormal" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpnormal-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpnormal-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-1.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpnormal-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Distribution of Sample Means
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpnormal-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-2.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672"></p>
-<figcaption class="figure-caption">(b) Distribution of Sample Medians</figcaption>
-</figure>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpnormal" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpnormal-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpnormal-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-2.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672">
 </div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpnormal-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-3.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672"></p>
-<figcaption class="figure-caption">(c) Distribution of Sample Mid-ranges</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpnormal-4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-4.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672"></p>
-<figcaption class="figure-caption">(d) Distribution of Sample Trimmed Means</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpnormal-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Distribution of Sample Medians
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;16.1: Comparing Estimators for Mean Blood Pressure</figcaption><p></p>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpnormal" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpnormal-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpnormal-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-3.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpnormal-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Distribution of Sample Mid-ranges
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpnormal" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpnormal-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpnormal-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpnormal-4.png" class="img-fluid figure-img" data-ref-parent="fig-bpnormal" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpnormal-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Distribution of Sample Trimmed Means
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bpnormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16.1: Comparing Estimators for Mean Blood Pressure
+</figcaption>
 </figure>
 </div>
 <section id="solution-to-question-2b" class="level4">
@@ -750,46 +836,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="question-2c">Question 2c</h3>
 <hr>
 <p>We still let <span class="math inline">\(X\)</span> denote the diastolic blood pressure (in mm Hg) of a randomly selected woman from the Pima Indian Community. However, now we suppose blood pressure is <strong>uniformly distributed</strong> over the interval <span class="math inline">\(\lbrack 41.26, 101.26 \rbrack\)</span>. Although a uniform distribution would not make practical sense for blood pressure, we make this assumption in order to investigate how the shape of the population may affect which estimator works best.</p>
-<p>Consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from a <strong>uniformly distributed population</strong>. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpunif">Figure&nbsp;<span>16.2</span></a>, rank the four estimators again from least to most bias and from most to least precise. <span style="color:dodgerblue">The blue vertical line represents the actual value of <span class="math inline">\(\mu\)</span>.</span> <span style="color:tomato">The red vertical line marks the expected value of the estimator.</span> <strong>Compare your updated rankings to those from <a href="#question-2b">Question 2b</a>. Did your rankings change?</strong></p>
-<div id="fig-bpunif" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpunif-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpunif-1.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672"></p>
-<figcaption class="figure-caption">(a) Distribution of Sample Means</figcaption>
+<p>Consider the sampling distribution of estimates obtained from many different random samples (each of size <span class="math inline">\(n=20\)</span>) chosen independently from a <strong>uniformly distributed population</strong>. Based on the sampling distributions for <span class="math inline">\(\hat{\mu}_1\)</span>, <span class="math inline">\(\hat{\mu}_2\)</span>, <span class="math inline">\(\hat{\mu}_3\)</span>, and <span class="math inline">\(\hat{\mu}_4\)</span> (mean, median, mid-range, and trimmed mean, respectively) in <a href="#fig-bpunif" class="quarto-xref">Figure&nbsp;<span>16.2</span></a>, rank the four estimators again from least to most bias and from most to least precise. <span style="color:dodgerblue">The blue vertical line represents the actual value of <span class="math inline">\(\mu\)</span>.</span> <span style="color:tomato">The red vertical line marks the expected value of the estimator.</span> <strong>Compare your updated rankings to those from <a href="#question-2b">Question 2b</a>. Did your rankings change?</strong></p>
+<div id="fig-bpunif" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bpunif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpunif" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpunif-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpunif-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpunif-1.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpunif-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Distribution of Sample Means
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpunif-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpunif-2.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672"></p>
-<figcaption class="figure-caption">(b) Distribution of Sample Medians</figcaption>
-</figure>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpunif" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpunif-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpunif-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpunif-2.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672">
 </div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpunif-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpunif-3.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672"></p>
-<figcaption class="figure-caption">(c) Distribution of Sample Mid-ranges</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-bpunif-4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-bpunif-4.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672"></p>
-<figcaption class="figure-caption">(d) Distribution of Sample Trimmed Means</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpunif-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Distribution of Sample Medians
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;16.2: Comparing Estimators for a Uniform Population</figcaption><p></p>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpunif" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpunif-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpunif-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpunif-3.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpunif-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Distribution of Sample Mid-ranges
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bpunif" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bpunif-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bpunif-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-bpunif-4.png" class="img-fluid figure-img" data-ref-parent="fig-bpunif" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bpunif-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Distribution of Sample Trimmed Means
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bpunif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16.2: Comparing Estimators for a Uniform Population
+</figcaption>
 </figure>
 </div>
 <section id="solution-to-question-2c" class="level4">
@@ -1051,7 +1157,7 @@ Tip
 <section id="efficiency-of-unbiased-estimators" class="level2">
 <h2 class="anchored" data-anchor-id="efficiency-of-unbiased-estimators">Efficiency of Unbiased Estimators</h2>
 <hr>
-<p>If <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased estimators of <span class="math inline">\(\theta\)</span>, then <span style="color:dodgerblue"><span class="math inline">\(\hat{\theta}_1\)</span> is said to be more efficient than <span class="math inline">\(\hat{\theta}_2\)</span></span> if <span class="math inline">\({\color{dodgerblue}{\mbox{Var} ( \hat{\theta}_1) &lt; \mbox{Var} (\hat{\theta}_2)}}\)</span>. For example, in <a href="#sec-mean-eff">Question 5</a> we show the usual sample mean <span class="math inline">\(\hat{\mu}_1=\overline{X}\)</span> is a more efficient estimator than the weighted mean <span class="math inline">\(\hat{\mu}_2\)</span>.</p>
+<p>If <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased estimators of <span class="math inline">\(\theta\)</span>, then <span style="color:dodgerblue"><span class="math inline">\(\hat{\theta}_1\)</span> is said to be more efficient than <span class="math inline">\(\hat{\theta}_2\)</span></span> if <span class="math inline">\({\color{dodgerblue}{\mbox{Var} ( \hat{\theta}_1)  &lt; \mbox{Var} (\hat{\theta}_2)}}\)</span>. For example, in <a href="#sec-mean-eff">Question 5</a> we show the usual sample mean <span class="math inline">\(\hat{\mu}_1=\overline{X}\)</span> is a more efficient estimator than the weighted mean <span class="math inline">\(\hat{\mu}_2\)</span>.</p>
 </section>
 <section id="question-6" class="level2">
 <h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
@@ -1114,7 +1220,7 @@ Tip
 </ul>
 <p><span class="math display">\[\boxed{\large {\color{dodgerblue}{ \mbox{MSE} \big[ \hat{\theta} \big] }} = {\color{tomato}{\mbox{Var} \big[ \hat{\theta} \big]}} + {\color{mediumseagreen}{\left( \mbox{Bias}(\hat{\theta}) \right)^2. }}}\]</span></p>
 <ul>
-<li>In the special case where <span class="math inline">\(\hat{\theta}\)</span> is an unbiased estimator, then <span class="math inline">\(\mbox{MSE} \big[ \hat{\theta} \big] =\mbox{Var} \big[ \hat{\theta} \big]\)</span>.</li>
+<li>In the special case where <span class="math inline">\(\hat{\theta}\)</span> is an unbiased estimator, then <span class="math inline">\(\mbox{MSE} \big[ \hat{\theta} \big]  =\mbox{Var} \big[ \hat{\theta} \big]\)</span>.</li>
 </ul>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
@@ -1172,9 +1278,9 @@ Tip
 <li><span class="math inline">\(\tilde{p}\)</span> is a more precise estimator when <span class="math inline">\(p\)</span> is not close to 0 or 1.</li>
 </ul></li>
 </ol>
-<p>For example if <span class="math inline">\(n=16\)</span>, we have <span class="math inline">\(X \sim \mbox{Binom}(16,p)\)</span>. <a href="#fig-mse">Figure&nbsp;<span>19.1</span></a> compares the values of <span class="math inline">\(\mbox{MSE}(\hat{p})\)</span> and <span class="math inline">\(\mbox{MSE}(\tilde{p})\)</span> for <span class="math inline">\(n=16\)</span>.</p>
+<p>For example if <span class="math inline">\(n=16\)</span>, we have <span class="math inline">\(X \sim \mbox{Binom}(16,p)\)</span>. <a href="#fig-mse" class="quarto-xref">Figure&nbsp;<span>19.1</span></a> compares the values of <span class="math inline">\(\mbox{MSE}(\hat{p})\)</span> and <span class="math inline">\(\mbox{MSE}(\tilde{p})\)</span> for <span class="math inline">\(n=16\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)  <span class="co"># values of p</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)  <span class="co"># values of p</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">16</span>  <span class="co"># sample size</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># formula for MSE of p-hat</span></span>
@@ -1202,12 +1308,16 @@ Tip
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"MSE(p.hat)"</span>,<span class="st">"MSE(p.tilde"</span>), </span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"firebrick2"</span>,<span class="st">"blue"</span>), </span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), </span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">ncol=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-mse" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="15-Properties-Estimators_files/figure-html/fig-mse-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;19.1: Comparing MSE of p-hat and p-tilde for X ~ Binom(16,p)</figcaption>
+<div id="fig-mse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="15-Properties-Estimators_files/figure-html/fig-mse-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.1: Comparing MSE of p-hat and p-tilde for X ~ Binom(16,p)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1216,7 +1326,7 @@ Tip
 <section id="question-8" class="level2">
 <h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
 <hr>
-<p>Using the plots of <span class="math inline">\({\color{tomato}{\mbox{MSE}(\hat{p})}}\)</span> and <span class="math inline">\({\color{dodgerblue}{\mbox{MSE}(\tilde{p})}}\)</span> in <a href="#fig-mse">Figure&nbsp;<span>19.1</span></a>, identify the interval of <span class="math inline">\(p\)</span> values where the MSE of <span class="math inline">\(\tilde{p}\)</span> is less than the MSE of <span class="math inline">\(\hat{p}\)</span>.</p>
+<p>Using the plots of <span class="math inline">\({\color{tomato}{\mbox{MSE}(\hat{p})}}\)</span> and <span class="math inline">\({\color{dodgerblue}{\mbox{MSE}(\tilde{p})}}\)</span> in <a href="#fig-mse" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>, identify the interval of <span class="math inline">\(p\)</span> values where the MSE of <span class="math inline">\(\tilde{p}\)</span> is less than the MSE of <span class="math inline">\(\hat{p}\)</span>.</p>
 <section id="solution-to-question-8" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-8">Solution to Question 8</h3>
 <hr>
@@ -1230,7 +1340,7 @@ Tip
 <hr>
 <p>Run run the code below for different values of <span class="math inline">\(n\)</span> and say what happens to your choice of estimator as <span class="math inline">\(n\)</span> gets larger.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust sample size n and run again</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># what happens to mse as n gets larger?</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################</span></span>
@@ -1267,7 +1377,7 @@ Tip
 <span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"MSE(p.hat)"</span>,<span class="st">"MSE(p.tilde"</span>), </span>
 <span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"firebrick2"</span>,<span class="st">"blue"</span>), </span>
 <span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), </span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">ncol=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="solution-to-question-9" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-9">Solution to Question 9</h3>
@@ -1328,7 +1438,7 @@ E\bigg[ \sum_{i=1}^n (X_i - \overline{X})^2 \bigg] &amp;= \sum_{i=1}^n E(X_i^2) 
 <p><span class="math display">\[E\bigg[ \sum_{i=1}^n (X_i - \overline{X})^2 \bigg] =  \sum_{i=1}^n {\color{dodgerblue}{ E \big[ X_i^2 \big]}} - n {\color{tomato}{E \big[ \overline{X}^2 \big]}}\]</span></p>
 <p>From the variance property <span class="math inline">\(\mbox{Var}(Y) = E(Y^2) - \big( E(Y) \big)^2\)</span>, we know for any random variable <span class="math inline">\(Y\)</span>, we have <span class="math inline">\(E(Y^2) = \mbox{Var}(Y) + \big( E(Y) \big)^2\)</span>. Applying this property to each <span class="math inline">\(X_i\)</span> and <span class="math inline">\(\overline{X}\)</span> (which is a linear combination of random variables), we have</p>
 <p><span class="math display">\[E\bigg[ \sum_{i=1}^n (X_i - \overline{X})^2 \bigg] =  \sum_{i=1}^n \bigg( {\color{dodgerblue}{ \mbox{Var} \big[ X_i \big] + \left( E \big[ X_i \big] \right)^2 }} \bigg) - n \left( {\color{tomato}{\mbox{Var} \big[ \overline{X} \big] + \left( E \big[  \overline{X} \big]\right)^2}} \right)\]</span></p>
-<p>From the first summation on the right side, we have <span class="math inline">\({\color{dodgerblue}{ \mbox{Var} \big[ X_i \big] + \left( E \big[ X_i \big] \right)^2 = \sigma^2 + \mu^2}}\)</span>. Recall from the Central Limit Theorem for Means, we have <span class="math inline">\(\mbox{Var} \big[ \overline{X} \big] = \frac{\sigma^2}{n}\)</span> and <span class="math inline">\(E \big[ \overline{X} \big] = \mu\)</span>, and thus we have <span class="math inline">\({\color{tomato}{\mbox{Var} \big[ \overline{X} \big] + \left( E \big[ \overline{X} \big]\right)^2 =\frac{\sigma^2}{n} + \mu^2 }}\)</span>. Thus, we have</p>
+<p>From the first summation on the right side, we have <span class="math inline">\({\color{dodgerblue}{ \mbox{Var} \big[ X_i \big] + \left( E \big[ X_i \big] \right)^2 = \sigma^2 + \mu^2}}\)</span>. Recall from the Central Limit Theorem for Means, we have <span class="math inline">\(\mbox{Var} \big[ \overline{X} \big] = \frac{\sigma^2}{n}\)</span> and <span class="math inline">\(E \big[  \overline{X} \big] = \mu\)</span>, and thus we have <span class="math inline">\({\color{tomato}{\mbox{Var} \big[ \overline{X} \big] + \left( E \big[  \overline{X} \big]\right)^2 =\frac{\sigma^2}{n} + \mu^2 }}\)</span>. Thus, we have</p>
 <p><span class="math display">\[\begin{aligned}
 E\bigg[ \sum_{i=1}^n (X_i - \overline{X})^2 \bigg] &amp;=  \sum_{i=1}^n {\color{dodgerblue}{ \left( \sigma^2 + \mu^2 \right)}} - n \left( {\color{tomato}{\frac{\sigma^2}{n}}} + {\color{tomato}{ \mu^2}} \right) \\
 &amp;= n(\sigma^2 + \mu^2) - \sigma^2 - n\mu^2 \\
@@ -1359,7 +1469,7 @@ E\bigg[ \sum_{i=1}^n (X_i - \overline{X})^2 \bigg] &amp;=  \sum_{i=1}^n {\color{
 <p><span id="eq-bias-hat"><span class="math display">\[{\color{dodgerblue}{E \bigg[ (E \big[ \hat{\theta} \big] -\theta)^2 \bigg] = E \bigg[ \big( \mbox{Bias}(\hat{\theta}) \big)^2 \bigg] =  \bigg( \mbox{Bias}(\hat{\theta}) \bigg)^2}}. \tag{20.4}\]</span></span></p>
 <ul>
 <li>Note <span class="math inline">\(\mbox{Bias}(\hat{\theta})\)</span> is a constant value which might be unknown, but it is not a random variable.</li>
-<li>The expected value of a constant is the value of the constant, thus <span class="math inline">\(E \bigg[ \big( \mbox{Bias}(\hat{\theta}) \big)^2 \bigg] = \bigg( \mbox{Bias}(\hat{\theta}) \bigg)^2\)</span>.</li>
+<li>The expected value of a constant is the value of the constant, thus <span class="math inline">\(E \bigg[ \big( \mbox{Bias}(\hat{\theta}) \big)^2 \bigg] =  \bigg( \mbox{Bias}(\hat{\theta}) \bigg)^2\)</span>.</li>
 </ul>
 <p><span id="eq-middle-stuff"><span class="math display">\[{\color{mediumseagreen}{
 \begin{aligned}
@@ -1368,7 +1478,7 @@ E \bigg[ (\hat{\theta} - E \big[ \hat{\theta} \big]) (E \big[ \hat{\theta} \big]
 &amp;= 0.
 \end{aligned}
 }} \tag{20.5}\]</span></span></p>
-<p>Using the results in (<a href="#eq-var-hat">Equation&nbsp;<span>20.3</span></a>), (<a href="#eq-bias-hat">Equation&nbsp;<span>20.4</span></a>), and (<a href="#eq-middle-stuff">Equation&nbsp;<span>20.5</span></a>), we have</p>
+<p>Using the results in (<a href="#eq-var-hat" class="quarto-xref">Equation&nbsp;<span>20.3</span></a>), (<a href="#eq-bias-hat" class="quarto-xref">Equation&nbsp;<span>20.4</span></a>), and (<a href="#eq-middle-stuff" class="quarto-xref">Equation&nbsp;<span>20.5</span></a>), we have</p>
 <p><span class="math display">\[\begin{aligned}
 \mbox{MSE} \big[ \hat{\theta} \big] &amp;= {\color{tomato}{E \bigg[ (\hat{\theta} - E \big[ \hat{\theta} \big])^2 \bigg] }} + 2 {\color{mediumseagreen}{ E \bigg[(\hat{\theta} - E \big[ \hat{\theta} \big]) (E \big[ \hat{\theta} \big] -\theta) \bigg] }} + {\color{dodgerblue}{E \bigg[ (E \big[ \hat{\theta} \big] -\theta)^2 \bigg] }} \\
 &amp;= {\color{tomato}{\mbox{Var} \big[ \hat{\theta} \big]}} + 2 \cdot {\color{mediumseagreen}{0}} + {\color{dodgerblue}{\left( \mbox{Bias}(\hat{\theta}) \right)^2}} \\
@@ -1392,43 +1502,58 @@ E \bigg[ (\hat{\theta} - E \big[ \hat{\theta} \big]) (E \big[ \hat{\theta} \big]
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -1436,202 +1561,354 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./14-Estimation-MOM.html" class="pagination-link">
+      <a href="./14-Estimation-MOM.html" class="pagination-link" aria-label="4.2: Method of Moments Estimates">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">4.2: Method of Moments Estimates</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./16-Bootstrap-Dist.html" class="pagination-link">
+      <a href="./16-Bootstrap-Dist.html" class="pagination-link" aria-label="5.1: Bootstrap Distributions">
         <span class="nav-page-text"><span class="chapter-title">5.1: Bootstrap Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1639,13 +1916,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Statistical Methods: Exploring the Uncertain by Adam Spiegler</div>   
+    <div class="nav-footer-left">
+<p>Statistical Methods: Exploring the Uncertain by Adam Spiegler</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" class="img-fluid" alt="Creative Commons License"> <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-N-SA 4.0</a></div>
+    <div class="nav-footer-right">
+<p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" class="img-fluid" alt="Creative Commons License"> <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-N-SA 4.0</a></p>
+</div>
   </div>
 </footer>
+
 
 
 
