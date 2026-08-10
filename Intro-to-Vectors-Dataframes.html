@@ -558,38 +558,38 @@ Caution
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a numerical summary of all variables</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     name                year          month             day       
- Length:19066       Min.   :1975   Min.   : 1.000   Min.   : 1.00  
- Class :character   1st Qu.:1993   1st Qu.: 8.000   1st Qu.: 8.00  
- Mode  :character   Median :2004   Median : 9.000   Median :16.00  
-                    Mean   :2002   Mean   : 8.699   Mean   :15.78  
-                    3rd Qu.:2012   3rd Qu.: 9.000   3rd Qu.:24.00  
-                    Max.   :2021   Max.   :12.000   Max.   :31.00  
-                                                                   
+<pre><code>        name            year          month             day       
+ Length   :20778   Min.   :1975   Min.   : 1.000   Min.   : 1.00  
+ N.unique :  268   1st Qu.:1995   1st Qu.: 8.000   1st Qu.: 8.00  
+ N.blank  :    0   Median :2005   Median : 9.000   Median :16.00  
+ Min.nchar:    3   Mean   :2004   Mean   : 8.708   Mean   :15.71  
+ Max.nchar:   10   3rd Qu.:2016   3rd Qu.: 9.000   3rd Qu.:24.00  
+                   Max.   :2024   Max.   :12.000   Max.   :31.00  
+                                                                  
       hour             lat             long                         status    
- Min.   : 0.000   Min.   : 7.00   Min.   :-109.30   tropical storm     :6684  
- 1st Qu.: 5.000   1st Qu.:18.40   1st Qu.: -78.70   hurricane          :4684  
- Median :12.000   Median :26.60   Median : -62.25   tropical depression:3525  
- Mean   : 9.094   Mean   :26.99   Mean   : -61.52   extratropical      :2068  
- 3rd Qu.:18.000   3rd Qu.:33.70   3rd Qu.: -45.60   other low          :1405  
- Max.   :23.000   Max.   :70.70   Max.   :  13.50   subtropical storm  : 292  
-                                                    (Other)            : 408  
+ Min.   : 0.000   Min.   : 7.00   Min.   :-136.90   tropical storm     :7252  
+ 1st Qu.: 5.000   1st Qu.:18.30   1st Qu.: -78.60   hurricane          :5100  
+ Median :12.000   Median :26.40   Median : -61.90   tropical depression:3685  
+ Mean   : 9.102   Mean   :26.94   Mean   : -61.32   extratropical      :2318  
+ 3rd Qu.:18.000   3rd Qu.:33.80   3rd Qu.: -45.30   other low          :1623  
+ Max.   :23.000   Max.   :70.70   Max.   :  13.50   subtropical storm  : 323  
+                                                    (Other)            : 477  
     category          wind           pressure      tropicalstorm_force_diameter
  Min.   :1.000   Min.   : 10.00   Min.   : 882.0   Min.   :   0.0              
- 1st Qu.:1.000   1st Qu.: 30.00   1st Qu.: 987.0   1st Qu.:   0.0              
- Median :1.000   Median : 45.00   Median :1000.0   Median : 110.0              
- Mean   :1.898   Mean   : 50.02   Mean   : 993.6   Mean   : 146.3              
+ 1st Qu.:1.000   1st Qu.: 30.00   1st Qu.: 986.0   1st Qu.:   0.0              
+ Median :1.000   Median : 45.00   Median :1000.0   Median : 120.0              
+ Mean   :1.899   Mean   : 50.07   Mean   : 993.4   Mean   : 148.1              
  3rd Qu.:3.000   3rd Qu.: 65.00   3rd Qu.:1007.0   3rd Qu.: 220.0              
  Max.   :5.000   Max.   :165.00   Max.   :1024.0   Max.   :1440.0              
- NA's   :14382                                     NA's   :9512                
+ NAs    :15678                                     NAs    :9512                
  hurricane_force_diameter
  Min.   :  0.00          
  1st Qu.:  0.00          
  Median :  0.00          
- Mean   : 14.81          
+ Mean   : 14.82          
  3rd Qu.:  0.00          
  Max.   :300.00          
- NA's   :9512            </code></pre>
+ NAs    :9512            </code></pre>
 </div>
 </div>
 <section id="sec-na" class="level2">
@@ -624,7 +624,7 @@ Caution
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>xbar.w  <span class="co"># print the mean wind speed to screen</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 50.01741</code></pre>
+<pre><code>[1] 50.06545</code></pre>
 </div>
 </div>
 <ul>
@@ -633,7 +633,7 @@ Caution
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(xbar.w)  <span class="co"># print the mean with print() command</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 50.01741</code></pre>
+<pre><code>[1] 50.06545</code></pre>
 </div>
 </div>
 <ul>
@@ -643,7 +643,7 @@ Caution
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate, assign, and print standard deviation</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">sd</span>(w))  <span class="co"># note ( ) around the entire command</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.50103</code></pre>
+<pre><code>[1] 25.46418</code></pre>
 </div>
 </div>
 <ul>
@@ -782,8 +782,8 @@ Note
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms<span class="sc">$</span>category)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  1.000   1.000   1.000   1.898   3.000   5.000   14382 </code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.     NAs 
+  1.000   1.000   1.000   1.899   3.000   5.000   15678 </code></pre>
 </div>
 </div>
 <ul>
@@ -795,8 +795,8 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>storms<span class="sc">$</span>category <span class="ot">&lt;-</span> <span class="fu">factor</span>(storms<span class="sc">$</span>category)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms<span class="sc">$</span>category)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    1     2     3     4     5  NA's 
- 2478   973   579   539   115 14382 </code></pre>
+<pre><code>    1     2     3     4     5   NAs 
+ 2707  1046   632   586   129 15678 </code></pre>
 </div>
 </div>
 </section>
