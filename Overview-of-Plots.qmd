@@ -405,7 +405,7 @@ plot(storms$category)
 ```
 
 
-# Plotting One Quantitative and One Qualitative Variable<
+# Plotting One Quantitative and One Qualitative Variable
 
 ---
 
