@@ -232,7 +232,7 @@ From the output above, we see:
   - The summary statistics of `status` are **counts** that are stored as integers.
 -   The variable `category` is initially read as `double` or decimal values.
   - The individual values are ordinal integers "1", "2", "3", "4", and "5" for category of hurricane. 
-  - There are 14,2328 `NA` (or missing) values corresponding to the observations that are not hurricanes.
+  - There are 15,678 `NA` (or missing) values corresponding to the observations that are not hurricanes.
   - The summary statistics of `category` (such as the mean) are stored decimals.
   - However, we would like to treat `category` as a qualitative variable and plot how many storms fall into each category.
 
@@ -1009,6 +1009,7 @@ ggplot(storms, aes(x=month)) +
 ------------------------------------------------------------------------
 
 ```{r}
+#| eval: false
 library(mapview)  # load spatial mapping package
 ```
 
@@ -1017,6 +1018,7 @@ library(mapview)  # load spatial mapping package
 ------------------------------------------------------------------------
 
 ```{r}
+#| eval: false
 mapview(storms, xcol = "long", ycol = "lat", 
         zcol = "status", 
         crs = 4269, grid = FALSE)
@@ -1029,14 +1031,17 @@ mapview(storms, xcol = "long", ycol = "lat",
 First we filter out observations with `category` equal to 5.
 
 ```{r}
+#| eval: true
 cat5 <- subset(storms , category == "5")  # keep only category 5
 ```
 
 ```{r}
+#| eval: false
 mapview(cat5, xcol = "long", ycol = "lat", cex = "wind", crs = 4269, grid = FALSE)
 ```
 
 ```{r}
+#| eval: false
 mapview(cat5, xcol = "long", ycol = "lat", zcol = "name", cex = "wind", crs = 4269, grid = FALSE)
 ```
 

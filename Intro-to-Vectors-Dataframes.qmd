@@ -104,7 +104,7 @@ summary(storms)
 A <span style="color:dodgerblue">**missing value**</span> occurs when the value of something isn't known.
 R uses the special object `NA` to represent missing value. If you have a missing value, you should represent that value as `NA`. Note: The character string `"NA"` is not the same thing as `NA`.
 
-- The `storms` data has properly coded 14,382 missing values for `category` since storms that are not hurricanes do not have a category.
+- The `storms` data has properly coded 15,678 missing values for `category` since storms that are not hurricanes do not have a category.
 - The `storms` data has properly coded 9,512 missing values for each of `tropicalstorm_force_diameter` and `hurricane_force_diameter` since these value only began being recorded in 2004.
 
 
