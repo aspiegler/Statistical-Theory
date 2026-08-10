@@ -53,3 +53,4 @@ vignettes/*.pdf
 # quarto files
 /.quarto/
 /_book/
+**/*.quarto_ipynb
