@@ -575,8 +575,6 @@ window.Quarto = {
 
 
 <p>Click <a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap1/03-EDA-Quantitative.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> to open an interactive version of the full text section.</p>
-<p>For a shorter <a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Labs/03-LabA-EDA-Quantitative.ipynb" target="_blank">in-class lab version of the section, part 1, click here.</a></p>
-<p>For a shorter <a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Labs/03-LabB-EDA-Quantitative.ipynb" target="_blank">in-class lab version of the section, part 2, click here.</a></p>
 <hr>
 <p>Additional Reading:</p>
 <ul>
@@ -716,22 +714,6 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># view the resulting data structure</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(storms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>tibble [19,066 × 13] (S3: tbl_df/tbl/data.frame)
- $ name                        : chr [1:19066] "Amy" "Amy" "Amy" "Amy" ...
- $ year                        : int [1:19066] 1975 1975 1975 1975 1975 1975 1975 1975 1975 1975 ...
- $ month                       : int [1:19066] 6 6 6 6 6 6 6 6 6 6 ...
- $ day                         : int [1:19066] 27 27 27 27 28 28 28 28 29 29 ...
- $ hour                        : int [1:19066] 0 6 12 18 0 6 12 18 0 6 ...
- $ lat                         : num [1:19066] 27.5 28.5 29.5 30.5 31.5 32.4 33.3 34 34.4 34 ...
- $ long                        : num [1:19066] -79 -79 -79 -79 -78.8 -78.7 -78 -77 -75.8 -74.8 ...
- $ status                      : Factor w/ 9 levels "disturbance",..: 7 7 7 7 7 7 7 7 8 8 ...
- $ category                    : Factor w/ 5 levels "1","2","3","4",..: NA NA NA NA NA NA NA NA NA NA ...
- $ wind                        : int [1:19066] 25 25 25 25 25 25 25 30 35 40 ...
- $ pressure                    : int [1:19066] 1013 1013 1013 1013 1012 1012 1011 1006 1004 1002 ...
- $ tropicalstorm_force_diameter: int [1:19066] NA NA NA NA NA NA NA NA NA NA ...
- $ hurricane_force_diameter    : int [1:19066] NA NA NA NA NA NA NA NA NA NA ...</code></pre>
-</div>
 </div>
 </section>
 </section>
@@ -741,39 +723,39 @@ Tip
 <hr>
 <p>When we analyze the categorical variables in <code>storms</code>, we use counts and proportions. In the table created by the code cell below, we see how many observations there are in each storm classification.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tbl.status <span class="ot">&lt;-</span> <span class="fu">table</span>(storms<span class="sc">$</span>status) <span class="co"># store counts for each storm classification</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tbl.status  <span class="co"># print table to screen</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tbl.status <span class="ot">&lt;-</span> <span class="fu">table</span>(storms<span class="sc">$</span>status) <span class="co"># store counts for each storm classification</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tbl.status  <span class="co"># print table to screen</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
            disturbance          extratropical              hurricane 
-                   146                   2068                   4684 
+                   212                   2318                   5100 
              other low subtropical depression      subtropical storm 
-                  1405                    151                    292 
+                  1623                    154                    323 
    tropical depression         tropical storm          tropical wave 
-                  3525                   6684                    111 </code></pre>
+                  3685                   7252                    111 </code></pre>
 </div>
 </div>
 <p>The code cell below gives the proportion of storms in the data are in each storm classification.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table of counts for each storm classification</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tbl.status)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table of counts for each storm classification</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tbl.status)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
            disturbance          extratropical              hurricane 
-           0.007657610            0.108465331            0.245672926 
+           0.010203099            0.111560304            0.245451920 
              other low subtropical depression      subtropical storm 
-           0.073691388            0.007919857            0.015315221 
+           0.078111464            0.007411685            0.015545288 
    tropical depression         tropical storm          tropical wave 
-           0.184884087            0.350571698            0.005821882 </code></pre>
+           0.177351044            0.349023005            0.005342189 </code></pre>
 </div>
 </div>
 <p>We used bar charts and pie charts to visualize the distribution and relations between categorical variables.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(storms<span class="sc">$</span>category,  <span class="co"># categorical data</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Hurricanes by Category"</span>,  <span class="co"># main title</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Hurricane Category"</span>,  <span class="co"># horizontal axis label</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># vertical axis label</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(storms<span class="sc">$</span>category,  <span class="co"># categorical data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Hurricanes by Category"</span>,  <span class="co"># main title</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Hurricane Category"</span>,  <span class="co"># horizontal axis label</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># vertical axis label</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -821,15 +803,15 @@ Tip
 <li>Run <code>?hist</code> for more information about the available options for customizing a histogram, some of which are illustrated in the code cell below.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind,  <span class="co"># vector of values to plot</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">15</span>,  <span class="co"># number of bin ranges to use</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>),  <span class="co"># sets window for x-axis</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>),  <span class="co"># sets window for y-axis</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Storm Wind Speed"</span>,  <span class="co"># main label</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind,  <span class="co"># vector of values to plot</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">15</span>,  <span class="co"># number of bin ranges to use</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>),  <span class="co"># sets window for x-axis</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5000</span>),  <span class="co"># sets window for y-axis</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Storm Wind Speed"</span>,  <span class="co"># main label</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -869,22 +851,22 @@ Tip
 <li><p>How accurate was your answer in <a href="#question-5">Question 5</a>?</p></li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>le<span class="fl">.40</span> <span class="ot">&lt;-</span> storms<span class="sc">$</span>wind <span class="sc">&lt;=</span> <span class="dv">40</span>  <span class="co"># ??</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(storms<span class="sc">$</span>wind, <span class="dv">10</span>)  <span class="co"># prints last 10 rows of wind speed vector</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>le<span class="fl">.40</span> <span class="ot">&lt;-</span> storms<span class="sc">$</span>wind <span class="sc">&lt;=</span> <span class="dv">40</span>  <span class="co"># ??</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(storms<span class="sc">$</span>wind, <span class="dv">10</span>)  <span class="co"># prints last 10 rows of wind speed vector</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 45 45 45 40 35 35 35 35 40 40</code></pre>
+<pre><code> [1] 45 40 40 35 35 35 35 35 30 25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(le<span class="fl">.40</span>, <span class="dv">10</span>)  <span class="co"># prints last 10 rows of logical vector le.40</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(le<span class="fl">.40</span>, <span class="dv">10</span>)  <span class="co"># prints last 10 rows of logical vector le.40</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enter comment to interpret this command</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(le<span class="fl">.40</span>)  <span class="co"># ??</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># enter comment to interpret this command</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(le<span class="fl">.40</span>)  <span class="co"># ??</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9288</code></pre>
+<pre><code>[1] 10115</code></pre>
 </div>
 </div>
 </section>
@@ -897,27 +879,27 @@ Tip
 <li>If we include too many bins, the histogram may be difficult to read.</li>
 <li>The fun of interacting with data in R is we can play around and adjust the number of breaks and other options until we are satisfied.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind,  <span class="co"># vector of values to plot</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">5</span>,  <span class="co"># number of bin ranges to use</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>),  <span class="co"># sets window for x-axis</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">15000</span>),  <span class="co"># sets window for y-axis</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Storm Wind Speed (breaks = 5)"</span>,  <span class="co"># main label</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>,  <span class="co"># increase font size</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind,  <span class="co"># vector of values to plot</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">50</span>,  <span class="co"># number of bin ranges to use</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>),  <span class="co"># sets window for x-axis</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3000</span>),  <span class="co"># sets window for y-axis</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Storm Wind Speed (breaks = 50)"</span>,  <span class="co"># main label</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>,  <span class="co"># increase font size</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"seagreen"</span>)  <span class="co"># fill color of bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind,  <span class="co"># vector of values to plot</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">5</span>,  <span class="co"># number of bin ranges to use</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>),  <span class="co"># sets window for x-axis</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">15000</span>),  <span class="co"># sets window for y-axis</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Storm Wind Speed (breaks = 5)"</span>,  <span class="co"># main label</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>,  <span class="co"># increase font size</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind,  <span class="co"># vector of values to plot</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">50</span>,  <span class="co"># number of bin ranges to use</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">200</span>),  <span class="co"># sets window for x-axis</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3000</span>),  <span class="co"># sets window for y-axis</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Storm Wind Speed (breaks = 50)"</span>,  <span class="co"># main label</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>, <span class="at">cex.main=</span><span class="fl">1.5</span>,  <span class="co"># increase font size</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"seagreen"</span>)  <span class="co"># fill color of bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-breaks" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-breaks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -995,30 +977,30 @@ Figure&nbsp;7.1: Changing the Breaks: Histograms of Wind Speed
 <h2 class="anchored" data-anchor-id="the-skewness-of-data">The Skewness of Data</h2>
 <hr>
 <p>The <span style="color:dodgerblue"><strong>skewness</strong></span> of the data describes the direction of the tail of the data. The tail of the data indicates the direction of outliers (if any).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#par(mfrow = c(1, 3))  # Create a 1 x 3 array of plots</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind, </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Wind Speeds"</span>,  <span class="co"># main title</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.7</span>, <span class="at">cex.axis=</span><span class="fl">1.7</span>, <span class="at">cex.main=</span><span class="fl">1.7</span>,  <span class="co"># increase font size</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>month, </span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">12</span>,  <span class="co"># number of breaks</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Month"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Months"</span>,  <span class="co"># main title</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.7</span>, <span class="at">cex.axis=</span><span class="fl">1.7</span>, <span class="at">cex.main=</span><span class="fl">1.7</span>,  <span class="co"># increase font size</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"coral1"</span>)  <span class="co"># fill color of bars</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>long, </span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">15</span>,  <span class="co"># number of breaks</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Degrees of Longitude"</span>,   <span class="co"># x-axis label</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Longitude"</span>,  <span class="co"># main title</span></span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.7</span>, <span class="at">cex.axis=</span><span class="fl">1.7</span>, <span class="at">cex.main=</span><span class="fl">1.7</span>,  <span class="co"># increase font size</span></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"aquamarine4"</span>)  <span class="co"># fill color of bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#par(mfrow = c(1, 3))  # Create a 1 x 3 array of plots</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>wind, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"wind speed (in knots)"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Wind Speeds"</span>,  <span class="co"># main title</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.7</span>, <span class="at">cex.axis=</span><span class="fl">1.7</span>, <span class="at">cex.main=</span><span class="fl">1.7</span>,  <span class="co"># increase font size</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>)  <span class="co"># fill color of bars</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>month, </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">12</span>,  <span class="co"># number of breaks</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Month"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Months"</span>,  <span class="co"># main title</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.7</span>, <span class="at">cex.axis=</span><span class="fl">1.7</span>, <span class="at">cex.main=</span><span class="fl">1.7</span>,  <span class="co"># increase font size</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"coral1"</span>)  <span class="co"># fill color of bars</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(storms<span class="sc">$</span>long, </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">15</span>,  <span class="co"># number of breaks</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Degrees of Longitude"</span>,   <span class="co"># x-axis label</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,  <span class="co"># y-axis label</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Longitude"</span>,  <span class="co"># main title</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.7</span>, <span class="at">cex.axis=</span><span class="fl">1.7</span>, <span class="at">cex.main=</span><span class="fl">1.7</span>,  <span class="co"># increase font size</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"aquamarine4"</span>)  <span class="co"># fill color of bars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-shape" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-shape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1237,16 +1219,16 @@ Tip
 <li>25% of the wind speeds are between 65 and 165 knots.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(storms<span class="sc">$</span>wind,  <span class="co"># data to plot</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Wind Speeds of Storms"</span>,  <span class="co"># main title </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Wind Speed (in knots)"</span>,  <span class="co"># x-axis label</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default ticks on x-axis</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span>)  <span class="co"># align horizontally</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">fivenum</span>(storms<span class="sc">$</span>wind))  <span class="co"># add tickmarks at five number summary</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(storms<span class="sc">$</span>wind,  <span class="co"># data to plot</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Wind Speeds of Storms"</span>,  <span class="co"># main title </span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Wind Speed (in knots)"</span>,  <span class="co"># x-axis label</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xaxt=</span><span class="st">'n'</span>,  <span class="co"># turn off default ticks on x-axis</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span>)  <span class="co"># align horizontally</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">fivenum</span>(storms<span class="sc">$</span>wind))  <span class="co"># add tickmarks at five number summary</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1298,8 +1280,8 @@ Tip
 </blockquote>
 <p>Run the code cell below and check the output to verify the test works as expected.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>test.data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">33</span>, <span class="dv">34</span>, <span class="dv">36</span>, <span class="dv">38</span>)  <span class="co"># vector of test data</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>test.data <span class="sc">&lt;=</span> <span class="dv">35</span>  <span class="co"># logical test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>test.data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">33</span>, <span class="dv">34</span>, <span class="dv">36</span>, <span class="dv">38</span>)  <span class="co"># vector of test data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>test.data <span class="sc">&lt;=</span> <span class="dv">35</span>  <span class="co"># logical test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
@@ -1311,14 +1293,14 @@ Tip
 <li>Running the code cell below, we verify that 3 values in <code>test.data</code> are less than or equal to 35.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(test.data <span class="sc">&lt;=</span> <span class="dv">35</span>)  <span class="co"># sum the TRUE results</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(test.data <span class="sc">&lt;=</span> <span class="dv">35</span>)  <span class="co"># sum the TRUE results</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>We can convert the count to a proportion by dividing by the total number of values in our data. Our vector <code>test.data</code> has a total of 5 observations; therefore, the proportion of values that are less than or equal to 35 is 3 out of 5 or <span class="math inline">\(0.6\)</span>. We can use the <code>mean()</code> to count the number of <code>TRUE</code> results and divide by the total number of all observations in one command to simplify the code.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(test.data <span class="sc">&lt;=</span> <span class="dv">35</span>)  <span class="co"># total values &lt;= 35 divided by total number of values</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(test.data <span class="sc">&lt;=</span> <span class="dv">35</span>)  <span class="co"># total values &lt;= 35 divided by total number of values</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6</code></pre>
 </div>
@@ -1332,7 +1314,7 @@ Tip
 <h3 class="anchored" data-anchor-id="solution-to-question-16">Solution to Question 16</h3>
 <hr>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what proportion of observations have wind less than or equal to 50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what proportion of observations have wind less than or equal to 50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1362,11 +1344,11 @@ Tip
 <hr>
 <p>We can plot the ecdf using the <code>plot.ecdf()</code> function in R, and the resulting plot is a piecewise, step function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ecdf</span>(test.data, <span class="at">col=</span><span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ecdf</span>(test.data, <span class="at">col=</span><span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1394,7 +1376,7 @@ Tip
 <h3 class="anchored" data-anchor-id="solution-to-question-18">Solution to Question 18</h3>
 <hr>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the ecdf for wind speeds in storms</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the ecdf for wind speeds in storms</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1408,7 +1390,7 @@ Tip
 </blockquote>
 <p>We first check the data type of the month variable in <code>storms</code> using the <code>typeof()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(storms<span class="sc">$</span>month)  <span class="co"># check how months is stored</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(storms<span class="sc">$</span>month)  <span class="co"># check how months is stored</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
@@ -1418,11 +1400,11 @@ Tip
 <hr>
 <p>Months were initially stored as decimals. We converted <code>month</code> to an integer earlier, and we can see <code>month</code> is still stored as an integer. Let’s convert <code>month</code> to a <code>factor</code> so R will treat each month as a separate class.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>storms<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(storms<span class="sc">$</span>month)  <span class="co"># convert month to a categorical variable</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms<span class="sc">$</span>month)  <span class="co"># check summary output after converting to factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>storms<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(storms<span class="sc">$</span>month)  <span class="co"># convert month to a categorical variable</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(storms<span class="sc">$</span>month)  <span class="co"># check summary output after converting to factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   1    4    5    6    7    8    9   10   11   12 
-  70   66  201  779 1603 4440 7509 3077 1109  212 </code></pre>
+  70   66  202  887 1759 4702 8244 3403 1233  212 </code></pre>
 </div>
 </div>
 </section>
@@ -1435,13 +1417,13 @@ Tip
 <li>If <code>x</code> is categorical, <code>plot(x)</code> creates a bar chart.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  <span class="co"># create a 1 by 2 array of plots</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(storms<span class="sc">$</span>month)  <span class="co"># bar chart is created for categorical data</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(storms<span class="sc">$</span>wind)  <span class="co"># index plot is created for quantitative data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  <span class="co"># create a 1 by 2 array of plots</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(storms<span class="sc">$</span>month)  <span class="co"># bar chart is created for categorical data</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(storms<span class="sc">$</span>wind)  <span class="co"># index plot is created for quantitative data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1451,13 +1433,13 @@ Tip
 <li>If both <code>x</code> and <code>y</code> are quantitative variables, <code>plot(y ~ x, data = [name])</code> creates a scatterplot.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  <span class="co"># create a 1 by 2 array of plots</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wind <span class="sc">~</span> month, <span class="at">data =</span> storms)  <span class="co"># side by side boxplots</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wind <span class="sc">~</span> pressure, <span class="at">data =</span> storms)  <span class="co"># scatterplot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  <span class="co"># create a 1 by 2 array of plots</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wind <span class="sc">~</span> month, <span class="at">data =</span> storms)  <span class="co"># side by side boxplots</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wind <span class="sc">~</span> pressure, <span class="at">data =</span> storms)  <span class="co"># scatterplot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="03-EDA-Quantitative_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1482,35 +1464,35 @@ Tip
 <hr>
 <p>As the name implies, the <code>subset()</code> function in base R is a really useful function for subsetting! We can open the help documentation with <code>?subset</code> to learn how to apply this function. Below are some examples of different ways we may want to subset the <code>storms</code> data to analyze for storms that occurred in August.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keeps all variables for storms in August</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>aug <span class="ot">&lt;-</span> <span class="fu">subset</span>(storms, month <span class="sc">==</span> <span class="st">"8"</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># keeps only the wind speed variable for August storms</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>aug.wind <span class="ot">&lt;-</span> <span class="fu">subset</span>(storms, <span class="at">select =</span> wind, month <span class="sc">==</span> <span class="st">"8"</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># drop = T drops the column name and creates a vector instead of a data frame</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>aug.wind.vec <span class="ot">&lt;-</span> <span class="fu">subset</span>(storms, <span class="at">select =</span> wind, month <span class="sc">==</span> <span class="st">"8"</span>, <span class="at">drop =</span> T) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keeps all variables for storms in August</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>aug <span class="ot">&lt;-</span> <span class="fu">subset</span>(storms, month <span class="sc">==</span> <span class="st">"8"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># keeps only the wind speed variable for August storms</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>aug.wind <span class="ot">&lt;-</span> <span class="fu">subset</span>(storms, <span class="at">select =</span> wind, month <span class="sc">==</span> <span class="st">"8"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># drop = T drops the column name and creates a vector instead of a data frame</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>aug.wind.vec <span class="ot">&lt;-</span> <span class="fu">subset</span>(storms, <span class="at">select =</span> wind, month <span class="sc">==</span> <span class="st">"8"</span>, <span class="at">drop =</span> T) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can see all variables are selected</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can see all variables are selected</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 13
-  name   year month   day  hour   lat  long status categ…¹  wind press…² tropi…³
-  &lt;chr&gt; &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
-1 Caro…  1975 8        24    12  22.4 -69.8 tropi… &lt;NA&gt;       25    1011      NA
-2 Caro…  1975 8        24    18  21.9 -71.1 tropi… &lt;NA&gt;       25    1011      NA
-3 Caro…  1975 8        25     0  21.6 -72.5 tropi… &lt;NA&gt;       25    1010      NA
-4 Caro…  1975 8        25     6  21.2 -73.8 tropi… &lt;NA&gt;       25    1010      NA
-5 Caro…  1975 8        25    12  20.9 -75.1 tropi… &lt;NA&gt;       25    1011      NA
-6 Caro…  1975 8        25    18  20.6 -76.4 tropi… &lt;NA&gt;       25    1011      NA
-# … with 1 more variable: hurricane_force_diameter &lt;int&gt;, and abbreviated
-#   variable names ¹​category, ²​pressure, ³​tropicalstorm_force_diameter</code></pre>
+  name      year month   day  hour   lat  long status    category  wind pressure
+  &lt;chr&gt;    &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;    &lt;int&gt;
+1 Caroline  1975 8        24    12  22.4 -69.8 tropical… &lt;NA&gt;        25     1011
+2 Caroline  1975 8        24    18  21.9 -71.1 tropical… &lt;NA&gt;        25     1011
+3 Caroline  1975 8        25     0  21.6 -72.5 tropical… &lt;NA&gt;        25     1010
+4 Caroline  1975 8        25     6  21.2 -73.8 tropical… &lt;NA&gt;        25     1010
+5 Caroline  1975 8        25    12  20.9 -75.1 tropical… &lt;NA&gt;        25     1011
+6 Caroline  1975 8        25    18  20.6 -76.4 tropical… &lt;NA&gt;        25     1011
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just the wind variable is selected</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug.wind)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just the wind variable is selected</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug.wind)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 1
    wind
@@ -1524,8 +1506,8 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wind speeds in august stored in a vector</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug.wind.vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wind speeds in august stored in a vector</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug.wind.vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25 25 25 25 25 25</code></pre>
 </div>
@@ -1553,20 +1535,20 @@ Tip
 <li>The command below gives the same result as <code>subset(storms, month == "8")</code>.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>aug2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(storms, month <span class="sc">==</span> <span class="st">"8"</span>)  <span class="co"># filter requires dplyr package</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug2)  <span class="co"># selects all variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>aug2 <span class="ot">&lt;-</span> <span class="fu">filter</span>(storms, month <span class="sc">==</span> <span class="st">"8"</span>)  <span class="co"># filter requires dplyr package</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug2)  <span class="co"># selects all variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 13
-  name   year month   day  hour   lat  long status categ…¹  wind press…² tropi…³
-  &lt;chr&gt; &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
-1 Caro…  1975 8        24    12  22.4 -69.8 tropi… &lt;NA&gt;       25    1011      NA
-2 Caro…  1975 8        24    18  21.9 -71.1 tropi… &lt;NA&gt;       25    1011      NA
-3 Caro…  1975 8        25     0  21.6 -72.5 tropi… &lt;NA&gt;       25    1010      NA
-4 Caro…  1975 8        25     6  21.2 -73.8 tropi… &lt;NA&gt;       25    1010      NA
-5 Caro…  1975 8        25    12  20.9 -75.1 tropi… &lt;NA&gt;       25    1011      NA
-6 Caro…  1975 8        25    18  20.6 -76.4 tropi… &lt;NA&gt;       25    1011      NA
-# … with 1 more variable: hurricane_force_diameter &lt;int&gt;, and abbreviated
-#   variable names ¹​category, ²​pressure, ³​tropicalstorm_force_diameter</code></pre>
+  name      year month   day  hour   lat  long status    category  wind pressure
+  &lt;chr&gt;    &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;    &lt;int&gt;
+1 Caroline  1975 8        24    12  22.4 -69.8 tropical… &lt;NA&gt;        25     1011
+2 Caroline  1975 8        24    18  21.9 -71.1 tropical… &lt;NA&gt;        25     1011
+3 Caroline  1975 8        25     0  21.6 -72.5 tropical… &lt;NA&gt;        25     1010
+4 Caroline  1975 8        25     6  21.2 -73.8 tropical… &lt;NA&gt;        25     1010
+5 Caroline  1975 8        25    12  20.9 -75.1 tropical… &lt;NA&gt;        25     1011
+6 Caroline  1975 8        25    18  20.6 -76.4 tropical… &lt;NA&gt;        25     1011
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -1575,21 +1557,21 @@ Tip
 <hr>
 <p>When writing more complex code such as for loops, it is often useful to subset data using logical statements. For example, <code>storms[storms$month == "8", ]</code> extracts just the rows that have a <code>month</code> value equal to 8.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract rows from storms with month equal to 8</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>aug.logic <span class="ot">&lt;-</span> storms[storms<span class="sc">$</span>month <span class="sc">==</span> <span class="st">"8"</span>, ]</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug.logic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract rows from storms with month equal to 8</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>aug.logic <span class="ot">&lt;-</span> storms[storms<span class="sc">$</span>month <span class="sc">==</span> <span class="st">"8"</span>, ]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aug.logic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 13
-  name   year month   day  hour   lat  long status categ…¹  wind press…² tropi…³
-  &lt;chr&gt; &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;   &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
-1 Caro…  1975 8        24    12  22.4 -69.8 tropi… &lt;NA&gt;       25    1011      NA
-2 Caro…  1975 8        24    18  21.9 -71.1 tropi… &lt;NA&gt;       25    1011      NA
-3 Caro…  1975 8        25     0  21.6 -72.5 tropi… &lt;NA&gt;       25    1010      NA
-4 Caro…  1975 8        25     6  21.2 -73.8 tropi… &lt;NA&gt;       25    1010      NA
-5 Caro…  1975 8        25    12  20.9 -75.1 tropi… &lt;NA&gt;       25    1011      NA
-6 Caro…  1975 8        25    18  20.6 -76.4 tropi… &lt;NA&gt;       25    1011      NA
-# … with 1 more variable: hurricane_force_diameter &lt;int&gt;, and abbreviated
-#   variable names ¹​category, ²​pressure, ³​tropicalstorm_force_diameter</code></pre>
+  name      year month   day  hour   lat  long status    category  wind pressure
+  &lt;chr&gt;    &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;    &lt;int&gt;    &lt;int&gt;
+1 Caroline  1975 8        24    12  22.4 -69.8 tropical… &lt;NA&gt;        25     1011
+2 Caroline  1975 8        24    18  21.9 -71.1 tropical… &lt;NA&gt;        25     1011
+3 Caroline  1975 8        25     0  21.6 -72.5 tropical… &lt;NA&gt;        25     1010
+4 Caroline  1975 8        25     6  21.2 -73.8 tropical… &lt;NA&gt;        25     1010
+5 Caroline  1975 8        25    12  20.9 -75.1 tropical… &lt;NA&gt;        25     1011
+6 Caroline  1975 8        25    18  20.6 -76.4 tropical… &lt;NA&gt;        25     1011
+# ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+#   hurricane_force_diameter &lt;int&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -1602,7 +1584,7 @@ Tip
 <h3 class="anchored" data-anchor-id="solution-to-question-20">Solution to Question 20</h3>
 <hr>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keeps all variables for storms in September</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># keeps all variables for storms in September</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -1611,13 +1593,13 @@ Tip
 <hr>
 <p>Once we have created the data frames <code>aug</code> and <code>sept</code>, we can create side by side boxplots to compare the wind speeds for storms in these two months.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># need to answer previous question first</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(aug<span class="sc">$</span>wind, sept<span class="sc">$</span>wind,  <span class="co"># enter two vectors of data</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Comparing Wind Speeds in Aug. and Sept."</span>,   <span class="co"># main title</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Wind Speed (in knots)"</span>,  <span class="co"># x-axis label</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span>,  <span class="co"># align boxplots horizontally</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"August"</span>, <span class="st">"September"</span>),  <span class="co"># label each boxplot</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"seagreen"</span>, <span class="st">"steelblue"</span>))  <span class="co"># fill color for box</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># need to answer previous question first</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(aug<span class="sc">$</span>wind, sept<span class="sc">$</span>wind,  <span class="co"># enter two vectors of data</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Comparing Wind Speeds in Aug. and Sept."</span>,   <span class="co"># main title</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Wind Speed (in knots)"</span>,  <span class="co"># x-axis label</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span>,  <span class="co"># align boxplots horizontally</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"August"</span>, <span class="st">"September"</span>),  <span class="co"># label each boxplot</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"seagreen"</span>, <span class="st">"steelblue"</span>))  <span class="co"># fill color for box</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="question-21" class="level2">
@@ -1661,8 +1643,8 @@ Tip
 <hr>
 <p>In the following code, we compute the mean of a vector. <strong>Why can’t we see the result after running it</strong>?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> storms<span class="sc">$</span>wind  <span class="co"># wind is now stored in w</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>xbar.w <span class="ot">&lt;-</span> <span class="fu">mean</span>(w)  <span class="co"># compute mean wind speed and assign to xbar.w</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> storms<span class="sc">$</span>wind  <span class="co"># wind is now stored in w</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>xbar.w <span class="ot">&lt;-</span> <span class="fu">mean</span>(w)  <span class="co"># compute mean wind speed and assign to xbar.w</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In the code cell above, the output has been stored in an object that we can refer to later.</p>
 </section>
@@ -1671,8 +1653,8 @@ Tip
 <hr>
 <p>Once an object has been assigned a name, it can be printed by executing the name of the object or using the <code>print</code> function or just entering the object name.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>xbar.w  <span class="co"># print the mean wind speed to screen</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(xbar.w)  <span class="co"># print a different way</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>xbar.w  <span class="co"># print the mean wind speed to screen</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(xbar.w)  <span class="co"># print a different way</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="assigning-and-printing-an-object-at-once" class="level2">
@@ -1680,7 +1662,7 @@ Tip
 <hr>
 <p>Another nice way to both execute, store, and print the output of a command is the parentheses <code>( )</code> method.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(sd.w <span class="ot">&lt;-</span> <span class="fu">sd</span>(w))  <span class="co"># using ( ) around a command will execute, store and print output</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(sd.w <span class="ot">&lt;-</span> <span class="fu">sd</span>(w))  <span class="co"># using ( ) around a command will execute, store and print output</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sometimes-you-want-to-see-the-result-of-a-code-cell-and-sometimes-you-will-not." class="level3">
 <h3 class="anchored" data-anchor-id="sometimes-you-want-to-see-the-result-of-a-code-cell-and-sometimes-you-will-not.">Sometimes you want to see the result of a code cell, and sometimes you will not.</h3>
