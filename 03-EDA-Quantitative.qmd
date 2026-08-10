@@ -162,6 +162,8 @@ storms$category <- factor(storms$category)  #
 ```
 
 ```{r}
+#| eval: true
+#| output: false
 # view the resulting data structure
 str(storms)
 ```
