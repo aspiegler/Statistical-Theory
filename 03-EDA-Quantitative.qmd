@@ -882,7 +882,6 @@ head(aug.wind)
 head(aug.wind.vec)
 ```
 
-
 ## Question 19
 
 ---
