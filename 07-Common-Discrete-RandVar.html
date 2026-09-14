@@ -536,7 +536,7 @@ window.Quarto = {
 <hr>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://thecrimereport.org/wp-content/uploads/2020/08/jury-by-eric-molinsky-computer-assisted-legal-instruction-771x498.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://live.staticflickr.com/7066/6882839119_0bbfbe8773_w.jpg" class="img-fluid figure-img"></p>
 <figcaption>Illustration by Eric Molinsky from the <a href="http://www.cali.org/">CALI</a> Lesson “Trial Practice, Bringing it to the Jury and Beyond.” <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a></figcaption>
 </figure>
 </div>
@@ -556,15 +556,15 @@ window.Quarto = {
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <hr>
-<p>Consider the selection of a jury of 5 people. We want to see whether the jury is representative in terms of political party. Note we initially choose a jury of 5 people to more quickly recognize a pattern. After identifying a pattern, we can extend our results to juries of 12 people. Let <span class="math inline">\(Y\)</span> denote a jury member who identifies as an independent voter. Let <span class="math inline">\(N\)</span> denote a jury member who is not independent (identify as Democrat, Republican, or with another political party).</p>
+<p>Consider the selection of a jury of 5 people. We want to see whether the jury is representative in terms of political party. Note we initially choose a jury of 5 people to more quickly recognize a pattern. After identifying a pattern, we can extend our results to juries of 12 people. Let <span class="math inline">\(Y\)</span> denote a jury member who identifies as an unaffiliated voter. Let <span class="math inline">\(N\)</span> denote a jury member who is not unaffiliated (identify as Democrat, Republican, or with another political party).</p>
 <ul>
-<li>There is one possible outcome in the event: 0 people on the jury identify an Independent.</li>
+<li>There is one possible outcome in the event: 0 people on the jury identify an unaffiliated.</li>
 <li>We can represent that outcome as NNNNN.</li>
 </ul>
 <section id="question-1a" class="level3">
 <h3 class="anchored" data-anchor-id="question-1a">Question 1a</h3>
 <hr>
-<p>List all possible outcomes in the event: Exactly 1 out of 5 jurors is independent.</p>
+<p>List all possible outcomes in the event: Exactly 1 out of 5 jurors is unaffiliated.</p>
 <section id="solution-to-question-1a" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-1a">Solution to Question 1a</h4>
 <hr>
@@ -576,7 +576,7 @@ window.Quarto = {
 <section id="question-1b" class="level3">
 <h3 class="anchored" data-anchor-id="question-1b">Question 1b</h3>
 <hr>
-<p>List all possible outcomes in the event: Exactly 2 out of 5 jurors are independent.</p>
+<p>List all possible outcomes in the event: Exactly 2 out of 5 jurors are unaffiliated.</p>
 <section id="solution-to-question-1b" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-1b">Solution to Question 1b</h4>
 <hr>
@@ -631,7 +631,7 @@ Note
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
 <hr>
-<p>Use R to calculate the total number of outcomes in the event: Exactly 2 out of 5 jurors are independent voters.</p>
+<p>Use R to calculate the total number of outcomes in the event: Exactly 2 out of 5 jurors are unaffiliated voters.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -676,7 +676,7 @@ Tip
 <section id="defining-a-random-variable" class="level1">
 <h1>Defining a Random Variable</h1>
 <hr>
-<p>Recall random variables map outcomes in a sample space to a subset of the real numbers. In this example, an outcome is 5 randomly selected people for the jury. We define random variable <span class="math inline">\(X\)</span> to be the number of independent voters on a randomly selected jury of 5 people. For example, we have:</p>
+<p>Recall random variables map outcomes in a sample space to a subset of the real numbers. In this example, an outcome is 5 randomly selected people for the jury. We define random variable <span class="math inline">\(X\)</span> to be the number of unaffiliated voters on a randomly selected jury of 5 people. For example, we have:</p>
 <ul>
 <li>The outcome NNNNN is mapped to <span class="math inline">\(X=0\)</span>.</li>
 <li>The outcome YNNNN is mapped to <span class="math inline">\(X=1\)</span>.</li>
@@ -687,12 +687,12 @@ Tip
 <section id="question-3" class="level2">
 <h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
 <hr>
-<p>According to a recent article <a href="https://www.pbs.org/newshour/show/why-independent-voters-are-key-to-winning-colorado" target="_blank">“Why Independent Voters Are Key To Winning Colorado”, PBS News. Oct 3, 2020</a>, approximately 42% of Colorado’s voters identify as independent.</p>
-<p>In solving <a href="#question-2">Question 2</a>, there is a general pattern we can model to compute the probability of choose exactly <span class="math inline">\(x\)</span> jurors that identify as an independent voters in a jury of 5 people. In this question, we generalize the pattern to answer questions about a jury of 12 people.</p>
+<p>According to a recent article <a href="https://www.axios.com/local/denver/2025/09/17/colorado-registered-voter-unaffiliated-democrat-republican">“Half of Colorado’s registered voters don’t belong to a political party”, Axios Sep 1, 2025</a>, approximately 51% of Colorado’s voters are unaffiliated with any political party.</p>
+<p>In solving <a href="#question-2">Question 2</a>, there is a general pattern we can model to compute the probability of choose exactly <span class="math inline">\(x\)</span> jurors that identify as an unaffiliated voters in a jury of 5 people. In this question, we generalize the pattern to answer questions about a jury of 12 people.</p>
 <section id="question-3a" class="level3">
 <h3 class="anchored" data-anchor-id="question-3a">Question 3a</h3>
 <hr>
-<p>What is the probability of randomly selecting a jury of 12 people with exactly 0 jurors that identify as an independent voter?</p>
+<p>What is the probability of randomly selecting a jury of 12 people with exactly 0 jurors that identify as an unaffiliated voter?</p>
 <section id="solution-to-question-3a" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-3a">Solution to Question 3a</h4>
 <hr>
@@ -706,7 +706,7 @@ Tip
 <section id="question-3b" class="level3">
 <h3 class="anchored" data-anchor-id="question-3b">Question 3b</h3>
 <hr>
-<p>What is the probability of randomly selecting a jury of 12 people with exactly 1 juror that identify as an independent voter?</p>
+<p>What is the probability of randomly selecting a jury of 12 people with exactly 1 juror that identify as an unaffiliated voter?</p>
 <section id="solution-to-question-3b" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-3b">Solution to Question 3b</h4>
 <hr>
@@ -720,7 +720,7 @@ Tip
 <section id="question-3c" class="level3">
 <h3 class="anchored" data-anchor-id="question-3c">Question 3c</h3>
 <hr>
-<p>What is the probability of randomly selecting a jury of 12 people with exactly 2 jurors that identify as independent voters?</p>
+<p>What is the probability of randomly selecting a jury of 12 people with exactly 2 jurors that identify as unaffiliated voters?</p>
 <section id="solution-to-question-3c" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-3c">Solution to Question 3c</h4>
 <hr>
@@ -734,7 +734,7 @@ Tip
 <section id="question-3d" class="level3">
 <h3 class="anchored" data-anchor-id="question-3d">Question 3d</h3>
 <hr>
-<p>What is the probability of randomly selecting a jury of 12 people with at most 2 jurors that identify as independent voters?</p>
+<p>What is the probability of randomly selecting a jury of 12 people with at most 2 jurors that identify as unaffiliated voters?</p>
 <section id="solution-to-question-3d" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-3d">Solution to Question 3d</h4>
 <hr>
@@ -748,7 +748,7 @@ Tip
 <section id="question-3e" class="level3">
 <h3 class="anchored" data-anchor-id="question-3e">Question 3e</h3>
 <hr>
-<p>What is the probability of randomly selecting a jury of 12 people with at least 2 jurors that identify as independent voters?</p>
+<p>What is the probability of randomly selecting a jury of 12 people with at least 2 jurors that identify as unaffiliated voters?</p>
 <section id="solution-to-question-3e" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-3e">Solution to Question 3e</h4>
 <hr>
@@ -763,7 +763,7 @@ Tip
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
 <hr>
-<p>A jury of 12 people is randomly selected from a population that is 42% independent voters. Let random variable <span class="math inline">\(X\)</span> denote the number of jurors that identify as an independent voter.</p>
+<p>A jury of 12 people is randomly selected from a population that is 51% unaffiliated voters. Let random variable <span class="math inline">\(X\)</span> denote the number of jurors that identify as an unaffiliated voter.</p>
 <section id="question-4a" class="level3">
 <h3 class="anchored" data-anchor-id="question-4a">Question 4a</h3>
 <hr>
@@ -789,7 +789,7 @@ Tip
 <h4 class="anchored" data-anchor-id="solution-to-question-4b">Solution to Question 4b</h4>
 <hr>
 <p>A formula has been partially completed. Fill in the missing parts.</p>
-<p><span class="math display">\[P(X=x) = \begin{pmatrix} ?? \\ ?? \end{pmatrix} (0.42)^{??} (1-0.42)^{??}\]</span></p>
+<p><span class="math display">\[P(X=x) = \begin{pmatrix} ?? \\ ?? \end{pmatrix} (0.51)^{??} (1-0.51)^{??}\]</span></p>
 <p><br><br>
 <br></p>
 </section>
