@@ -511,7 +511,8 @@ window.Quarto = {
   <li><a href="#question-14a" id="toc-question-14a" class="nav-link" data-scroll-target="#question-14a">Question 14a</a></li>
   <li><a href="#question-14b" id="toc-question-14b" class="nav-link" data-scroll-target="#question-14b">Question 14b</a></li>
   <li><a href="#question-14c" id="toc-question-14c" class="nav-link" data-scroll-target="#question-14c">Question 14c</a></li>
-  <li><a href="#solution-to-question-14c" id="toc-solution-to-question-14c" class="nav-link" data-scroll-target="#solution-to-question-14c">Solution to Question 14c</a></li>
+  <li><a href="#question-14d" id="toc-question-14d" class="nav-link" data-scroll-target="#question-14d">Question 14d</a></li>
+  <li><a href="#solution-to-question-14d" id="toc-solution-to-question-14d" class="nav-link" data-scroll-target="#solution-to-question-14d">Solution to Question 14d</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#summary-of-results-from-common-distributions" id="toc-summary-of-results-from-common-distributions" class="nav-link" data-scroll-target="#summary-of-results-from-common-distributions">Summary of Results from Common Distributions</a></li>
@@ -1367,40 +1368,66 @@ Tip
 <section id="question-14b" class="level3">
 <h3 class="anchored" data-anchor-id="question-14b">Question 14b</h3>
 <hr>
-<p>Complete the partially completed code cell below to generate a plot of a distribution of MLEs for <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> based on 10,000 randomly selected samples from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
+<p>Recall for <span class="math inline">\(X \sim \text{Geom}(p)\)</span>, if we know the value of <span class="math inline">\(p\)</span>, then we can find the population mean <span class="math inline">\(\mu\)</span> using the formula</p>
+<p><span class="math display">\[E(X) = \mu = \frac{q}{p} = \frac{1-p}{p}.\]</span></p>
+<p>Conversely, if we know the population mean <span class="math inline">\(\mu\)</span>, then we can find the value of the parameter <span class="math inline">\(p\)</span> by inverting the relation:</p>
+<p><span class="math display">\[\begin{align}
+\mu &amp;= \frac{1-p}{p} \\
+\mu p &amp;= 1-p \\
+p + \mu p &amp;= 1 \\
+p ( 1 + \mu) &amp;= 1 \\
+p &amp;= \frac{1}{1 + \mu}.
+\end{align}\]</span></p>
+<p>Thus, if we pick a random sample such as the one stored in <code>x.geom</code> above, a reasonable estimate for <span class="math inline">\(p\)</span> is obtained by using the sample mean <span class="math inline">\(\bar{x}\)</span> in place of <span class="math inline">\(\mu\)</span>. Denote this estimator by <span class="math inline">\(\widehat{p}_2\)</span>:</p>
+<p><span class="math display">\[\widehat{p}_{2} = \frac{1}{1 + \bar{x}}.\]</span></p>
+<p>In the code cell below, compute the estimator <span class="math inline">\(\widehat{p}_2\)</span> given the sample <code>x.geom</code> and compare the result to the MLE estimate <span class="math inline">\(\widehat{p}_{\rm MLE}\)</span> obtained from the sample <code>x.geom</code> in <a href="#question-14a">Question 14a</a>.</p>
 <section id="solution-to-question-14b" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-14b">Solution to Question 14b</h4>
 <hr>
-<p>Replace each of the five <code>??</code> in the code cell below with appropriate code. Then run the completed code to create and plot a distribution of MLEs for samples size <span class="math inline">\(n=40\)</span> from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
+<p><br> <br> <br></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mle.geom <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10000</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  x.temp <span class="ot">&lt;-</span> ??  <span class="co"># replace ??, pick random sample size n=40</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  geom.like <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    geom.pmf <span class="ot">&lt;-</span> ??  <span class="co"># replace ??</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prod</span>(??)  <span class="co"># replace ??</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  mle.geom[i] <span class="ot">&lt;-</span> <span class="fu">optimize</span>(??, ??, <span class="at">maximum =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>maximum  <span class="co"># replace both ??</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mle.geom, </span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"MLE"</span>,</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Dist. of MLEs"</span>)</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> true.p, <span class="at">col =</span> <span class="st">"dodgerblue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># actual value of p</span></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(mle.geom), <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># expected value of MLE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>p.hat2 <span class="ot">&lt;-</span> ??</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>p.hat2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="question-14c" class="level3">
 <h3 class="anchored" data-anchor-id="question-14c">Question 14c</h3>
 <hr>
-<p>Based on the distribution of MLEs in <a href="#question-14b">Question 14b</a>, do you believe the estimator <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> is unbiased or biased? Explain why or why not.</p>
+<p>Complete the partially completed code cell below to generate a plot of a distribution of MLEs for <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> based on 10,000 randomly selected samples from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
+<section id="solution-to-question-14c" class="level4">
+<h4 class="anchored" data-anchor-id="solution-to-question-14c">Solution to Question 14c</h4>
+<hr>
+<p>Replace each of the five <code>??</code> in the code cell below with appropriate code. Then run the completed code to create and plot a distribution of MLEs for samples size <span class="math inline">\(n=40\)</span> from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mle.geom <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10000</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  x.temp <span class="ot">&lt;-</span> ??  <span class="co"># replace ??, pick random sample size n=40</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  geom.like <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    geom.pmf <span class="ot">&lt;-</span> ??  <span class="co"># replace ??</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prod</span>(??)  <span class="co"># replace ??</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  mle.geom[i] <span class="ot">&lt;-</span> <span class="fu">optimize</span>(??, ??, <span class="at">maximum =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>maximum  <span class="co"># replace both ??</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mle.geom, </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"MLE"</span>,</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Dist. of MLEs"</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> true.p, <span class="at">col =</span> <span class="st">"dodgerblue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># actual value of p</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(mle.geom), <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># expected value of MLE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="solution-to-question-14c" class="level3">
-<h3 class="anchored" data-anchor-id="solution-to-question-14c">Solution to Question 14c</h3>
+</section>
+<section id="question-14d" class="level3">
+<h3 class="anchored" data-anchor-id="question-14d">Question 14d</h3>
+<hr>
+<p>Based on the distribution of MLEs in <a href="#question-14c">Question 14c</a>, do you believe the estimator <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> is unbiased or biased? Explain why or why not.</p>
+</section>
+<section id="solution-to-question-14d" class="level3">
+<h3 class="anchored" data-anchor-id="solution-to-question-14d">Solution to Question 14d</h3>
 <hr>
 <p><br><br>
 <br><br>
