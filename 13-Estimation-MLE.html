@@ -440,7 +440,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sec-opt-r" id="toc-sec-opt-r" class="nav-link" data-scroll-target="#sec-opt-r">Optimizing the Likelihood Function in R</a></li>
   </ul></li>
-  <li><a href="#a-first-look-at-properties-of-mles" id="toc-a-first-look-at-properties-of-mles" class="nav-link" data-scroll-target="#a-first-look-at-properties-of-mles">A First Look at Properties of MLE’s</a>
+  <li><a href="#a-first-look-at-properties-of-mles" id="toc-a-first-look-at-properties-of-mles" class="nav-link" data-scroll-target="#a-first-look-at-properties-of-mles">A First Look at Properties of MLEs</a>
   <ul class="collapse">
   <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a>
   <ul class="collapse">
@@ -450,7 +450,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#comparing-estimates" id="toc-comparing-estimates" class="nav-link" data-scroll-target="#comparing-estimates">Comparing Estimates</a></li>
   </ul></li>
-  <li><a href="#analyzing-a-distribution-of-mles" id="toc-analyzing-a-distribution-of-mles" class="nav-link" data-scroll-target="#analyzing-a-distribution-of-mles">Analyzing a Distribution of MLE’s</a></li>
+  <li><a href="#analyzing-a-distribution-of-mles" id="toc-analyzing-a-distribution-of-mles" class="nav-link" data-scroll-target="#analyzing-a-distribution-of-mles">Analyzing a Distribution of MLEs</a></li>
   <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a>
   <ul class="collapse">
   <li><a href="#solution-to-question-5" id="toc-solution-to-question-5" class="nav-link" data-scroll-target="#solution-to-question-5">Solution to Question 5</a></li>
@@ -484,7 +484,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#using-the-log-likelihood-function" id="toc-using-the-log-likelihood-function" class="nav-link" data-scroll-target="#using-the-log-likelihood-function">Using the Log-Likelihood Function</a>
   <ul class="collapse">
-  <li><a href="#why-maximize-ylnltheta-instead-of-ltheta" id="toc-why-maximize-ylnltheta-instead-of-ltheta" class="nav-link" data-scroll-target="#why-maximize-ylnltheta-instead-of-ltheta">Why Maximize <span class="math inline">\(y=\ln{(L(\theta}))\)</span> Instead of <span class="math inline">\(L(\theta)\)</span>?</a></li>
+  <li><a href="#why-maximize-elllnltheta-instead-of-ltheta" id="toc-why-maximize-elllnltheta-instead-of-ltheta" class="nav-link" data-scroll-target="#why-maximize-elllnltheta-instead-of-ltheta">Why Maximize <span class="math inline">\(\ell=\ln{(L(\theta}))\)</span> Instead of <span class="math inline">\(L(\theta)\)</span>?</a></li>
   <li><a href="#sec-log-prop" id="toc-sec-log-prop" class="nav-link" data-scroll-target="#sec-log-prop">Useful Properties of the Natural Log</a></li>
   <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a>
   <ul class="collapse">
@@ -542,7 +542,7 @@ window.Quarto = {
 
 
 <p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap4/13-Estimation-MLE.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> <nbsp></nbsp></p>
-<p><img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/60165/arrows-in-the-target-clipart-md.png" class="img-fluid quarto-figure quarto-figure-left" style="width:30.0%" alt="Arrows Hitting a Target"> <nbsp></nbsp></p>
+<p><img src="https://raw.githubusercontent.com/aspiegler/Statistical-Theory/main/Images/13fig-arrows-in-the-target.png" class="img-fluid quarto-figure quarto-figure-left" style="width:30.0%" alt="Arrows Hitting a Target"> <nbsp></nbsp></p>
 <p>In Chapter 3, we explored properties of sample statistics picked from a population with a known distribution.</p>
 <ul>
 <li>We analyzed the <a href="./10-Sampling-Dist-Mean.html" target="_blank">distribution of sample means</a> picked from normal and exponential distributions.</li>
@@ -560,7 +560,7 @@ window.Quarto = {
 <h1>Case Study: Slot Machine Jackpots</h1>
 <hr>
 <p><img src="https://cdn.pixabay.com/photo/2018/06/22/17/54/casino-3491252_1280.jpg" class="img-fluid quarto-figure quarto-figure-left" style="width:50.0%" alt="Slot Machines"> <nbsp></nbsp></p>
-<p>A strategic gambler believes they have identified a faulty slot machine which pays out significantly more money than the other slot machines. She and her friends watched the machine 24 hours a day for 7 days and observed the slot machine paid out the $<span class="math inline">\(1,\!000,\!000\)</span> jackpot prize 10 times during the week. How can she figure out whether the machine is faulty or whether the number of jackpot prizes are within reason?</p>
+<p>A strategic gambler believes they have identified a faulty slot machine which pays out significantly more money than the other slot machines. They and their friends watched the machine 24 hours a day for 7 days and observed the slot machine paid out the $<span class="math inline">\(1,\!000,\!000\)</span> jackpot prize 10 times during the week. How can they figure out whether the machine is faulty or whether the number of jackpot prizes are within reason?</p>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <hr>
@@ -743,7 +743,7 @@ Important
 <p>In <a href="#question-2">Question 2</a> we derived an expression for the likelihood function <span class="math inline">\(L(\lambda)\)</span> given the random sample of <span class="math inline">\(n=4\)</span> values we picked from <span class="math inline">\(X \sim \mbox{Pois}( \lambda)\)</span> and stored in the vector <code>x</code>. Recall Poisson distributions have pmf</p>
 <p><span class="math display">\[f(x; \lambda) = \frac{\lambda^x e^{-\lambda}}{x!} \qquad \mbox{for } x = 0, 1, 2, \ldots .\]</span></p>
 <p>If we pick a sample of <span class="math inline">\(n=4\)</span> values we denote <span class="math inline">\(X_1 = x_1\)</span>, <span class="math inline">\(X_2 = x_2\)</span>, <span class="math inline">\(X_3 = x_3\)</span>, and <span class="math inline">\(X_4 = x_4\)</span>, then the likelihood function is</p>
-<p><span class="math display">\[L(\lambda) = L(\theta \mid x_1, x_2, \ldots , x_n) = \left( \frac{\lambda^{x_1} e^{-\lambda}}{x_1!} \right) \left( \frac{\lambda^{x_2} e^{-\lambda}}{x_2!} \right) \left( \frac{\lambda^{x_3} e^{-\lambda}}{x_3!} \right) \left( \frac{\lambda^{x_4} e^{-\lambda}}{x_4!} \right).\]</span></p>
+<p><span class="math display">\[L(\lambda) = L(\lambda \mid x_1, x_2, \ldots , x_n) = \left( \frac{\lambda^{x_1} e^{-\lambda}}{x_1!} \right) \left( \frac{\lambda^{x_2} e^{-\lambda}}{x_2!} \right) \left( \frac{\lambda^{x_3} e^{-\lambda}}{x_3!} \right) \left( \frac{\lambda^{x_4} e^{-\lambda}}{x_4!} \right).\]</span></p>
 <p>We will use the random sample generated by the code cell below. Note <code>x</code> is a vector consisting of values <code>x[1]</code> <span class="math inline">\(=9\)</span>, <code>x[2]</code> <span class="math inline">\(=8\)</span>, <code>x[3]</code> <span class="math inline">\(=6\)</span>, and <code>x[4]</code> <span class="math inline">\(=5\)</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">612</span>)</span>
@@ -862,7 +862,7 @@ $objective
 </section>
 </section>
 <section id="a-first-look-at-properties-of-mles" class="level1">
-<h1>A First Look at Properties of MLE’s</h1>
+<h1>A First Look at Properties of MLEs</h1>
 <hr>
 <p>The random sample <span class="math inline">\((9,8,6,5)\)</span> picked from <span class="math inline">\(X \sim \mbox{Pois}(\lambda)\)</span> gave <span class="math inline">\(\hat{\lambda}_{\rm{MLE}} = 7\)</span>. If we pick another random sample <span class="math inline">\(n=4\)</span> from the population <span class="math inline">\(X \sim \mbox{Pois}(\lambda)\)</span>, how much will our estimate for <span class="math inline">\(\hat{\lambda}_{\rm{MLE}}\)</span> change? Some desirable properties for the distribution of <span class="math inline">\(\hat{\lambda}_{\rm{MLE}}\)</span> values from different random samples would be:</p>
 <ul>
@@ -968,16 +968,16 @@ $objective
 </section>
 </section>
 <section id="analyzing-a-distribution-of-mles" class="level2">
-<h2 class="anchored" data-anchor-id="analyzing-a-distribution-of-mles">Analyzing a Distribution of MLE’s</h2>
+<h2 class="anchored" data-anchor-id="analyzing-a-distribution-of-mles">Analyzing a Distribution of MLEs</h2>
 <hr>
-<p>The for loop in the code cell below generates a distribution of MLE’s for <span class="math inline">\(\lambda\)</span> based on 10,000 random samples size <span class="math inline">\(n=4\)</span> picked from <span class="math inline">\(X \sim \mbox{Pois}(8)\)</span>. Inside the for loop we:</p>
+<p>The for loop in the code cell below generates a distribution of MLEs for <span class="math inline">\(\lambda\)</span> based on 10,000 random samples size <span class="math inline">\(n=4\)</span> picked from <span class="math inline">\(X \sim \mbox{Pois}(8)\)</span>. Inside the for loop we:</p>
 <ul>
 <li>Pick a random sample size <span class="math inline">\(n=4\)</span> stored in <code>temp.x</code>.</li>
 <li>Calculate the MLE based on <code>temp.x</code> that we store in the vector <code>pois.mle</code>.</li>
 </ul>
-<p>Then we plot a histogram to display <code>pois.mle</code>, the distribution of MLE’s from the 10,000 random samples each size <span class="math inline">\(n=4\)</span></p>
+<p>Then we plot a histogram to display <code>pois.mle</code>, the distribution of MLEs from the 10,000 random samples each size <span class="math inline">\(n=4\)</span></p>
 <ul>
-<li>Run the code cell below to generate and plot a distribution of MLE’s.</li>
+<li>Run the code cell below to generate and plot a distribution of MLEs.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>pois.mle <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10000</span>)</span>
@@ -995,7 +995,7 @@ $objective
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pois.mle, </span>
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,</span>
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"MLE"</span>,</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Dist. of MLE's for Poisson Dist"</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Dist. of MLEs for Poisson Dist"</span>)</span>
 <span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">8</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># plot at actual value of lambda</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -1009,7 +1009,7 @@ $objective
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
 <hr>
-<p>Calculate the mean and variance of the distribution of MLE’s stored in <code>mle.pois</code> and interpret the results. How would you describe the shape of the distribution? What would you expect to happen to the distribution as <span class="math inline">\(n\)</span> gets larger?</p>
+<p>Calculate the mean and variance of the distribution of MLEs stored in <code>mle.pois</code> and interpret the results. How would you describe the shape of the distribution? What would you expect to happen to the distribution as <span class="math inline">\(n\)</span> gets larger?</p>
 <section id="solution-to-question-5" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-5">Solution to Question 5</h3>
 <hr>
@@ -1078,7 +1078,7 @@ $objective
 <li>Maximize the likelihood function.
 <ol type="a">
 <li>Take the derivative of <span class="math inline">\(L\)</span> with respect to <span class="math inline">\(\theta\)</span></li>
-<li>Find critical points of <span class="math inline">\(L\)</span> where <span class="math inline">\(\frac{dL}{d\theta}=0\)</span> (or is undefined).</li>
+<li>Find interior critical points of <span class="math inline">\(L\)</span> where <span class="math inline">\(\frac{dL}{d\theta}=0\)</span> (or is undefined) and check any relevant endpoints.</li>
 <li>Evaluate <span class="math inline">\(L\)</span> at each critical point and identify the MLE.</li>
 </ol></li>
 <li>Check your work!</li>
@@ -1100,7 +1100,7 @@ $objective
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fl">0.75</span>, <span class="at">y =</span> cv, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">"tomato"</span>)  <span class="co"># point at max</span></span>
 <span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at=</span><span class="fu">c</span>(<span class="fl">0.75</span>), <span class="at">label=</span><span class="st">"theta = 0.75"</span>, <span class="at">col.axis =</span> <span class="st">"tomato"</span>, <span class="at">pos=</span><span class="fl">0.0015</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)  <span class="co"># marking MLE estimate</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at=</span><span class="fu">c</span>(<span class="fl">0.75</span>), <span class="at">label=</span><span class="st">"p = 0.75"</span>, <span class="at">col.axis =</span> <span class="st">"tomato"</span>, <span class="at">pos=</span><span class="fl">0.0015</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)  <span class="co"># marking MLE estimate</span></span>
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.75</span>, <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)  <span class="co"># marking MLE estimate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -1151,11 +1151,11 @@ Tip
 <section id="using-the-log-likelihood-function" class="level1">
 <h1>Using the Log-Likelihood Function</h1>
 <hr>
-<p>Logarithmic functions such as <span class="math inline">\(y = \ln{x}\)</span> are increasing functions. The larger the input <span class="math inline">\(x\)</span>, the larger the output <span class="math inline">\(y = \ln{x}\)</span> becomes. Thus, the value of <span class="math inline">\(\theta\)</span> that gives the maximum value of <span class="math inline">\(L(\theta)\)</span> will also correspond to the value of <span class="math inline">\(\theta\)</span> that gives the maximum value of the function <span class="math inline">\(y = \ln{(L(\theta))}\)</span>, and vice versa:</p>
+<p>Logarithmic functions such as <span class="math inline">\(y = \ln{x}\)</span> are increasing functions. The larger the input <span class="math inline">\(x\)</span>, the larger the output <span class="math inline">\(y = \ln{x}\)</span> becomes. Thus, the value of <span class="math inline">\(\theta\)</span> that gives the maximum value of <span class="math inline">\(L(\theta)\)</span> will also correspond to the value of <span class="math inline">\(\theta\)</span> that gives the maximum value of the function <span class="math inline">\(\ell =\ln{(L(\theta))}\)</span>, and vice versa:</p>
 <blockquote class="blockquote">
-<p><span style="color:dodgerblue">The value of <span class="math inline">\(\theta\)</span> that maximizes functions <span class="math inline">\(y=\ln{(L(\theta}))\)</span> is the value of <span class="math inline">\(\theta\)</span> that maximizes <span class="math inline">\(L(\theta)\)</span>.</span></p>
+<p><span style="color:dodgerblue">The value of <span class="math inline">\(\theta\)</span> that maximizes functions <span class="math inline">\(\ell=\ln{(L(\theta}))\)</span> is the value of <span class="math inline">\(\theta\)</span> that maximizes <span class="math inline">\(L(\theta)\)</span>.</span></p>
 </blockquote>
-<p>We call the the natural log of the likelihood function, <span class="math inline">\(\color{dodgerblue}{y=\ln{(L(\theta}))}\)</span>, the <span style="color:dodgerblue"><strong>log-likelihood function</strong></span>.</p>
+<p>We call the the natural log of the likelihood function, <span class="math inline">\(\color{dodgerblue}{\ell=\ln{(L(\theta}))}\)</span>, the <span style="color:dodgerblue"><strong>log-likelihood function</strong></span>.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1208,8 +1208,8 @@ Figure&nbsp;22.1: Comparing Maxima
 </figcaption>
 </figure>
 </div>
-<section id="why-maximize-ylnltheta-instead-of-ltheta" class="level2">
-<h2 class="anchored" data-anchor-id="why-maximize-ylnltheta-instead-of-ltheta">Why Maximize <span class="math inline">\(y=\ln{(L(\theta}))\)</span> Instead of <span class="math inline">\(L(\theta)\)</span>?</h2>
+<section id="why-maximize-elllnltheta-instead-of-ltheta" class="level2">
+<h2 class="anchored" data-anchor-id="why-maximize-elllnltheta-instead-of-ltheta">Why Maximize <span class="math inline">\(\ell=\ln{(L(\theta}))\)</span> Instead of <span class="math inline">\(L(\theta)\)</span>?</h2>
 <hr>
 <p>Consider the likelihood function from <a href="#question-7">Question 7</a>,</p>
 <p><span class="math display">\[L({\color{tomato}\lambda}) = {\color{tomato}\lambda}^n e^{- {\color{tomato}\lambda} \sum_i x_i}.\]</span> To find the critical values, we first need to find an expression for the derivative <span class="math inline">\(\frac{d L}{d \lambda}\)</span>.</p>
@@ -1230,7 +1230,7 @@ Figure&nbsp;22.1: Comparing Maxima
 <li><p><span class="math inline">\(\ln{(A^k)} = k \ln{A}\)</span></p></li>
 <li><p><span class="math inline">\(\ln{e^k} = k\)</span></p></li>
 </ol>
-<p>Likelihood functions are by definition a product of functions and often involve <span class="math inline">\(e\)</span>. Taking the natural log of the likelihood function converts a product to a sum. <span style="color:dodgerblue"><strong>It is much easier to take the derivative of sums than products!</strong></span></p>
+<p>For an independent random sample, the likelihood function is a product of functions and often involve <span class="math inline">\(e\)</span>. Taking the natural log of the likelihood function converts a product to a sum. <span style="color:dodgerblue"><strong>It is much easier to take the derivative of sums than products!</strong></span></p>
 </section>
 <section id="question-10" class="level2">
 <h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
@@ -1253,13 +1253,13 @@ Figure&nbsp;22.1: Comparing Maxima
 <ol type="1">
 <li>Find a formula the likelihood function.</li>
 </ol>
-<p><span class="math display">\[L(\theta \mid x_1, x_2, \ldots , x_n) = f(x_1; \theta) f(x_2; \theta) \ldots f(x_n; \theta) = \prod_{i=1}^n f(x_i; \theta)\]</span> 2. Apply the natural log to <span class="math inline">\(L(\theta)\)</span> to derive the log-likelihood function <span class="math inline">\(y = \ln{(L(\theta))}\)</span>. Simplify using <a href="#sec-log-prop">properties of the natural log</a> before moving to the next step.</p>
+<p><span class="math display">\[L(\theta \mid x_1, x_2, \ldots , x_n) = f(x_1; \theta) f(x_2; \theta) \ldots f(x_n; \theta) = \prod_{i=1}^n f(x_i; \theta)\]</span> 2. Apply the natural log to <span class="math inline">\(L(\theta)\)</span> to derive the log-likelihood function <span class="math inline">\(\ell =\ln{(L(\theta))}\)</span>. Simplify using <a href="#sec-log-prop">properties of the natural log</a> before moving to the next step.</p>
 <ol start="3" type="1">
 <li>Maximize the log-likelihood function.
 <ol type="a">
-<li>Take the derivative of <span class="math inline">\(y=\ln{(L(\theta))}\)</span> with respect to <span class="math inline">\(\theta\)</span></li>
+<li>Take the derivative of <span class="math inline">\(\ell=\ln{(L(\theta))}\)</span> with respect to <span class="math inline">\(\theta\)</span></li>
 <li>Find critical points of the log-likelihood function where <span class="math inline">\(\frac{dy}{d\theta}=0\)</span> (or is undefined).</li>
-<li>Evaluate the log-likelihood function <span class="math inline">\(y=\ln{(L(\theta))}\)</span> at each critical point and identify the MLE.</li>
+<li>Evaluate the log-likelihood function <span class="math inline">\(\ell=\ln{(L(\theta))}\)</span> at each critical point and identify the MLE.</li>
 </ol></li>
 <li>Check your work!</li>
 </ol>
@@ -1367,11 +1367,11 @@ Tip
 <section id="question-14b" class="level3">
 <h3 class="anchored" data-anchor-id="question-14b">Question 14b</h3>
 <hr>
-<p>Complete the partially completed code cell below to generate a plot of a distribution of MLE’s for <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> based on 10,000 randomly selected samples from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
+<p>Complete the partially completed code cell below to generate a plot of a distribution of MLEs for <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> based on 10,000 randomly selected samples from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
 <section id="solution-to-question-14b" class="level4">
 <h4 class="anchored" data-anchor-id="solution-to-question-14b">Solution to Question 14b</h4>
 <hr>
-<p>Replace each of the five <code>??</code> in the code cell below with appropriate code. Then run the completed code to create and plot a distribution of MLE’s for samples size <span class="math inline">\(n=40\)</span> from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
+<p>Replace each of the five <code>??</code> in the code cell below with appropriate code. Then run the completed code to create and plot a distribution of MLEs for samples size <span class="math inline">\(n=40\)</span> from <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mle.geom <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10000</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1388,7 +1388,7 @@ Tip
 <span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mle.geom, </span>
 <span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,</span>
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"MLE"</span>,</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Dist. of MLE's"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Dist. of MLEs"</span>)</span>
 <span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> true.p, <span class="at">col =</span> <span class="st">"dodgerblue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># actual value of p</span></span>
 <span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(mle.geom), <span class="at">col =</span> <span class="st">"tomato"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)  <span class="co"># expected value of MLE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1397,7 +1397,7 @@ Tip
 <section id="question-14c" class="level3">
 <h3 class="anchored" data-anchor-id="question-14c">Question 14c</h3>
 <hr>
-<p>Based on the distribution of MLE’s in <a href="#question-14b">Question 14b</a>, do you believe the estimator <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> is unbiased or biased? Explain why or why not.</p>
+<p>Based on the distribution of MLEs in <a href="#question-14b">Question 14b</a>, do you believe the estimator <span class="math inline">\(\hat{p}_{\rm{MLE}}\)</span> is unbiased or biased? Explain why or why not.</p>
 </section>
 <section id="solution-to-question-14c" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-14c">Solution to Question 14c</h3>
@@ -1416,9 +1416,9 @@ Tip
 <li><p><strong>Poisson distributions:</strong> <span class="math inline">\(X \sim \mbox{Pois}(\lambda)\)</span> have <span class="math inline">\(\displaystyle \hat{\lambda}_{\rm MLE} = \bar{x}\)</span></p></li>
 <li><p><strong>Binomial distributions:</strong> <span class="math inline">\(X \sim \mbox{Binom}(n,p)\)</span> have <span class="math inline">\(\displaystyle \hat{p}_{\rm MLE} = \hat{p}\)</span>.</p></li>
 <li><p><strong>Exponential distributions:</strong> <span class="math inline">\(X \sim \mbox{Exp}(\lambda)\)</span> have <span class="math inline">\(\displaystyle \hat{\lambda}_{\rm MLE} = \frac{1}{\bar{x}}\)</span>.</p></li>
-<li><p><strong>Geometric distributions:</strong> <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span> have <span class="math inline">\(\displaystyle \hat{p}_{\rm MLE} = \frac{1}{\bar{x}}\)</span>.</p></li>
+<li><p><strong>Geometric distributions:</strong> <span class="math inline">\(X \sim \mbox{Geom}(p)\)</span> have <span class="math inline">\(\displaystyle \hat{p}_{\rm MLE} = \frac{1}{1 + \bar{x}}\)</span>.</p></li>
 </ul>
-<p>For <strong>normal distributions</strong> <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, the maximum likelihood estimates of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\theta\)</span> are <span class="math display">\[\hat{\mu}_{\rm{MLE}} = \frac{1}{n} \sum_{i=1}^n x_i = \bar{x} \quad \mbox{ and } \quad \hat{\sigma}_{\rm{MLE}} = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2}.\]</span></p>
+<p>For <strong>normal distributions</strong> <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, the maximum likelihood estimates of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are <span class="math display">\[\hat{\mu}_{\rm{MLE}} = \frac{1}{n} \sum_{i=1}^n x_i = \bar{x} \quad \mbox{ and } \quad \hat{\sigma}_{\rm{MLE}} = \sqrt{\frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2}.\]</span></p>
 <ul>
 <li>See <a href="https://towardsdatascience.com/maximum-likelihood-estimation-explained-normal-distribution-6207b322e47f" target="_blank">this post</a> for a derivation of the MLE formulas for <span class="math inline">\(\hat{\mu}_{\rm{MLE}}\)</span> and <span class="math inline">\(\hat{\sigma}_{\rm{MLE}}\)</span>.</li>
 <li><a href="https://online.stat.psu.edu/stat415/lesson/1/1.2" target="_blank">These materials from Penn State</a> also explain how to derive the MLE formulas for <span class="math inline">\(\hat{\mu}_{\rm{MLE}}\)</span> and <span class="math inline">\(\hat{\sigma}_{\rm{MLE}}\)</span>.</li>
@@ -1428,14 +1428,14 @@ Tip
 <h1>Recap of Maximum Likelihood Estimates</h1>
 <hr>
 <ul>
-<li><span style="color:dodgerblue"><strong>MLE’s give reasonable estimates that make sense!</strong></span></li>
-<li>MLE’s are often good estimators since they satisfy several nice properties
+<li><span style="color:dodgerblue"><strong>MLEs give reasonable estimates that make sense!</strong></span></li>
+<li>MLEs often have good large-sample properties:
 <ul>
-<li><span style="color:dodgerblue"><em>Consistency</em></span>: As we get more data (sample size goes to infinity), the estimator becomes more and more accurate and converges to the actual value of <span class="math inline">\(\theta\)</span>.</li>
-<li><span style="color:dodgerblue"><em>Normality</em></span>: As we get more data, the distribution of MLE’s converge to a normal distribution.</li>
-<li><span style="color:dodgerblue"><em>Variability</em></span>: They have the smallest possible variance for a consistent estimator.</li>
+<li><span style="color:dodgerblue"><em>Consistency:</em></span> As the sample size increases, the estimator tends to get closer to the true parameter value.</li>
+<li><span style="color:dodgerblue"><em>Asymptotic normality:</em></span> Under suitable conditions, the sampling distribution of an MLE becomes approximately normal for large samples.</li>
+<li><span style="color:dodgerblue"><em>Efficiency:</em></span> Under suitable conditions, MLEs can have very small variability for large samples.</li>
 </ul></li>
-<li><span style="color:tomato"><strong>The downside is finding MLE’s are not always easy (or possible).</strong></span></li>
+<li><span style="color:tomato"><strong>The downside is finding MLEs are not always easy (or possible).</strong></span></li>
 </ul>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
