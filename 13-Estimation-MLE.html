@@ -516,7 +516,17 @@ window.Quarto = {
   </ul></li>
   </ul></li>
   <li><a href="#summary-of-results-from-common-distributions" id="toc-summary-of-results-from-common-distributions" class="nav-link" data-scroll-target="#summary-of-results-from-common-distributions">Summary of Results from Common Distributions</a></li>
-  <li><a href="#recap-of-maximum-likelihood-estimates" id="toc-recap-of-maximum-likelihood-estimates" class="nav-link" data-scroll-target="#recap-of-maximum-likelihood-estimates">Recap of Maximum Likelihood Estimates</a></li>
+  <li><a href="#recap-of-maximum-likelihood-estimates" id="toc-recap-of-maximum-likelihood-estimates" class="nav-link" data-scroll-target="#recap-of-maximum-likelihood-estimates">Recap of Maximum Likelihood Estimates</a>
+  <ul class="collapse">
+  <li><a href="#appendix-deriving-the-mles-for-a-normal-distribution" id="toc-appendix-deriving-the-mles-for-a-normal-distribution" class="nav-link" data-scroll-target="#appendix-deriving-the-mles-for-a-normal-distribution">Appendix: Deriving the MLEs for a Normal Distribution</a>
+  <ul class="collapse">
+  <li><a href="#step-1-write-the-likelihood-function" id="toc-step-1-write-the-likelihood-function" class="nav-link" data-scroll-target="#step-1-write-the-likelihood-function">Step 1: Write the likelihood function</a></li>
+  <li><a href="#step-2-take-the-log-likelihood" id="toc-step-2-take-the-log-likelihood" class="nav-link" data-scroll-target="#step-2-take-the-log-likelihood">Step 2: Take the log-likelihood</a></li>
+  <li><a href="#step-3-maximize-with-respect-to-mu" id="toc-step-3-maximize-with-respect-to-mu" class="nav-link" data-scroll-target="#step-3-maximize-with-respect-to-mu">Step 3: Maximize with respect to <span class="math inline">\(\mu\)</span></a></li>
+  <li><a href="#step-4-maximize-with-respect-to-sigma" id="toc-step-4-maximize-with-respect-to-sigma" class="nav-link" data-scroll-target="#step-4-maximize-with-respect-to-sigma">Step 4: Maximize with respect to <span class="math inline">\(\sigma\)</span></a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1460,11 +1470,201 @@ p &amp;= \frac{1}{1 + \mu}.
 </ul></li>
 <li><span style="color:tomato"><strong>The downside is finding MLEs are not always easy (or possible).</strong></span></li>
 </ul>
+<section id="appendix-deriving-the-mles-for-a-normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-deriving-the-mles-for-a-normal-distribution">Appendix: Deriving the MLEs for a Normal Distribution</h2>
+<hr>
+<blockquote class="blockquote">
+<p><strong>Optional enrichment.</strong> This derivation uses partial derivatives from multivariable calculus. You do not need this derivation for the main course material. If you have taken multivariable calculus, you should be able to follow the main steps.</p>
+</blockquote>
+<p>Suppose</p>
+<p><span class="math display">\[
+X_1, X_2, \ldots, X_n \overset{\text{iid}}{\sim} N(\mu,\sigma),
+\]</span></p>
+<p>where both the population mean <span class="math inline">\(\mu\)</span> and population standard deviation <span class="math inline">\(\sigma\)</span> are unknown.</p>
+<p>The the pdf for a normal distribution is</p>
+<p><span class="math display">\[
+f(x;\mu,\sigma)
+=
+\frac{1}{\sigma\sqrt{2\pi}}
+\exp\left(
+-\frac{(x-\mu)^2}{2\sigma^2}
+\right),
+\qquad \sigma&gt;0.
+\]</span></p>
+<p>Our goal is to find the values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that maximize the likelihood of the observed sample.</p>
+<section id="step-1-write-the-likelihood-function" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-write-the-likelihood-function">Step 1: Write the likelihood function</h3>
+<hr>
+<p>For an observed random sample <span class="math inline">\(x_1,x_2,\ldots,x_n\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+L(\mu,\sigma)
+&amp;=
+\prod_{i=1}^n
+\frac{1}{\sigma\sqrt{2\pi}}
+\exp\left(
+-\frac{(x_i-\mu)^2}{2\sigma^2}
+\right) \\
+&amp;=
+\frac{1}{(2\pi)^{n/2}\sigma^n}
+\exp\left(
+-\frac{1}{2\sigma^2}
+\sum_{i=1}^n (x_i-\mu)^2
+\right).
+\end{aligned}
+\]</span></p>
+<p>Because this likelihood involves products and an exponential function, it is easier to maximize the log-likelihood.</p>
+</section>
+<section id="step-2-take-the-log-likelihood" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-take-the-log-likelihood">Step 2: Take the log-likelihood</h3>
+<hr>
+<p>Let</p>
+<p><span class="math display">\[
+\ell(\mu,\sigma)=\ln L(\mu,\sigma).
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\ell(\mu,\sigma)
+=
+-\frac{n}{2}\ln(2\pi)
+-n\ln(\sigma)
+-\frac{1}{2\sigma^2}
+\sum_{i=1}^n (x_i-\mu)^2.
+\]</span></p>
+<p>Since there are two unknown parameters, we maximize <span class="math inline">\(\ell(\mu,\sigma)\)</span> with respect to both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+</section>
+<section id="step-3-maximize-with-respect-to-mu" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-maximize-with-respect-to-mu">Step 3: Maximize with respect to <span class="math inline">\(\mu\)</span></h3>
+<hr>
+<p>Using a partial derivative with respect to <span class="math inline">\(\mu\)</span>,</p>
+<p><span class="math display">\[
+\frac{\partial \ell}{\partial \mu}
+=
+\frac{1}{\sigma^2}
+\sum_{i=1}^n (x_i-\mu).
+\]</span></p>
+<p>Set the derivative equal to zero:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n (x_i-\mu)=0.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\sum_{i=1}^n x_i-n\mu=0,
+\]</span></p>
+<p>which gives</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\mu}_{\rm MLE}=\bar{x}
+}.
+\]</span></p>
+<p>This result also makes intuitive sense. For a fixed value of <span class="math inline">\(\sigma\)</span>, maximizing the likelihood is equivalent to minimizing</p>
+<p><span class="math display">\[
+\sum_{i=1}^n (x_i-\mu)^2,
+\]</span></p>
+<p>and the value of <span class="math inline">\(\mu\)</span> that minimizes the sum of squared deviations is the sample mean <span class="math inline">\(\bar{x}\)</span>.</p>
+</section>
+<section id="step-4-maximize-with-respect-to-sigma" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-maximize-with-respect-to-sigma">Step 4: Maximize with respect to <span class="math inline">\(\sigma\)</span></h3>
+<hr>
+<p>Next, take the partial derivative with respect to <span class="math inline">\(\sigma\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial \ell}{\partial \sigma}
+=
+-\frac{n}{\sigma}
++
+\frac{1}{\sigma^3}
+\sum_{i=1}^n (x_i-\mu)^2.
+\]</span></p>
+<p>Set this equal to zero:</p>
+<p><span class="math display">\[
+-\frac{n}{\sigma}
++
+\frac{1}{\sigma^3}
+\sum_{i=1}^n (x_i-\mu)^2
+=0.
+\]</span></p>
+<p>Multiplying by <span class="math inline">\(\sigma^3\)</span> gives</p>
+<p><span class="math display">\[
+-n\sigma^2
++
+\sum_{i=1}^n (x_i-\mu)^2
+=0.
+\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+\sigma^2
+=
+\frac{1}{n}
+\sum_{i=1}^n (x_i-\mu)^2.
+\]</span></p>
+<p>Using the MLE <span class="math inline">\(\widehat{\mu}_{\rm MLE}=\bar{x}\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\sigma}^2_{\rm MLE}
+=
+\frac{1}{n}
+\sum_{i=1}^n (x_i-\bar{x})^2
+}.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\sigma}_{\rm MLE}
+=
+\sqrt{
+\frac{1}{n}
+\sum_{i=1}^n (x_i-\bar{x})^2
+}
+}.
+\]</span></p>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<hr>
+<p>For a random sample from</p>
+<p><span class="math display">\[
+X\sim N(\mu,\sigma),
+\]</span></p>
+<p>the maximum likelihood estimators are</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\mu}_{\rm MLE}=\bar{x}
+}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\sigma}_{\rm MLE}
+=
+\sqrt{
+\frac{1}{n}
+\sum_{i=1}^n (x_i-\bar{x})^2
+}
+}.
+\]</span></p>
+<p>One interesting feature is that the MLE for the population variance is</p>
+<p><span class="math display">\[
+\widehat{\sigma}^2_{\rm MLE}
+=
+\frac{1}{n}
+\sum_{i=1}^n (x_i-\bar{x})^2,
+\]</span></p>
+<p>which uses <span class="math inline">\(n\)</span> in the denominator rather than <span class="math inline">\(n-1\)</span>.</p>
+<p>The usual sample variance</p>
+<p><span class="math display">\[
+s^2
+=
+\frac{1}{n-1}
+\sum_{i=1}^n (x_i-\bar{x})^2
+\]</span></p>
+<p>is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>, while the MLE above is biased for finite samples. <strong>This gives an important example of the fact that not all MLEs are unbiased.</strong></p>
 <hr>
 <p><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" class="img-fluid" alt="Creative Commons License"> <nbsp></nbsp></p>
 <p><em>Statistical Methods: Exploring the Uncertain</em> by <a href="https://github.com/CU-Denver-MathStats-OER/Statistical-Theory">Adam Spiegler</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
