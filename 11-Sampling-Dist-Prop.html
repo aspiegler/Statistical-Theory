@@ -920,7 +920,7 @@ Note
 <section id="how-large-does-n-need-to-be" class="level1">
 <h1>How Large Does <span class="math inline">\(n\)</span> Need to Be?</h1>
 <hr>
-<p>In the jury pool example, we have <span class="math inline">\(n=20\)</span>, <span class="math inline">\(p=0.42\)</span>, and thus <span class="math inline">\(np = 8.4 &lt; 10\)</span>. Our sample is <em>not</em> seemingly large enough for the CLT according to the conditions stated for proportions above. However, the <span class="math inline">\(np \geq 10\)</span> and <span class="math inline">\(n(1-p) \leq 10\)</span> conditions are more like <em>general guidelines</em>. We can check how consistent the results of the sampling distribution simulation (results of for loop stored in <code>samp.prop</code>) are with the CLT:</p>
+<p>In the jury pool example, we have <span class="math inline">\(n=20\)</span>, <span class="math inline">\(p=0.42\)</span>, and thus <span class="math inline">\(np = 8.4 &lt; 10\)</span>. Our sample is <em>not</em> seemingly large enough for the CLT according to the conditions stated for proportions above. However, the <span class="math inline">\(np \geq 10\)</span> and <span class="math inline">\(n(1-p) \geq 10\)</span> conditions are more like <em>general guidelines</em>. We can check how consistent the results of the sampling distribution simulation (results of for loop stored in <code>samp.prop</code>) are with the CLT:</p>
 <ul>
 <li>The code cell below checks how closely our simulation matches the result <span class="math inline">\(\mu_{\widehat{P}} = E(\widehat{P}) = p=0.42\)</span>.</li>
 </ul>
