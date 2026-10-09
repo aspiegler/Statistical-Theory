@@ -775,7 +775,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>resamp <span class="ot">&lt;-</span> <span class="fu">sample</span>(diff, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>resamp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]   85  331 1125  960  157  331  199   14  539   14</code></pre>
+<pre><code> [1]  610  -80   85   85  157  331 1125 1125   85  -80</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -784,7 +784,7 @@ window.Quarto = {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(resamp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 375.5</code></pre>
+<pre><code>[1] 344.3</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -1098,14 +1098,14 @@ Note
 <h1>Comparing the Bias of Bootstrap Estimators</h1>
 <hr>
 <p>Recall if <span class="math inline">\(\widehat{\theta}\)</span> is an estimator for a parameter <span class="math inline">\(\theta\)</span>, then we define the <strong>bias</strong> of the estimator as</p>
-<p><span class="math display">\[\mbox{Bias}(\widehat{\theta}) = (\mbox{Estimated Value}) - (\mbox{Actual Value}) = \widehat{\theta} - \theta.\]</span></p>
+<p><span class="math display">\[\mbox{Bias}(\widehat{\theta}) = (\mbox{Expected Value}) - (\mbox{Population Parameter}) = E \left( \widehat{\theta} \right) - \theta.\]</span></p>
 <p><strong>In the case of bootstrapping, we used the following estimate:</strong></p>
 <ul>
-<li>We use the <span style="color:dodgerblue">center of the bootstrap distribution</span>, <span class="math inline">\({\color{dodgerblue}{\hat{\theta}_{\rm{boot}}}}\)</span>, as the <span style="color:dodgerblue">bootstrap estimator</span>.</li>
+<li>We denote the <span style="color:dodgerblue">mean of the bootstrap distribution</span> by <span class="math inline">\({\color{dodgerblue}{\overline{\theta^*}}}\)</span>.</li>
 <li>We plug-in the <span style="color:tomato">statistic from the original sample</span> in place of the <span style="color:tomato">unknown parameter <span class="math inline">\(\theta\)</span></span>.</li>
 <li>The <span style="color:dodgerblue"><strong>bootstrap estimate of bias</strong></span> is</li>
 </ul>
-<p><span class="math display">\[\mbox{Bias}_{\rm{boot}} \big( \hat{\theta}_{\rm{boot}} \big) = {\color{dodgerblue}{\hat{\theta}_{\rm{boot}}}} - {\color{tomato}{(\mbox{observed statistic})}}.\]</span></p>
+<p><span class="math display">\[\widehat{\text{Bias}}_{\rm boot} (\widehat{\theta} ) = {\color{dodgerblue}{\overline{\theta^*}}} - {\color{tomato}{\widehat{\theta}}}.\]</span></p>
 <section id="question-8" class="level2">
 <h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
 <hr>
@@ -1125,7 +1125,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the case of bootstrap estimate for a mean, we have <span class="math inline">\({\displaystyle \mbox{Bias}_{\rm{boot}} \big( \hat{\mu}_{\rm{boot}} \big) = {\color{dodgerblue}{\hat{\mu}_{\rm{boot}}}} - {\color{tomato}{\bar{x}}}}\)</span>. Use the output from the code below to identify the values of <span class="math inline">\({\color{dodgerblue}{\hat{\mu}_{\rm{boot}}}}\)</span> and <span class="math inline">\({\color{tomato}{\bar{x}}}\)</span>.</p>
+<p>In the case of bootstrap estimate for a mean, we have <span class="math inline">\({\displaystyle \widehat{\mbox{Bias}}_{\rm boot} \big( \bar{X} \big) = {\color{dodgerblue}{\overline{x^*}}} - {\color{tomato}{\bar{x}}}}\)</span>. Use the output from the code below to identify the values of <span class="math inline">\({\color{dodgerblue}{\overline{x^*}}}\)</span> <span style="color:dodgerblue">(the mean of the bootstrap distribution)</span> and <span class="math inline">\({\color{tomato}{\bar{x}}}\)</span> <span style="color:tomato">(the mean of the observed sample)</span>.</p>
 </div>
 </div>
 <div class="cell">
@@ -1224,7 +1224,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the case of bootstrap estimate for a proportion, we have <span class="math inline">\({\displaystyle\mbox{Bias}_{\rm{boot}} \big( \hat{p}_{\rm{boot}} \big) = {\color{dodgerblue}{\hat{p}_{\rm{boot}}}} - {\color{tomato}{\hat{p}}}}\)</span>.</p>
+<p><em>In the case of bootstrap estimate for a proportion, we have <span class="math inline">\({\displaystyle \widehat{\mbox{Bias}}_{\rm boot} \big( \hat{P} \big) = {\color{dodgerblue}{\overline{p^*}}} - {\color{tomato}{\hat{p}}}}\)</span>.</em></p>
 </div>
 </div>
 <div class="cell">
@@ -1403,14 +1403,14 @@ Note
 <h4 class="anchored" data-anchor-id="rule-of-thumb-for-bootstrap-bias"><span style="color:dodgerblue"><strong>Rule of Thumb for Bootstrap Bias</strong></span></h4>
 <hr>
 <p><span style="color:dodgerblue">If either </span></p>
-<p><span class="math display">\[{\color{dodgerblue}{\frac{\mbox{Bootstrap Bias}}{\mbox{Bootstrap SE}}  &gt; 0.02 \qquad \mbox{or} \qquad \frac{\mbox{Bootstrap Bias}}{\mbox{Bootstrap SE}}  &lt; -0.02,}}\]</span></p>
-<p><span style="color:dodgerblue">then the bias is large enough to have a substantial effect on the accuracy of the estimate.</span></p>
+<p><span class="math display">\[{\color{dodgerblue}{\frac{\mbox{Bootstrap Bias}}{\mbox{Bootstrap SE}}  &gt; 0.25 \qquad \mbox{or} \qquad \frac{\mbox{Bootstrap Bias}}{\mbox{Bootstrap SE}}  &lt; -0.25,}}\]</span></p>
+<p><span style="color:dodgerblue">then the bias may be large enough to affect the accuracy of the estimate and warrants further investigation.</span></p>
 </section>
 </section>
 <section id="question-12" class="level2">
 <h2 class="anchored" data-anchor-id="question-12">Question 12</h2>
 <hr>
-<p>Determine whether the jackal mandible bootstrap distribution in <a href="#question-8">Question 8</a>, the ozone concentration bootstrap distribution for sample proportion in <a href="#question-9">Question 9</a>, or the bootstrap distribution for the difference in mean birth weights <a href="#question-10">Question 10</a> exceed the 0.02 rule of thumb. Relatively speaking, which of the three biases is most extreme?</p>
+<p>Determine whether the jackal mandible bootstrap distribution in <a href="#question-8">Question 8</a>, the ozone concentration bootstrap distribution for sample proportion in <a href="#question-9">Question 9</a>, or the bootstrap distribution for the difference in mean birth weights <a href="#question-10">Question 10</a> exceed the 0.25 rule of thumb. Relatively speaking, which of the three biases is most extreme?</p>
 <section id="solution-to-question-12" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-12">Solution to Question 12</h3>
 <hr>

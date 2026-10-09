@@ -513,16 +513,14 @@ window.Quarto = {
 
 
 <p><a href="https://githubtocolab.com/CU-Denver-MathStats-OER/Statistical-Theory/blob/main/Chap5/17-Bootstrap-Confidence-Int.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a> &nbsp;</p>
-<p>In our <a href="./16-Bootstrap-Dist.html">work with bootstrap distributions</a>, we explored how we can used data from one random sample picked from a population with unknown parameters to construct an approximation for a sampling distribution. From a bootstrap distribution, we can define a new estimator:</p>
+<p>In our <a href="./16-Bootstrap-Dist.html">work with bootstrap distributions</a>, we explored how we can use data from one random sample that is picked from a population with unknown parameters to construct an approximation for a sampling distribution. Bootstrapping approximates the sampling distribution of the original estimator and provides a method for accounting for variability in our estimate.</p>
 <ul>
-<li>We defined the <span style="color:dodgerblue">estimator <span class="math inline">\(\hat{\theta}_{\rm{boot}}\)</span></span> as the mean (expected) value of the bootstrap distribution.</li>
-<li>We use the <span style="color:dodgerblue">bootstrap standard error</span> to estimate the variability or uncertainty in estimates due to the randomness of sampling.</li>
-<li>We defined the <span style="color:dodgerblue">bootstrap estimate of bias</span> as <span class="math inline">\(\mbox{Bias}_{\rm{boot}} \big( \hat{\theta}_{\rm{boot}} \big) = \hat{\theta}_{\rm{boot}} - \left( \mbox{observed sample statististic} \right)\)</span>.
-<ul>
-<li>For example, in the case of estimating a population mean <span class="math inline">\(\mu\)</span>, we have <span class="math inline">\({\color{dodgerblue}{\mbox{Bias}_{\rm{boot}} \big( \hat{\mu}_{\rm{boot}} \big) = \hat{\mu}_{\rm{boot}} - \bar{x}}}\)</span>.</li>
-</ul></li>
+<li>We denote the <span style="color:dodgerblue">mean of the bootstrap distribution</span> by <span class="math inline">\({\color{dodgerblue}{\overline{\theta^*}}}\)</span>.</li>
+<li>We use the <span style="color:dodgerblue">bootstrap standard error, <span class="math inline">\(\mbox{SE}_{\rm{boot}} (\widehat{\theta})\)</span>,</span> to estimate the variability in sample statistics.</li>
+<li>We defined the <span style="color:dodgerblue">bootstrap estimate of bias</span> as</li>
 </ul>
-<p>In this section we will discuss how we can use the bootstrap standard error to account for the uncertainty in our estimate and to incorporate that uncertainty in our final estimate.</p>
+<p><span class="math display">\[{\color{dodgerblue}{\widehat{\text{Bias}}_{\rm boot} (\widehat{\theta} ) = \overline{\theta^*} - \widehat{\theta}}}.\]</span></p>
+<p>In this section, we will bootstrap a sample proportion and a difference of two means. Then we will use bootstrap distributions to construct confidence intervals that account for sampling variability.</p>
 <section id="case-study-ozone-concentration-in-new-york-city" class="level1">
 <h1>Case Study: Ozone Concentration in New York City</h1>
 <hr>
@@ -762,11 +760,11 @@ Tip
 <hr>
 <p>Usually when estimating an unknown population parameter, we give an <span style="color:dodgerblue"><strong>interval estimate</strong></span> that gives range of plausible values for the parameter by accounting for the uncertainty due to the variability in sampling.</p>
 <ul>
-<li>For example, using both mean and standard error from the bootstrap distribution in <a href="#question-2c">Question 2c</a>, we could say</li>
+<li>Using the original sample proportion and the bootstrap standard error from <a href="#question-2c">Question 2c</a>, one possible interval estimate is</li>
 </ul>
-<p><span class="math display">\[ p_{\rm over} \approx \hat{p}_{\rm boot} \color{dodgerblue}{\pm \mbox{SE}_{\rm boot} \left( \widehat{P} \right)} = 0.216 \color{dodgerblue}{\pm 0.039}.\]</span></p>
+<p><span class="math display">\[ p_{\rm over} \approx \hat{p} \ \color{dodgerblue}{\pm \mbox{SE}_{\rm boot} \left( \widehat{P} \right)} = 0.2162 \color{dodgerblue}{\pm 0.039}.\]</span></p>
 <ul>
-<li><p>An interval of plausible values for <span class="math inline">\(p\)</span> is from <span class="math inline">\(0.177\)</span> to <span class="math inline">\(0.255\)</span>.</p></li>
+<li><p>An interval of plausible values for <span class="math inline">\(p\)</span> is from <span class="math inline">\(0.1772\)</span> to <span class="math inline">\(0.2552\)</span>.</p></li>
 <li><p>An estimate for a parameter with a single value is called a <span style="color:dodgerblue"><strong>point estimate</strong></span>.</p>
 <ul>
 <li>Since there is variability from sample to sample, it is not very likely that our point estimate is perfectly accurate, but it is likely close.</li>
@@ -852,7 +850,7 @@ Figure&nbsp;22.1: Finding Cutoffs for a 95% Bootstrap Percentile Confidence Inte
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="17-Bootstrap-Confidence-Int_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="17-Bootstrap-Confidence-Int_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -918,7 +916,7 @@ Tip
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="17-Bootstrap-Confidence-Int_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="17-Bootstrap-Confidence-Int_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

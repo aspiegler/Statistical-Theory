@@ -861,7 +861,7 @@ Figure&nbsp;17.1: Left: Golden Jackal (Canis aureus) Right: Mandible bones of wo
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>temp.samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(jaw.sample, <span class="at">size=</span><span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)  <span class="co"># sample with replacement</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>temp.samp  <span class="co"># print sample to screen</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 114 111 107 107 105 111 107 117 111 111 107 120 110 105 106 106 107 116 108
+<pre><code> [1] 111 107 107 117 105 111 107 107 114 110 111 108 112 114 111 111 111 110 107
 [20] 107</code></pre>
 </div>
 </div>
@@ -873,7 +873,7 @@ Figure&nbsp;17.1: Left: Golden Jackal (Canis aureus) Right: Mandible bones of wo
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(temp.samp)  <span class="co"># mean of bootstrap resample</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 109.65</code></pre>
+<pre><code>[1] 109.9</code></pre>
 </div>
 </div>
 </section>
@@ -950,33 +950,18 @@ Figure&nbsp;17.1: Left: Golden Jackal (Canis aureus) Right: Mandible bones of wo
 <p><span class="math display">\[{\large \color{dodgerblue}{ \boxed{\mbox{Bias}(\widehat{\theta}) = {\color{tomato}{E \left( \widehat{\theta} \right)}} - {\color{mediumseagreen}{\theta}}}.}}\]</span></p>
 <p><strong>In the case of bootstrapping:</strong></p>
 <ul>
-<li>We use the <span style="color:tomato">center of the bootstrap distribution</span>, <span class="math inline">\({\color{tomato}{\hat{\mu}_{\rm{boot}}}}\)</span>, as the <span style="color:tomato">bootstrap estimator</span>.</li>
-<li>We use the <span style="color:mediumseagreen">mean from the original sample</span>, <span class="math inline">\({\color{mediumseagreen}{\bar{x}}}\)</span>, in place of the <span style="color:mediumseagreen">parameter <span class="math inline">\(\theta\)</span></span>.</li>
-<li>We define the <span style="color:dodgerblue"><strong>bootstrap estimate of bias</strong></span> as</li>
+<li>We use the <span style="color:tomato">mean of the bootstrap distribution</span>, <span class="math inline">\({\color{tomato}{\overline{\theta^*}}}\)</span>, to approximate the expected value <span class="math inline">\(E(\hat{\theta})\)</span>.</li>
+<li>We use the <span style="color:mediumseagreen">statistic computed from the original sample</span>, <span class="math inline">\({\color{mediumseagreen}{\hat{\theta}}}\)</span>, in place of the unknown population parameter <span class="math inline">\(\theta\)</span>.</li>
+<li>We define the <span style="color:dodgerblue"><strong>bootstrap estimate of bias</strong></span> as:</li>
 </ul>
-<p><span class="math display">\[{\large \color{dodgerblue}{ \boxed{\mbox{Bias}_{\rm{boot}} \big( \hat{\mu}_{\rm{boot}} \big) = {\color{tomato}{\hat{\mu}_{\rm{boot}}}} - {\color{mediumseagreen}{\bar{x}}}.}}}\]</span></p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When estimating a population mean, we use the <span style="color:tomato">center of the bootstrap distribution</span>, <span class="math inline">\({\color{tomato}{\hat{\mu}_{\rm{boot}}}}\)</span> as the estimator for the population mean.</p>
-<ul>
-<li>Do not use the mean of the original sample, <span class="math inline">\(\bar{x}\)</span>, as the estimator.</li>
-<li>The values of <span class="math inline">\(\hat{\mu}_{\rm{boot}}\)</span> and <span class="math inline">\(\bar{x}\)</span> are usually very close, but not equal.</li>
-<li>The difference <span class="math inline">\(\hat{\mu}_{\rm{boot}} - \bar{x}\)</span> is used to estimate the bias of <span class="math inline">\(\hat{\mu}_{\rm{boot}}\)</span>.</li>
-</ul>
-</div>
-</div>
+<p><span class="math display">\[{\large \boxed{ {\color{dodgerblue}{ \widehat{\text{Bias}}_{\rm boot} ( \widehat{\theta} )}} = {\color{tomato}{\overline{\theta^{\ast}}}} - {\color{mediumseagreen}{\widehat{\theta}.}}}}\]</span></p>
+<p><strong>For example, when estimating a population mean <span class="math inline">\(\mu\)</span>, we use the original sample mean <span class="math inline">\(\bar{x}\)</span> as our point estimate.</strong> The bootstrap estimate of bias is</p>
+<p><span class="math display">\[\boxed{\widehat{\operatorname{Bias}}_{\mathrm{boot}}(\bar{X})=\overline{x^*}-\bar{x}.}\]</span></p>
+<p>The mean of the bootstrap distribution and the original sample statistic are often close, but they need not be equal. Their difference provides an estimate of the bias of the original estimator.</p>
 <section id="question-7" class="level2">
 <h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
 <hr>
-<p>Compute the bootstrap estimate of bias if we use the mean of the bootstrap distribution from <a href="#question-6">Question 6</a> as our estimate for the mean mandible length of all adult golden jackals.</p>
+<p>Compute the bootstrap estimate of bias if we use the mean of the original sample in <a href="#question-2">Question 2</a> as our estimate for the mean mandible length of all adult golden jackals.</p>
 <section id="solution-to-question-7" class="level3">
 <h3 class="anchored" data-anchor-id="solution-to-question-7">Solution to Question 7</h3>
 <hr>
@@ -1117,8 +1102,7 @@ Figure&nbsp;23.1: Comparing Bootstrap Approximation of Sampling Distribution to 
 </tr>
 <tr class="even">
 <td>Bootstrap distribution</td>
-<td><span class="math inline">\(\hat{\mu}_{\rm{boot}}      = 22.88\)</span></td>
-<td><span class="math inline">\(\mbox{SE}_{\rm{boot}}(\overline{X}) = 0.938\)</span></td>
+<td colspan="2"><span class="math inline">\(\overline{x^*}      = 22.88\)</span> | <span class="math inline">\(\mbox{SE}_{\rm{boot}}(\overline{X}) = 0.938\)</span> |</td>
 </tr>
 </tbody>
 </table>
@@ -1159,10 +1143,10 @@ Figure&nbsp;23.1: Comparing Bootstrap Approximation of Sampling Distribution to 
 <hr>
 <ul>
 <li>The goal of a bootstrap distribution is to estimate a sampling distribution for some statistic.</li>
-<li>Bootstrap distributions are <span style="color:tomato"><strong>biased estimators for a population mean</strong></span> since they are centered near <span class="math inline">\(\bar{x}\)</span> not necessarily <span class="math inline">\(\mu\)</span>.
+<li>Bootstrap distributions approximate sampling distributions, but their centers need not equal the unknown population parameter.
 <ul>
-<li>Thus, the mean of a bootstrap distribution is not useful alone.</li>
-<li>But bootstrapping is useful at quantifying the behavior of a parameter estimate.</li>
+<li>The mean of a bootstrap distribution is not generally used as the point estimate of the population parameter.</li>
+<li>Instead, bootstrap distributions help us estimate the variability and bias of the original estimator.</li>
 </ul></li>
 <li>For most common statistics, bootstrap distributions provide good estimates for the true <span style="color:dodgerblue"><strong>spread</strong></span>, <span style="color:dodgerblue"><strong>shape</strong></span>, and <span style="color:dodgerblue"><strong>bias</strong></span> of a sampling distribution for the statistic of interest.</li>
 </ul>
@@ -1257,7 +1241,7 @@ Figure&nbsp;23.1: Comparing Bootstrap Approximation of Sampling Distribution to 
 <span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> ??, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print bootstrap estimate and standard error to screen</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print mean and standard error of bootstrap distribution</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>boot.mean  <span class="co"># mean (center) of bootstrap dist</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>boot.se  <span class="co"># standard error (spread) of bootstrap dist</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
